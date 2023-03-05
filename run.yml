@@ -1,0 +1,62 @@
+---
+
+- hosts: localhost
+
+  pre_tasks:
+
+    - name: fail if the the host's OS isn't supported
+      fail:
+        msg: This playbook is only compatible with Ubuntu and Pop! OS
+      when: (ansible_distribution != "Pop!_OS") and (ansible_distribution != "Ubuntu")
+
+    - name: upgrade all packages
+      become: yes
+      apt:
+        name: "*"
+        state: latest
+        update_cache: true
+
+  tasks:
+
+    - name: include variable files
+      include_vars:
+        dir: vars
+
+    - name: change the hostname if it's given
+      hostname:
+        name: "{{ hostname }}"
+        use: systemd
+      when: hostname is defined
+
+    - name: base packages
+      include_tasks: basepackages.yml
+
+    - name: development
+      include_tasks: development.yml
+
+    - name: ssh
+      include_tasks: ssh.yml
+
+    - name: git
+      include_tasks: git.yml
+
+    - name: zsh
+      include_tasks: zsh.yml
+
+    - name: brave
+      include_tasks: brave.yml
+
+    - name: i3
+      include_tasks: i3.yml
+      tags:
+        - never
+        - i3
+
+    - name: gnome
+      include_tasks: gnome.yml
+      when: ansible_distribution == "Pop!_OS"
+      tags:
+        - never
+        - gnome
+
+# EOF

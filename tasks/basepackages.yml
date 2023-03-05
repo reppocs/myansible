@@ -1,0 +1,44 @@
+---
+
+- name: install base packages
+  become: yes
+  apt:
+    name:
+      - curl
+      - flatpak
+      - heif-gdk-pixbuf
+      - krita
+      - nmap
+      - os-prober
+      - shellcheck
+      - software-properties-common
+      - tree
+      - zsh
+    state: latest
+    update_cache: yes
+
+- name: flatpak software
+  block:
+
+    - name: add flathub flatpak repo
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+        method: user
+
+    - name: install flatpaks
+      community.general.flatpak:
+        name:
+          - com.spotify.Client
+          - com.discordapp.Discord
+          - com.visualstudio.code
+          - com.dropbox.Client
+          - md.obsidian.Obsidian
+          - org.signal.Signal
+          - org.telegram.desktop
+        method: user
+
+# End of flatpak block
+
+# EOF

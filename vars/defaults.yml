@@ -1,0 +1,18 @@
+# ssh info
+ssh_dir: "{{ ansible_user_dir }}/.ssh"
+ssh_key: "sshkey"
+
+# git info
+git_dir: "{{ ansible_user_dir }}/git"
+
+# default desktop theme
+theme: nord
+
+# regolith repo key for i3-gaps install
+regolith_repo_key_url: https://regolith-desktop.org/regolith.key
+
+# dropbox deb location
+dropbox_deb_url: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb
+
+# brave browser repo key
+brave_repo_key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg

@@ -1,0 +1,18 @@
+# personal github
+Host github.com
+    User git
+    Hostname github.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/sshkey
+
+# work github
+Host github.com-work
+    User git
+    Hostname github.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/sshkey-work
+
+# Default ssh key for everything else
+Host *
+  PreferredAuthentications publickey,password
+  IdentityFile ~/.ssh/sshkey

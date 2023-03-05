@@ -1,0 +1,55 @@
+---
+
+- name: common desktop packages
+  become: yes
+  apt:
+    name:
+      - bpytop
+      - cava
+      - flatpak
+      - neofetch
+      - tty-clock
+    state: latest
+    update_cache: yes
+
+- name: alacritty
+  block:
+
+    - name: alacritty repo
+      become: yes
+      apt_repository:
+        repo: 'ppa:aslatter/ppa'
+
+    - name: install alacritty
+      become: yes
+      apt:
+        name: alacritty
+        state: latest
+        update_cache: yes
+
+    - name: copy alacritty config directory
+      synchronize:
+        src: files/config/alacritty
+        dest: "{{ ansible_user_dir }}/.config"
+
+# end of alacritty block
+
+- name: copy fonts
+  synchronize:
+    src: files/.fonts
+    dest: "{{ ansible_user_dir }}"
+
+- name: update font cache
+  command: fc-cache -fv
+
+- name: copy themes
+  synchronize:
+    src: files/.themes
+    dest: "{{ ansible_user_dir }}"
+
+- name: copy backgrounds
+  synchronize:
+    src: files/backgrounds
+    dest: "{{ ansible_user_dir }}/Pictures"
+
+# EOF
