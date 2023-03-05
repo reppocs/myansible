@@ -16,7 +16,7 @@ Do the following to run it.
 
 `ansible-playbook -K --ask-vault-pass run.yml`
 
-This will install and configure everything, but not do gnome or i3 without adding the appropriate tags. The default theme is nord, because I like nord. If you want to change the theme, you can use the `theme` variable in the playbook run. The following are the currently configured themes.
+This will install and configure everything, except i3 or gnome. If you want those, use the tags, baby! The default theme is nord, because I like nord. If you want to change the theme, you can use the `theme` variable in the playbook run. The following are the currently configured themes.
 
 - dracula
 - gruvbox
