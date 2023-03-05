@@ -34,6 +34,13 @@
         src: files/config/nvim/init.lua
         dest: "{{ ansible_user_dir }}/.config/nvim/init.lua"
 
+    - name: symlink vim to nvim
+      become: yes
+      file:
+        src: /usr/bin/nvim
+        dest: /usr/local/bin/vim
+        state: link
+
 # end of neovim build block
 
 # EOF
