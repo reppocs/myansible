@@ -11,8 +11,3 @@ Host github.com-work
     Hostname github.com
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/sshkey-work
-
-# Default ssh key for everything else
-Host *
-  PreferredAuthentications publickey,password
-  IdentityFile ~/.ssh/sshkey
