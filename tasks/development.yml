@@ -8,15 +8,16 @@
       - python3-venv
       - shellcheck
 
-- name: install latest stable neovim
-  become: yes
+- name: install latest unstable neovim
   block:
 
     - name: add the neovim ppa repo
+      become: yes
       apt_repository:
         repo: 'ppa:neovim-ppa/unstable'
 
     - name: install neovim package
+      become: yes
       apt:
         name:
           - neovim
