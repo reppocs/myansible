@@ -205,6 +205,10 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 
+-- show line and column lines
+vim.o.cursorline = true
+vim.o.cursorcolumn = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
