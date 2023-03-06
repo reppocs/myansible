@@ -99,7 +99,7 @@
           file:
             src: "{{ ansible_user_dir }}/.config/dunst/dunstrc.{{ theme }}"
             dest: "{{ ansible_user_dir }}/.config/dunst/dunstrc"
-        state: link
+            state: link
 
       tags: changetheme
 
