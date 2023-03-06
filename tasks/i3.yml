@@ -77,7 +77,7 @@
 - name: deploy configs
   block:
 
-   - name: deploy alacritty config template
+    - name: deploy alacritty config template
       template:
         src: config/alacritty/alacritty.yml.j2
         dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"
