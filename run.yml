@@ -21,6 +21,7 @@
     - name: include variable files
       include_vars:
         dir: vars
+      tags: always
 
     - name: change the hostname if it's given
       hostname:
