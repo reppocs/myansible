@@ -14,8 +14,8 @@
 
     - name: set desktop wallpaper
       dconf:
-        key: "/org/gnome/desktop/background/picture-uri"
-        value: "file:///{{ ansible_user_dir }}/Pictures/backgrounds/jLifJPd.jpg"
+        key: "/org/gnome/desktop/background/picture-uri/"
+        value: "file://{{ ansible_user_dir }}/Pictures/backgrounds/jLifJPd.jpg"
 
     - name: set gtk theme
       dconf:
