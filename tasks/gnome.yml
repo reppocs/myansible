@@ -12,16 +12,6 @@
         state: latest
         update_cache: yes
 
-    - name: set desktop wallpaper
-      dconf:
-        key: "/org/gnome/desktop/background/picture-uri"
-        value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/jLifJPd.jpg'"
-
-    - name: set gtk theme
-      dconf:
-        key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "'Nordic-darker'"
-
     - name: disable dynamic workspaces
       dconf:
         key: "/org/gnome/mutter/dynamic-workspaces"
@@ -31,6 +21,36 @@
       dconf:
         key: "/org/gnome/desktop/wm/preferences/num-workspaces"
         value: 6
+
+    - name: copy extensions dir
+      synchronize:
+        src: files/extensions
+        dest: "{{ ansible_user_dir }}/.local/share/gnome-shell/"
+
+    - name: disable / enable extensions
+      block:
+
+        - name: disable extensions
+          dconf:
+            key: "/org/gnome/shell/disabled-extensions"
+            value: "['cosmic-dock@system76.com', 'cosmic-workspaces@system76.com']"
+
+        - name: enable extensions
+          dconf:
+            key: "/org/gnome/shell/enabled-extensions"
+            value: "['ding@rastersoft.com', 'pop-cosmic@system76.com', 'pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'popx11gestures@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'simply.workspaces@andyrichardson.dev']"
+
+    # end of extension block
+
+    - name: set gtk theme
+      dconf:
+        key: "/org/gnome/desktop/interface/gtk-theme"
+        value: "'Nordic-darker'"
+
+    - name: set desktop wallpaper
+      dconf:
+        key: "/org/gnome/desktop/background/picture-uri"
+        value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/harmonbetter.jpg'"
 
     - name: change keybindings
       block:
@@ -76,21 +96,6 @@
             value: "'<Control><Alt>Right'"
 
     # end of keybindings block
-
-    - name: disable / enable extensions
-      block:
-
-        - name: disable extensions
-          dconf:
-            key: "/org/gnome/shell/disabled-extensions"
-            value: "['cosmic-dock@system76.com', 'cosmic-workspaces@system76.com']"
-
-        - name: enable extensions
-          dconf:
-            key: "/org/gnome/shell/enabled-extensions"
-            value: "['ding@rastersoft.com', 'pop-cosmic@system76.com', 'pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'popx11gestures@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'simply.workspaces@andyrichardson.dev']"
-
-    # end of extension block
 
   tags: gnome
 
