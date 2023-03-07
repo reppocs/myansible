@@ -7,6 +7,7 @@
       become: yes
       apt:
         name:
+          - dconf-editor
           - gnome-shell-extension-manager
           - gnome-tweaks
         state: latest
@@ -38,7 +39,7 @@
         - name: enable extensions
           dconf:
             key: "/org/gnome/shell/enabled-extensions"
-            value: "['ding@rastersoft.com', 'pop-cosmic@system76.com', 'pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'popx11gestures@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'simply.workspaces@andyrichardson.dev']"
+            value: "['ding@rastersoft.com', 'pop-cosmic@system76.com', 'pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'popx11gestures@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'simply.workspaces@andyrichardson.dev', 'focus@scaryrawr.github.io']"
 
     # end of extension block
 
