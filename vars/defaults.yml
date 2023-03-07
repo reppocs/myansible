@@ -8,8 +8,6 @@ git_dir: "{{ ansible_user_dir }}/git"
 # default desktop theme
 theme: nord
 
-desktop_wallpaper: "harmonbetter.jpg"
-
 # regolith repo key for i3-gaps install
 regolith_repo_key_url: https://regolith-desktop.org/regolith.key
 
