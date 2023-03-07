@@ -15,17 +15,17 @@
     - name: set desktop wallpaper
       dconf:
         key: "/org/gnome/desktop/background/picture-uri"
-        value: "file://{{ ansible_user_dir }}/Pictures/backgrounds/jLifJPd.jpg"
+        value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/jLifJPd.jpg'"
 
     - name: set gtk theme
       dconf:
         key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "Nordic-darker"
+        value: "'Nordic-darker'"
 
     - name: disable dynamic workspaces
       dconf:
         key: "/org/gnome/mutter/dynamic-workspaces"
-        value: "false"
+        value: "'false'"
 
     - name: set six static workspaces
       dconf:
@@ -38,42 +38,42 @@
         - name: change switch-to-workspace-1 bind to <Super>1
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1"
-            value: "<Super>1"
+            value: "'<Super>1'"
 
         - name: change switch-to-workspace-2 bind to <Super>2
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2"
-            value: "<Super>2"
+            value: "'<Super>2'"
 
         - name: change switch-to-workspace-3 bind to <Super>3
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3"
-            value: "<Super>3"
+            value: "'<Super>3'"
 
         - name: change switch-to-workspace-4 bind to <Super>4
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4"
-            value: "<Super>4"
+            value: "'<Super>4'"
 
         - name: change switch-to-workspace-5 bind to <Super>5
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5"
-            value: "<Super>5"
+            value: "'<Super>5'"
 
         - name: change switch-to-workspace-6 bind to <Super>6
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6"
-            value: "<Super>6"
+            value: "'<Super>6'"
 
         - name: change switch-to-workspace-left bind to <Control><Alt>Left
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
-            value: "<Control><Alt>Left"
+            value: "'<Control><Alt>Left'"
 
         - name: change switch-to-workspace-right bind to <Control><Alt>Right
           dconf:
             key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
-            value: "<Control><Alt>Right"
+            value: "'<Control><Alt>Right'"
 
     # end of keybindings block
 
