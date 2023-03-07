@@ -39,6 +39,8 @@
           - org.telegram.desktop
         method: user
 
-# End of flatpak block
+  when: (ansible_virtualization_role == "host") or (ansible_virtualization_role == "N/A")
+
+# end of flatpak block
 
 # EOF
