@@ -10,13 +10,13 @@ This playbook (and other stuff) does my post-installation on my laptops, worksta
 
 ## execution
 
-Before running the playbook, you'll need to run the `init.sh` script to set up the environment, and install the latest version of ansible and git. It will also clone the repo.
+Before running the playbook, you'll need to run the `init.sh` script to set up the environment (installs git and ansible). It will also clone the repo.
 
 Do the following to run it.
 
 `ansible-playbook -K --ask-vault-pass run.yml`
 
-This will install and configure everything, except i3 or gnome. If you want those, use the tags, baby! The default theme is nord, because I like nord. If you want to change the theme, you can use the `theme` variable in the playbook run. The following are the currently configured themes.
+This will install and configure everything, except i3 or gnome. If you want those, use the tags, baby! The default theme is nord, because I like nord. If you want to change the theme, you can use the `theme` variable in the playbook run. The following are the currently configured themes. (Note: doesn't change gnome or neovim themes yet)
 
 - dracula
 - gruvbox
