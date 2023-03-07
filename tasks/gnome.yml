@@ -51,7 +51,7 @@
     - name: set desktop wallpaper
       dconf:
         key: "/org/gnome/desktop/background/picture-uri"
-        value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/harmonbetter.jpg'"
+        value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/{{ desktop_wallpaper}}'"
 
     - name: change keybindings
       block:
