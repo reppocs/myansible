@@ -13,85 +13,29 @@
         state: latest
         update_cache: yes
 
-    - name: disable dynamic workspaces
-      dconf:
-        key: "/org/gnome/mutter/dynamic-workspaces"
-        value: "false"
-
-    - name: set six static workspaces
-      dconf:
-        key: "/org/gnome/desktop/wm/preferences/num-workspaces"
-        value: 6
-
     - name: copy extensions dir
       synchronize:
         src: files/extensions
         dest: "{{ ansible_user_dir }}/.local/share/gnome-shell/"
 
-    - name: disable / enable extensions
-      block:
-
-        - name: disable extensions
-          dconf:
-            key: "/org/gnome/shell/disabled-extensions"
-            value: "['cosmic-dock@system76.com', 'cosmic-workspaces@system76.com']"
-
-        - name: enable extensions
-          dconf:
-            key: "/org/gnome/shell/enabled-extensions"
-            value: "['ding@rastersoft.com', 'pop-cosmic@system76.com', 'pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'popx11gestures@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'simply.workspaces@andyrichardson.dev', 'focus@scaryrawr.github.io']"
-
-    # end of extension block
-
-    - name: set gtk theme
+    - name: update gnome dconf settings
       dconf:
-        key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "Nordic-darker"
-
-    - name: change keybindings
-      block:
-
-        - name: change switch-to-workspace-1 bind to <Super>1
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1"
-            value: "'<Super>1'"
-
-        - name: change switch-to-workspace-2 bind to <Super>2
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2"
-            value: "'<Super>2'"
-
-        - name: change switch-to-workspace-3 bind to <Super>3
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3"
-            value: "'<Super>3'"
-
-        - name: change switch-to-workspace-4 bind to <Super>4
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4"
-            value: "'<Super>4'"
-
-        - name: change switch-to-workspace-5 bind to <Super>5
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5"
-            value: "'<Super>5'"
-
-        - name: change switch-to-workspace-6 bind to <Super>6
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6"
-            value: "'<Super>6'"
-
-        - name: change switch-to-workspace-left bind to <Control><Alt>Left
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
-            value: "'<Control><Alt>Left'"
-
-        - name: change switch-to-workspace-right bind to <Control><Alt>Right
-          dconf:
-            key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
-            value: "'<Control><Alt>Right'"
-
-    # end of keybindings block
+        key: "{{item.key}}"
+        value: "{{item.value}}"
+      loop:
+        - {key: '/org/gnome/mutter/dynamic-workspaces', value: 'false'}
+        - {key: '/org/gnome/desktop/wm/preferences/num-workspaces', value: 6}
+        - {key: '/org/gnome/shell/disabled-extensions', value: "['cosmic-dock@system76.com', 'cosmic-workspaces@system76.com']"}
+        - {key: '/org/gnome/shell/enabled-extensions', value: "['ding@rastersoft.com', 'pop-cosmic@system76.com', 'pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'popx11gestures@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'simply.workspaces@andyrichardson.dev', 'focus@scaryrawr.github.io']"} 
+        - {key: '/org/gnome/desktop/interface/gtk-theme', value: "'Nordic-darker'"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-1', value: "['<Super>1']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-2', value: "['<Super>2']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-3', value: "['<Super>3']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-4', value: "['<Super>4']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-5', value: "['<Super>5']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-6', value: "['<Super>6']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-left', value: "['<Control><Alt>Left']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-right', value: "['<Control><Alt>Right']"}
 
   tags: gnome
 
