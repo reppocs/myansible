@@ -46,7 +46,7 @@
     - name: set gtk theme
       dconf:
         key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "'Nordic-darker'"
+        value: "Nordic-darker"
 
     - name: change keybindings
       block:
