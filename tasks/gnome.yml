@@ -49,7 +49,7 @@
         key: "{{ item.key }}"
         value: "{{ item.value }}"
       loop:
-i       - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-1', value: "['<Super>1']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-1', value: "['<Super>1']"}
         - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-2', value: "['<Super>2']"}
         - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-3', value: "['<Super>3']"}
         - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-4', value: "['<Super>4']"}
