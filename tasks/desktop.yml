@@ -34,22 +34,16 @@
 
 # end of alacritty block
 
-- name: copy fonts
+- name: copy fonts, themes, and backgrounds
   synchronize:
-    src: files/fonts/
-    dest: "{{ ansible_user_dir }}/.fonts/"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - {src: 'files/fonts/', dest: "{{ ansible_user_dir }}/.fonts/"}
+    - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
+    - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
 
 - name: update font cache
   command: fc-cache -fv
-
-- name: copy themes
-  synchronize:
-    src: files/themes/
-    dest: "{{ ansible_user_dir }}/.themes/"
-
-- name: copy backgrounds
-  synchronize:
-    src: files/backgrounds
-    dest: "{{ ansible_user_dir }}/Pictures"
 
 # EOF
