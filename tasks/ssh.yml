@@ -9,29 +9,16 @@
         mode: 0700
         state: directory
 
-    - name: personal private key
+    - name: copy ssh keys
       copy:
-        src: "files/ssh/{{ ssh_key }}"
-        dest: "{{ ssh_dir }}/{{ ssh_key }}"
-        mode: 0600
-
-    - name: personal public key
-      copy:
-        src: "files/ssh/{{ ssh_key }}.pub"
-        dest: "{{ ssh_dir }}/{{ ssh_key }}.pub"
-        mode: 0644
-
-    - name: work private key
-      copy:
-        src: "files/ssh/{{ ssh_key }}-work"
-        dest: "{{ ssh_dir }}/{{ ssh_key }}-work"
-        mode: 0600
-
-    - name: work public key
-      copy:
-        src: "files/ssh/{{ ssh_key }}-work.pub"
-        dest: "{{ ssh_dir }}/{{ ssh_key }}-work.pub"
-        mode: 0644
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode }}"
+      loop:
+        - {src: "files/ssh/{{ ssh_key }}", dest: "{{ ssh_dir }}/{{ ssh_key }}", mode: '0600'}
+        - {src: "files/ssh/{{ ssh_key }}.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}.pub", mode: '0644'}
+        - {src: "files/ssh/{{ ssh_key }}-work", dest: "{{ ssh_dir }}/{{ ssh_key }}-work", mode: '0600'}
+        - {src: "files/ssh/{{ ssh_key }}-work.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}-work.pub", mode: '0644'}
 
     - name: authorize personal ssh keys
       authorized_key:
