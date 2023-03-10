@@ -1,9 +1,9 @@
 ---
 
-- name: all the i3 related desktop stuff
+- name: i3 stuff
   block:
 
-    - name: install desktop packages
+    - name: install i3-related packages
       become: yes
       block:
 
@@ -47,55 +47,31 @@
 
     # end of package install block
 
-    - name: copy dunst config directory
+    - name: copy i3-related config directories
       synchronize:
-        src: files/config/dunst
-        dest: "{{ ansible_user_dir }}/.config"
-
-    - name: copy i3 config directory
-      synchronize:
-        src: files/config/i3
-        dest: "{{ ansible_user_dir }}/.config"
-
-    - name: copy i3status config directory
-      synchronize:
-        src: files/config/i3status
-        dest: "{{ ansible_user_dir }}/.config"
-
-    - name: copy picom config directory
-      synchronize:
-        src: files/config/picom
-        dest: "{{ ansible_user_dir }}/.config"
-
-    - name: copy polybar config directory
-      synchronize:
-        src: files/config/polybar
-        dest: "{{ ansible_user_dir }}/.config"
-
-    - name: copy rofi config directory
-      synchronize:
-        src: files/config/rofi
-        dest: "{{ ansible_user_dir }}/.config"
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - {src: 'files/config/dunst', dest: "{{ ansible_user_dir }}/.config"}
+        - {src: 'files/config/i3', dest: "{{ ansible_user_dir }}/.config"}
+        - {src: 'files/config/i3status', dest: "{{ ansible_user_dir }}/.config"}
+        - {src: 'files/config/picom', dest: "{{ ansible_user_dir }}/.config"}
+        - {src: 'files/config/polybar', dest: "{{ ansible_user_dir }}/.config"}
+        - {src: 'files/config/rofi', dest: "{{ ansible_user_dir }}/.config"}
 
     - name: deploy configs
       block:
 
-        - name: deploy alacritty config template
+        - name: deploy config templates
           template:
-            src: config/alacritty/alacritty.yml.j2
-            dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"
+            src: "{{ item.src }}"
+            dest: "{{ item.dest }}"
+          loop:
+            - {src: 'config/alacritty/alacritty.yml.j2', dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"}
+            - {src: 'config/i3/config.j2', dest: "{{ ansible_user_dir }}/.config/i3/config"}
+            - {src: 'config/rofi/config.rasi.j2', dest: "{{ ansible_user_dir }}/.config/rofi/config.rasi"}
 
-        - name: deploy i3 config template
-          template:
-            src: config/i3/config.j2
-            dest: "{{ ansible_user_dir }}/.config/i3/config"
-
-        - name: deploy rofi config template
-          template:
-            src: config/rofi/config.rasi.j2
-            dest: "{{ ansible_user_dir }}/.config/rofi/config.rasi"
-
-        - name: dunst symbolic link
+        - name: dunst config symbolic link
           file:
             src: "{{ ansible_user_dir }}/.config/dunst/dunstrc.{{ theme }}"
             dest: "{{ ansible_user_dir }}/.config/dunst/dunstrc"
