@@ -19,7 +19,6 @@
       - nitrogen
       - picom
       - rofi
-      - tty-clock
       - xrandr
     state: latest
 
