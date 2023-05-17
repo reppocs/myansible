@@ -50,6 +50,7 @@
       when: (ansible_virtualization_role == "host") or (ansible_virtualization_role == "N/A")
 
     - name: include i3 role
-      include_role: i3
+      include_role:
+        name: i3
 
 # EOF
