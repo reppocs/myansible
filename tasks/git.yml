@@ -1,0 +1,33 @@
+---
+
+- name: create / verify git repo directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+    mode: 0755
+  loop:
+    - "{{ git_dir }}/personal"
+    - "{{ git_dir }}/public"
+    - "{{ git_dir }}/work"
+
+- name: copy git config file
+  copy:
+    src: "files/gitconfig"
+    dest: "{{ ansible_user_dir }}/.gitconfig"
+    backup: yes
+
+- name: copy git config file (personal)
+  copy:
+    src: "files/gitconfig-personal"
+    dest: "{{ ansible_user_dir }}/.gitconfig-personal"
+    backup: yes
+
+- name: copy git config file (work)
+  copy:
+    src: "files/gitconfig-work"
+    dest: "{{ ansible_user_dir }}/.gitconfig-work"
+    backup: yes
+
+# EOF

@@ -1,0 +1,34 @@
+# alacritty config
+#
+# Written by: Corey Reppond
+#
+# reppocs@gmail.com
+
+env:
+  TERM: xterm-256color
+
+window:
+  title: alacritty
+  padding:
+    x: 10
+    y: 10
+  opacity: 1.0
+
+font:
+  normal:
+    family: JetBrainsMono NF
+    style: Regular
+  bold:
+    family: JetBrainsMono NF
+    style: Bold
+  italic:
+    family: JetBrainsMono NF
+    style: Italic
+  bold_italic:
+    family: JetBrainsMono NF
+    style: Bold Italic
+  size: 10.0
+
+# Pick a theme (uncomment)
+import:
+  - ~/.config/alacritty/themes/onedark2.yml

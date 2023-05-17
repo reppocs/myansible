@@ -1,0 +1,33 @@
+---
+
+- name: i3 desktop stuff
+  block:
+
+    - name: install i3-related packages
+      become: yes
+      block:
+
+        - name: common desktop packages
+          dnf:
+            name:
+              - arandr
+              - dunst
+              - lxappearance
+              - nitrogen
+              - picom
+              - rofi
+              - xrandr
+            state: latest
+
+        - name: i3 packages
+          dnf:
+            name:
+              - i3
+              - i3blocks
+              - i3lock
+              - i3status
+            state: latest
+
+# end of i3 desktop stuff block
+
+# EOF

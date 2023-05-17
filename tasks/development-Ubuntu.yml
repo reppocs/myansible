@@ -1,0 +1,11 @@
+---
+
+- name: install base development packages
+  become: yes
+  apt:
+    name:
+      - python3-pip
+      - python3-venv
+      - shellcheck
+
+# EOF

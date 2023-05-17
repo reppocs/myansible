@@ -1,0 +1,57 @@
+---
+
+- name: update all packages
+  become: yes
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+
+- name: install base packages
+  become: yes
+  apt:
+    name:
+      - curl
+      - flatpak
+      - heif-gdk-pixbuf
+      - krita
+      - nmap
+      - os-prober
+      - shellcheck
+      - software-properties-common
+      - tree
+      - zsh
+    state: latest
+    update_cache: yes
+
+- name: install latest unstable neovim
+  block:
+
+    - name: add the neovim ppa repo
+      become: yes
+      apt_repository:
+        repo: 'ppa:neovim-ppa/unstable'
+
+    - name: install neovim package
+      become: yes
+      apt:
+        name:
+          - neovim
+        state: latest
+        update_cache: yes
+
+    - name: copy neovim config directory
+      synchronize:
+        src: files/config/nvim
+        dest: "{{ ansible_user_dir }}/.config"
+
+    - name: symlink vim to nvim
+      become: yes
+      file:
+        src: /usr/bin/nvim
+        dest: /usr/local/bin/vim
+        state: link
+
+# end of neovim block
+
+# EOF

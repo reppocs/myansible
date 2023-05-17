@@ -1,0 +1,27 @@
+---
+
+- name: flatpak software
+  block:
+
+    - name: add flathub flatpak repo
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+        method: user
+
+    - name: install flatpaks
+      community.general.flatpak:
+        name:
+          - com.brave.Browser
+          - com.discordapp.Discord
+          - com.dropbox.Client
+          - com.spotify.Client
+          - com.visualstudio.code
+          - md.obsidian.Obsidian
+          - org.signal.Signal
+          - org.telegram.desktop
+
+# end of flatpak block
+
+# EOF

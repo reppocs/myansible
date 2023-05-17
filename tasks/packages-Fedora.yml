@@ -1,0 +1,66 @@
+---
+
+- name: base packages block
+  become: yes
+  block:
+
+    - name: add rpmfusion free gpg key
+      rpm_key:
+        state: present
+        key: "{{ rpmfusion_free_key }}"
+
+    - name: add rpmfusion nonfree gpg key
+      rpm_key:
+        state: present
+        key: "{{ rpmfusion_nonfree_key }}"
+
+    - name: install rpmfusion free repository
+      dnf:
+        name: "{{ rpmfusion_free_repo }}"
+        state: present
+
+    - name: install rpmfusion nonfree repository
+      dnf:
+        name: "{{ rpmfusion_nonfree_repo }}"
+        state: present
+
+    - name: dnf conf changes
+      blockinfile:
+        path: /etc/dnf/dnf.conf
+        block: |
+          max_parallel_downloads=10
+          fastestmirror=True
+        backup: yes
+
+    - name: upgrade all packages
+      dnf:
+        name: "*"
+        state: latest
+
+    - name: install base packages
+      dnf:
+        name:
+          - ansible
+          - '@C Development Tools and Libraries'
+          - curl
+          - '@Development Tools'
+          - git
+          - kernel-devel
+          - neovim
+          - nmap
+          - shellcheck
+          - tree
+          - util-linux-user
+          - zsh
+        state: latest
+
+    - name: symlink vim to nvim
+      become: yes
+      file:
+        src: /usr/bin/nvim
+        dest: /usr/local/bin/vim
+        state: link
+
+# End of base packages block
+
+# EOF

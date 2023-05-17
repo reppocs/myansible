@@ -1,0 +1,10 @@
+---
+# tasks file for i3
+
+- name: include i3 packages task
+  include_tasks: "packages-{{ ansible_distribution }}.yml"
+
+- name: include i3 configs task
+  include_tasks: "configs.yml"
+
+# EOF

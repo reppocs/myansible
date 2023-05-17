@@ -1,0 +1,40 @@
+---
+
+- name: set up ssh environment
+  block:
+
+    - name: verify/create the .ssh directory 
+      file:
+        dest: "{{ ssh_dir }}"
+        mode: 0700
+        state: directory
+
+    - name: copy ssh keys
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode }}"
+      loop:
+        - {src: "files/ssh/{{ ssh_key }}", dest: "{{ ssh_dir }}/{{ ssh_key }}", mode: '0600'}
+        - {src: "files/ssh/{{ ssh_key }}.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}.pub", mode: '0644'}
+        - {src: "files/ssh/{{ ssh_key }}-work", dest: "{{ ssh_dir }}/{{ ssh_key }}-work", mode: '0600'}
+        - {src: "files/ssh/{{ ssh_key }}-work.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}-work.pub", mode: '0644'}
+
+    - name: authorize personal ssh keys
+      authorized_key:
+        user: "{{ ansible_user_id }}"
+        state: present
+        key: "{{ item }}"
+      with_file:
+        - "files/ssh/{{ ssh_key }}.pub"
+        - "files/ssh/{{ ssh_key }}-work.pub"
+
+    - name: deploy ssh config
+      copy:
+        src: files/ssh/config
+        dest: "{{ ssh_dir }}/config"
+        mode: 0600
+
+# end of ssh block
+
+# EOF
