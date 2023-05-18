@@ -31,6 +31,11 @@
     - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
     - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
 
+- name: copy alacritty config directory
+  synchronize:
+    src: "files/config/alacritty"
+    dest: "{{ ansible_user_dir }}/.config"
+
 - name: update font cache
   command: fc-cache -fv
 
