@@ -1,4 +1,4 @@
-configuration{
+configuration {
     modi: "run,drun,window";
     icon-theme: "Papirus";
     show-icons: true;
@@ -14,4 +14,4 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "~/.config/rofi/themes/catppuccin-macchiato.rasi"
+@theme "~/.config/rofi/themes/spotlight-dark.rasi"
