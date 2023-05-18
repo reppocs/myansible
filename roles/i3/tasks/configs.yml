@@ -12,10 +12,4 @@
     - {src: 'files/polybar', dest: "{{ ansible_user_dir }}/.config"}
     - {src: 'files/rofi', dest: "{{ ansible_user_dir }}/.config"}
 
-- name: dunst config symbolic link
-  file:
-    src: "{{ ansible_user_dir }}/.config/dunst/dunstrc.onedark"
-    dest: "{{ ansible_user_dir }}/.config/dunst/dunstrc"
-    state: link
-
 # EOF
