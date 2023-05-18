@@ -61,6 +61,11 @@
         dest: /usr/local/bin/vim
         state: link
 
+    - name: copy neovim config directory
+      synchronize:
+        src: "files/config/nvim"
+        dest: "{{ ansible_user_dir }}/.config"
+
 # End of base packages block
 
 # EOF
