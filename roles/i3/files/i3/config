@@ -252,6 +252,6 @@ for_window [class="Virtualbox Manager"] move to workspace $ws9
 # background
 ##################
 
-include $HOME/.config/i3/conf.d/onedark/*.conf
+include $HOME/.config/i3/conf.d/mytheme/*.conf
 
 # EOF
