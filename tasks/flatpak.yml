@@ -13,7 +13,6 @@
     - name: install flatpaks
       community.general.flatpak:
         name:
-          - com.brave.Browser
           - com.discordapp.Discord
           - com.dropbox.Client
           - com.spotify.Client
