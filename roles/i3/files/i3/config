@@ -227,6 +227,9 @@ for_window [class="Brave-browser"] move to workspace $ws2
 # chrome
 for_window [class="Google-chrome"] move to workspace $ws3
 
+# obsidian
+for_window [class="obsidian"] move to workspace $ws4
+
 # Virtual Studio Code
 for_window [class="code"] move to workspace $ws5
 
