@@ -17,6 +17,7 @@
               - picom
               - rofi
               - xrandr
+              - xset
             state: latest
 
         - name: i3 packages
