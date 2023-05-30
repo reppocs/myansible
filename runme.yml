@@ -52,6 +52,9 @@
     - name: include i3 role
       include_role:
         name: i3
+        apply:
+          tags:
+            - i3
       tags:
         - i3
         - never
