@@ -5,21 +5,10 @@
   dnf:
     name:
       - alacritty
-      - arandr
       - bpytop
       - cava
-      - dunst
       - flatpak
-      - i3
-      - i3blocks
-      - i3lock
-      - i3status
-      - lxappearance
       - neofetch
-      - nitrogen
-      - picom
-      - rofi
-      - xrandr
     state: latest
 
 - name: copy fonts, themes, and backgrounds
