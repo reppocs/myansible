@@ -15,3 +15,6 @@ rpmfusion_nonfree_repo: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusio
 # rpmfusion gpg keys
 rpmfusion_free_key: files/repokeys/RPM-GPG-KEY-rpmfusion-free-fedora-2020
 rpmfusion_nonfree_key: files/repokeys/RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+
+# brave browser apt repo key
+brave_repo_key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
