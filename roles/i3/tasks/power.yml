@@ -1,0 +1,14 @@
+---
+
+- name: change power settings
+  block:
+
+    - name: turn off screensaver
+      command: xset s off
+
+    - name: turn off screen blanking
+      command: xset s noblank
+
+# end of i3 desktop stuff block
+
+# EOF

@@ -7,4 +7,7 @@
 - name: include i3 configs task
   include_tasks: "configs.yml"
 
+- name: include power settings task
+  include_tasks: "power.yml"
+
 # EOF
