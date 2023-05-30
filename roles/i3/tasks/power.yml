@@ -6,6 +6,9 @@
     - name: turn off screensaver
       command: xset s off
 
+    - name: turn off display power management signaling
+      command: xset -dpms
+
     - name: turn off screen blanking
       command: xset s noblank
 
