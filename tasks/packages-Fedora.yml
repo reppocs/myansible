@@ -44,6 +44,7 @@
           - '@C Development Tools and Libraries'
           - curl
           - '@Development Tools'
+          - dnf-plugins-core
           - git
           - kernel-devel
           - neovim
