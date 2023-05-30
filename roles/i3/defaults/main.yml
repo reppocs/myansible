@@ -1,2 +1,7 @@
 ---
 # defaults file for i3
+
+# regolith repo key for i3-gaps install
+regolith_repo_key_url: https://regolith-desktop.org/regolith.key
+
+# EOF
