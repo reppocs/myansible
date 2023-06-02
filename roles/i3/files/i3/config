@@ -216,10 +216,10 @@ bindsym Ctrl+Mod1+Right workspace next
 bindsym Ctrl+Mod1+Left workspace prev
 
 # launcher menu
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-4/launcher.sh
+bindsym $mod+d exec --no-startup-id $HOME/.config/i3/scripts/rofi.sh
 
 # power menu
-bindsym $mod+p exec --no-startup-id ~/.config/rofi/scripts/powermenu_t2
+bindsym $mod+p exec --no-startup-id $HOME/.config/i3/scripts/rofi-power.sh
 
 ##################
 # app configs
