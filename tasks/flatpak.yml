@@ -20,6 +20,8 @@
           - md.obsidian.Obsidian
           - org.signal.Signal
           - org.telegram.desktop
+        state: present
+        method: user
 
 # end of flatpak block
 
