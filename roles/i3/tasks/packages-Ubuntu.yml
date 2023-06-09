@@ -15,6 +15,7 @@
               - lxappearance
               - nitrogen
               - picom
+              - polybar
               - rofi
             state: latest
             update_cache: yes
