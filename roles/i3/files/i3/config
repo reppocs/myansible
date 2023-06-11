@@ -38,7 +38,7 @@ exec --no-startup-id killall -9 -qw picom 2>/dev/null; picom --config $HOME/.con
 # the background is set with feh in the theme file bg-theme.conf in the theme folder
 
 # polybar
-exec --no-startup-id $HOME/.config/polybar/launch.sh
+#exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 # notifications
 exec_always --no-startup-id dunst &
@@ -262,6 +262,6 @@ for_window [class="Virtualbox Manager"] move to workspace $ws9
 # background
 ##################
 
-include $HOME/.config/i3/themes/mytheme/colors.conf
+include $HOME/.config/i3/themes/mytheme/*
 
 # EOF
