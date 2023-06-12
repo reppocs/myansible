@@ -1,100 +1,95 @@
 /*
- * ROFI One Dark
+ * ROFI color theme
  *
- * Based on OneDark.vim (https://github.com/joshdick/onedark.vim)
+ * Based on Something Found in the Internet
  *
- * Author: Benjamin Stauss
- * User: me-benni
- *
+ * User: Contributors
+ * Copyright: *!
  */
 
+configuration {
+  font: "Iosevka Nerd Font Medium 12";
+
+  drun {
+    display-name: "";
+  }
+
+  run {
+    display-name: "";
+  }
+
+  window {
+    display-name: "";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
 
 * {
-  black:      #000000;
-  red:        #eb6e67;
-  green:      #95ee8f;
-  yellow:     #f8c456;
-  blue:       #6eaafb;
-  mangenta:   #d886f3;
-  cyan:       #6cdcf7;
-  emphasis:   #50536b;
-  text:       #dfdfdf;
-  text-alt:   #b2b2b2;
-  fg:         #abb2bf;
-  bg:         #282c34;
-
+  border: 0;
+  margin: 0;
+  padding: 0;
   spacing: 0;
-  background-color: transparent;
 
-  font: "Knack Nerd Font 14";
-  text-color: @text;
+  bg: #282C34;
+	fg: #ABB2BF;
+	blue: #61AFEF;
+	blue-alt: #61AFEF15;
+	red: #E06C75;
+  red-alt: #E06C7515;
+
+  background-color: @bg;
+  text-color: @fg;
 }
 
 window {
+  border: 2px;
+  border-color: @blue-alt;
+  border-radius: 6px;
+  padding: 6px;
   transparency: "real";
-  fullscreen: true;
-  background-color: #282c34dd;
 }
 
 mainbox {
-  padding: 30% 30%;
+  children: [inputbar, listview];
 }
 
 inputbar {
-  margin: 0px 0px 20px 0px;
-  children: [prompt, textbox-prompt-colon, entry, case-indicator];
-}
-
-prompt {
-  text-color: @blue;
-}
-
-textbox-prompt-colon {
-  expand: false;
-  str: ":";
-  text-color: @text-alt;
+  border: 0 0 0 2px;
+  border-color: @blue;
+  border-radius: 6px;
+  children: [entry];
+  margin: 0 0 6px 0;
 }
 
 entry {
-  margin: 0px 10px;
-}
-
-listview {
-  spacing: 5px;
-  dynamic: true;
-  scrollbar: false;
-}
-
-element {
-  padding: 5px;
-  text-color: @text-alt;
-  highlight: bold #95ee8f; /* green */
-  border-radius: 3px;
-}
-
-element selected {
-  background-color: @emphasis;
-  text-color: @text;
-}
-
-element urgent, element selected urgent {
-  text-color: @red;
-}
-
-element active, element selected active {
+  background-color: @blue-alt;
+  padding: 10px;
   text-color: @blue;
 }
 
-message {
-  padding: 5px;
-  border-radius: 3px;
-  background-color: @emphasis;
-  border: 1px;
-  border-color: @cyan;
+listview {
+  lines: 10;
 }
 
-button selected {
-  padding: 5px;
-  border-radius: 3px;
-  background-color: @emphasis;
+element {
+  border: 0 0 0 2px;
+  children: [element-text];
+}
+
+element selected {
+  border-color: @red;
+  border-radius: 6px;
+}
+
+element-text {
+  padding: 10px;
+}
+
+element-text selected {
+  background-color: @red-alt;
+  text-color: @red;
 }
