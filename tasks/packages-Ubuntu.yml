@@ -40,17 +40,27 @@
         state: latest
         update_cache: yes
 
-    - name: copy neovim config directory
-      synchronize:
-        src: files/config/nvim
-        dest: "{{ ansible_user_dir }}/.config"
-
     - name: symlink vim to nvim
       become: yes
       file:
         src: /usr/bin/nvim
         dest: /usr/local/bin/vim
         state: link
+
+    - name: make sure nvim share directory is absent
+      file:
+        path: "{{ ansible_user_dir }}/.local/share/nvim"
+        state: absent
+
+    - name: make sure nvim config directory is absent
+      file:
+        path: "{{ ansible_user_dir }}/.config/nvim"
+        state: absent
+
+    - name: copy neovim config directory
+      synchronize:
+        src: files/config/nvim
+        dest: "{{ ansible_user_dir }}/.config"
 
 # end of neovim block
 
