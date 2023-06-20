@@ -77,7 +77,7 @@
 
         - name: make sure nvim config directory is absent
           file:
-            path: "{{ ansible_User_dir }}/.config/nvim"
+            path: "{{ ansible_user_dir }}/.config/nvim"
             state: absent
 
         - name: copy neovim config directory
