@@ -1,0 +1,31 @@
+---
+
+- name: install brave browser
+  become: yes
+  block:
+
+    - name: install required packages for brave
+      dnf:
+        name: dnf-plugins-core 
+        state: latest
+
+    - name: add brave repo
+      get_url:
+        url: https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+        dest: /etc/yum.repos.d/brave-browser.repo
+
+    - name: download brave's repo key
+      rpm_key:
+        state: present
+        key: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+
+    - name: install brave package
+      dnf:
+        name:
+          - brave-browser
+          - brave-keyring
+        state: latest
+
+# end of brave block
+
+# EOF
