@@ -42,8 +42,7 @@
       include_tasks: "tasks/desktop-{{ ansible_distribution }}.yml"
 
     - name: include brave task (Ubuntu)
-      include_tasks: "tasks/brave.yml"
-      when: ansible_distribution == "Ubuntu"
+      include_tasks: "tasks/brave-{{ ansible_distribution }}.yml"
 
     - name: include flatpak task
       include_tasks: "tasks/flatpak.yml"
