@@ -7,4 +7,12 @@
 - name: include i3 configs task
   include_tasks: "configs.yml"
 
+- name: make the system do nothing when the laptop lid is closed
+  lineinfile:
+    path: /etc/systemd/logind.conf
+    line: HandleLidSwitchExternalPower=ignore    
+    insertafter: EOF
+    state: present
+    backup: true
+ 
 # EOF
