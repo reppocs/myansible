@@ -5,27 +5,27 @@
   block:
 
     - name: add rpmfusion free gpg key
-      rpm_key:
+      ansible.builtin.rpm_key:
         state: present
         key: "{{ rpmfusion_free_key }}"
 
     - name: add rpmfusion nonfree gpg key
-      rpm_key:
+      ansible.builtin.rpm_key:
         state: present
         key: "{{ rpmfusion_nonfree_key }}"
 
     - name: install rpmfusion free repository
-      dnf:
+      ansible.builtin.dnf:
         name: "{{ rpmfusion_free_repo }}"
         state: present
 
     - name: install rpmfusion nonfree repository
-      dnf:
+      ansible.builtin.dnf:
         name: "{{ rpmfusion_nonfree_repo }}"
         state: present
 
     - name: dnf conf changes
-      blockinfile:
+      ansible.builtin.blockinfile:
         path: /etc/dnf/dnf.conf
         block: |
           max_parallel_downloads=10
@@ -33,12 +33,12 @@
         backup: yes
 
     - name: upgrade all packages
-      dnf:
+      ansible.builtin.dnf:
         name: "*"
         state: latest
 
     - name: install base packages
-      dnf:
+      ansible.builtin.dnf:
         name:
           - ansible
           - '@C Development Tools and Libraries'
@@ -60,29 +60,29 @@
       block:
 
         - name: install neovim
-          dnf: 
+          ansible.builtin.dnf: 
             name: neovim
             state: latest
 
         - name: symlink vim to nvim
           become: yes
-          file:
+          ansible.builtin.file:
             src: /usr/bin/nvim
             dest: /usr/local/bin/vim
             state: link
 
         - name: make sure nvim share directory is absent
-          file:
+          ansible.builtin.file:
             path: "{{ ansible_user_dir }}/.local/share/nvim"
             state: absent
 
         - name: make sure nvim config directory is absent
-          file:
+          ansible.builtin.file:
             path: "{{ ansible_user_dir }}/.config/nvim"
             state: absent
 
         - name: copy neovim config directory
-          synchronize:
+          ansible.posix.synchronize:
             src: "files/config/nvim"
             dest: "{{ ansible_user_dir }}/.config"
 
