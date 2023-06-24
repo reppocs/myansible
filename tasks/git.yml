@@ -1,7 +1,7 @@
 ---
 
 - name: create / verify git repo directories
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ ansible_user_id }}"
@@ -13,19 +13,19 @@
     - "{{ git_dir }}/work"
 
 - name: copy git config file
-  copy:
+  ansible.builtin.copy:
     src: "files/gitconfig"
     dest: "{{ ansible_user_dir }}/.gitconfig"
     backup: yes
 
 - name: copy git config file (personal)
-  copy:
+  ansible.builtin.copy:
     src: "files/gitconfig-personal"
     dest: "{{ ansible_user_dir }}/.gitconfig-personal"
     backup: yes
 
 - name: copy git config file (work)
-  copy:
+  ansible.builtin.copy:
     src: "files/gitconfig-work"
     dest: "{{ ansible_user_dir }}/.gitconfig-work"
     backup: yes
