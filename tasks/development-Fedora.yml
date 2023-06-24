@@ -2,10 +2,11 @@
 
 - name: install base development packages
   become: yes
-  dnf:
+  ansible.builtin.dnf:
     name:
       - python3-pip
       - python3-virtualenv
       - shellcheck
+    state: latest
 
 # EOF
