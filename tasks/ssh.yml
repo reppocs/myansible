@@ -4,13 +4,13 @@
   block:
 
     - name: verify/create the .ssh directory 
-      file:
+      ansible.builtin.file:
         dest: "{{ ssh_dir }}"
         mode: 0700
         state: directory
 
     - name: copy ssh keys
-      copy:
+      ansible.builtin.copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
         mode: "{{ item.mode }}"
@@ -21,7 +21,7 @@
         - {src: "files/ssh/{{ ssh_key }}-work.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}-work.pub", mode: '0644'}
 
     - name: authorize personal ssh keys
-      authorized_key:
+      ansible.posix.authorized_key:
         user: "{{ ansible_user_id }}"
         state: present
         key: "{{ item }}"
@@ -30,7 +30,7 @@
         - "files/ssh/{{ ssh_key }}-work.pub"
 
     - name: deploy ssh config
-      copy:
+      ansible.builtin.copy:
         src: files/ssh/config
         dest: "{{ ssh_dir }}/config"
         mode: 0600
