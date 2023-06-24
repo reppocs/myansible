@@ -2,7 +2,7 @@
 
 - name: desktop packages
   become: yes
-  dnf:
+  ansible.builtin.dnf:
     name:
       - alacritty
       - bpytop
@@ -12,7 +12,7 @@
     state: latest
 
 - name: copy fonts, themes, and backgrounds
-  synchronize:
+  ansible.posix.synchronize:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   loop:
@@ -21,11 +21,11 @@
     - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
 
 - name: copy alacritty config directory
-  synchronize:
+  ansible.posix.synchronize:
     src: "files/config/alacritty"
     dest: "{{ ansible_user_dir }}/.config"
 
 - name: update font cache
-  command: fc-cache -fv
+  ansible.builtin.command: fc-cache -fv
 
 # EOF
