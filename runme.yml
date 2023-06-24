@@ -5,7 +5,7 @@
   pre_tasks:
 
     - name: fail if the the distribution isn't supported
-      fail:
+      ansible.builtin.fail:
         msg: This playbook is only compatible with Ubuntu 22 and Fedora 38.
       when: >
         (ansible_distribution != "Ubuntu" and ansible_distribution_major_version == 22) or
@@ -14,42 +14,42 @@
   tasks:
 
     - name: change the hostname if it's given
-      hostname:
+      ansible.builtin.hostname:
         name: "{{ hostname }}"
         use: systemd
       when: hostname is defined
 
     - name: include var files
-      include_vars:
+      ansible.builtin.include_vars:
         dir: vars
 
     - name: include packages task
-      include_tasks: "tasks/packages-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_distribution }}.yml"
 
     - name: include ssh task
-      include_tasks: "tasks/ssh.yml"
+      ansible.builtin.include_tasks: "tasks/ssh.yml"
 
     - name: include git task
-      include_tasks: "tasks/git.yml"
+      ansible.builtin.include_tasks: "tasks/git.yml"
 
     - name: include development task
-      include_tasks: "tasks/development-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/development-{{ ansible_distribution }}.yml"
 
     - name: include zsh task
-      include_tasks: "tasks/zsh.yml"
+      ansible.builtin.include_tasks: "tasks/zsh.yml"
 
     - name: include desktop task
-      include_tasks: "tasks/desktop-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_distribution }}.yml"
 
     - name: include brave task (Ubuntu)
-      include_tasks: "tasks/brave-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_distribution }}.yml"
 
     - name: include flatpak task
-      include_tasks: "tasks/flatpak.yml"
+      ansible.builtin.include_tasks: "tasks/flatpak.yml"
       when: (ansible_virtualization_role == "host") or (ansible_virtualization_role == "N/A")
 
     - name: include i3 role
-      include_role:
+      ansible.builtin.include_role:
         name: i3
         apply:
           tags:
