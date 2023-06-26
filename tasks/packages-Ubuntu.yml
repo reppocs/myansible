@@ -19,6 +19,7 @@
       - os-prober
       - shellcheck
       - software-properties-common
+      - traceroute
       - tree
       - zsh
     state: latest

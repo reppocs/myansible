@@ -51,6 +51,7 @@
           - neovim
           - nmap
           - shellcheck
+          - traceroute
           - tree
           - util-linux-user
           - zsh
