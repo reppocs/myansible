@@ -24,7 +24,7 @@
         dir: vars
 
     - name: include packages task
-      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
 
     - name: include ssh task
       ansible.builtin.include_tasks: "tasks/ssh.yml"
@@ -33,16 +33,16 @@
       ansible.builtin.include_tasks: "tasks/git.yml"
 
     - name: include development task
-      ansible.builtin.include_tasks: "tasks/development-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
 
     - name: include zsh task
       ansible.builtin.include_tasks: "tasks/zsh.yml"
 
     - name: include desktop task
-      ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
 
     - name: include brave task (Ubuntu)
-      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
 
     - name: include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
