@@ -8,6 +8,7 @@
   include_tasks: "configs.yml"
 
 - name: make the system do nothing when the laptop lid is closed
+  become: yes
   lineinfile:
     path: /etc/systemd/logind.conf
     line: HandleLidSwitchExternalPower=ignore    
