@@ -6,10 +6,11 @@
 
     - name: fail if the the distribution isn't supported
       ansible.builtin.fail:
-        msg: This playbook is only compatible with Ubuntu 22.04 and Fedora 38.
+        msg: This playbook is not compatible with your distribution.
       when: >
         (ansible_distribution != "Ubuntu" and ansible_distribution_version == "22.04") or
-        (ansible_distribution != "Fedora" and ansible_distribution_major_version == 38)
+        (ansible_distribution != "Fedora" and ansible_distribution_major_version == 38) or
+        (ansible_distribution != "PopOS!" and ansible_distribution_version == "22.04")
 
   tasks:
 
@@ -24,7 +25,7 @@
         dir: vars
 
     - name: include packages task
-      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
 
     - name: include ssh task
       ansible.builtin.include_tasks: "tasks/ssh.yml"
@@ -33,16 +34,16 @@
       ansible.builtin.include_tasks: "tasks/git.yml"
 
     - name: include development task
-      ansible.builtin.include_tasks: "tasks/development-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
 
     - name: include zsh task
       ansible.builtin.include_tasks: "tasks/zsh.yml"
 
     - name: include desktop task
-      ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
 
     - name: include brave task (Ubuntu)
-      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_distribution }}.yml"
+      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
 
     - name: include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
