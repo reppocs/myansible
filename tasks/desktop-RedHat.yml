@@ -11,6 +11,43 @@
       - neofetch
     state: latest
 
+- name: font packages
+  become: yes
+  ansible.builtin.dnf:
+    name:
+      - adobe-source-code-pro-fonts
+      - bitstream-vera-sans-mono-fonts
+      - cascadia-code-fonts
+      - cascadia-code-pl-fonts
+      - cascadia-mono-fonts
+      - cascadia-mono-pl-fonts
+      - clm-miriam-mono-fonts
+      - dejavu-sans-mono-fonts
+      - fira-code-fonts
+      - fontawesome-fonts
+      - fontawesome-fonts-web
+      - fontawesome5-brands-fonts
+      - fontawesome5-fonts-web
+      - fontawesome5-free-fonts
+      - gnu-free-mono-fonts
+      - google-droid-sans-mono-fonts
+      - google-go-mono-fonts
+      - google-noto-sans-mono-fonts
+      - google-noto-sans-mono-vf-fonts
+      - google-roboto-mono-fonts
+      - jetbrains-mono-fonts
+      - jetbrains-mono-fonts-all
+      - jetbrains-mono-nl-fonts
+      - liberation-mono-fonts
+      - mozilla-fira-mono-fonts
+      - msimonson-anonymouspro-fonts
+      - oflb-smonohand-fonts
+      - overpass-mono-fonts
+      - oxygen-mono-fonts
+      - pcaro-hermit-fonts
+      - redhat-mono-fonts
+    state: latest
+
 - name: copy fonts, themes, and backgrounds
   ansible.posix.synchronize:
     src: "{{ item.src }}"
