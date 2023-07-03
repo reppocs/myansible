@@ -16,6 +16,7 @@
               - nitrogen
               - picom
               - rofi
+              - polybar
               - xrandr
               - xset
             state: latest
