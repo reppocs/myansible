@@ -7,8 +7,10 @@
     - name: base gnome packages
       ansible.builtin.dnf:
         name:
-          - gnome-tweaks
+          - dconfi-editor
           - gnome-extensions-app
+          - gnome-tweaks
+          - pop-gnome-shell-theme
       state: latest
 
     - name: gnome shell extensions
