@@ -1,0 +1,19 @@
+---
+
+- name: change gnome keybinds
+  become: yes
+  block:
+
+    - name: switch to left workspace
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
+        value: "['<Control><Alt>Left']"
+
+    - name: switch to right workspace
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
+        value: "['<Control><Alt>Right']"
+
+# End of gnome keybinds block
+
+# EOF

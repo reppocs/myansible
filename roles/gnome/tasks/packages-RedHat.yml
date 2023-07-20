@@ -1,0 +1,30 @@
+---
+
+- name: gnome related packages
+  become: yes
+  block:
+
+    - name: base gnome packages
+      ansible.builtin.dnf:
+        name:
+          - gnome-tweaks
+          - gnome-extensions-app
+      state: latest
+
+    - name: gnome shell extensions
+      ansible.builtin.dnf:
+        name:
+          - gnome-shell-extension-appindicator
+          - gnome-shell-extension-blur-my-shell
+          - gnome-shell-extension-dash-to-dock
+          - gnome-shell-extension-dash-to-panel
+          - gnome-shell-extension-just-perfection
+          - gnome-shell-extension-launch-new-instance
+          - gnome-shell-extension-pop-shell
+          - gnome-shell-extension-user-theme
+          - gnome-shell-extension-window-list
+        state: latest
+
+# End of gnome related packages block
+
+# EOF
