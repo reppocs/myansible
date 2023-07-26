@@ -59,4 +59,10 @@
         - i3
         - never
 
+    - name: include nvidia driver install task
+      ansible.builtin.include_tasks: "tasks/nvidia-{{ ansible_os_family }}.yml"
+      tags:
+        - nvidia
+        - never
+
 # EOF
