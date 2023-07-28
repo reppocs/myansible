@@ -23,7 +23,7 @@
 
 window {
     background-color:   @background;
-    border-color:       @gray;
+    border-color:       @accent-color;
 
     location:   center;
     width:      480px;
