@@ -16,10 +16,8 @@
           - com.discordapp.Discord
           - com.dropbox.Client
           - com.spotify.Client
-          - com.visualstudio.code
           - md.obsidian.Obsidian
           - org.signal.Signal
-          - org.telegram.desktop
         state: present
         method: user
 
