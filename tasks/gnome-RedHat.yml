@@ -1,0 +1,54 @@
+---
+
+- name: gnome things
+  block:
+
+    - name: install gnome base packages
+      become: yes
+      dnf:
+        name:
+          - gnome-extensions-app
+          - gnome-tweaks
+        state: latest
+
+    - name: install gnome extensions
+      become: yes
+      dnf:
+        name:
+          - gnome-shell-extension-appindicator
+          - gnome-shell-extension-apps-menu
+          - gnome-shell-extension-auto-move-windows
+          - gnome-shell-extension-blur-my-shell
+          - gnome-shell-extension-dash-to-panel
+          - gnome-shell-extension-just-perfection
+          - gnome-shell-extension-launch-new-instance
+          - gnome-shell-extension-places-menu
+          - gnome-shell-extension-pop-shell
+          - gnome-shell-extension-user-theme
+        state: latest
+
+    - name: gnome workspace settings
+      dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - {key: '/org/gnome/mutter/dynamic-workspaces', value: 'false'}
+        - {key: '/org/gnome/desktop/wm/preferences/num-workspaces', value: 4}
+
+    - name: gnome keybindings
+      dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-1', value: "['<Super>1']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-2', value: "['<Super>2']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-3', value: "['<Super>3']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-4', value: "['<Super>4']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-left', value: "['<Control><Alt>Left']"}
+        - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-right', value: "['<Control><Alt>Right']"}
+
+  tags: gnome
+
+# end of gnome things block
+
+# EOF
