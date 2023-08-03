@@ -12,6 +12,10 @@
         (ansible_distribution != "Fedora" and ansible_distribution_major_version != 38) and
         (ansible_distribution != "PopOS!" and ansible_distribution_version != "22.04")
 
+    - name: set default theme
+      ansible.builtin.set_fact:
+        theme: onedark
+
   tasks:
 
     - name: change the hostname if it's given
