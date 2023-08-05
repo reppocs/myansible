@@ -31,7 +31,7 @@
 
 window {
     background-color:   @background;
-    border-color:       @accent-color;
+    border-color:       @background;
 
     location:   center;
     width:      480px;
