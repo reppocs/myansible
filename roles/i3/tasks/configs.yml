@@ -12,10 +12,15 @@
     - {src: 'files/polybar', dest: "{{ ansible_user_dir }}/.config"}
     - {src: 'files/rofi', dest: "{{ ansible_user_dir }}/.config"}
 
-- name: dunstrc config file theme symbolic links:
-    ansible.builtin.file:
-      src: "{{ ansible_user_dir }}/.config/dunst/dunstrc.{{ theme }}"
-      dest: "{{ ansible_user_dir }}/.config/dunst/dunstrc"
-      state: link
+- name: make sure that the dunstrc file/link is gone
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir }}/.config/dunst/dunstrc"
+    state: absent
+
+- name: dunstrc config file theme symbolic links
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir }}/.config/dunst/dunstrc.{{ theme }}"
+    dest: "{{ ansible_user_dir }}/.config/dunst/dunstrc"
+    state: link
 
 # EOF
