@@ -18,6 +18,7 @@
           - com.spotify.Client
           - md.obsidian.Obsidian
           - org.signal.Signal
+          - com.protonvpn.www
         state: present
         method: user
 
