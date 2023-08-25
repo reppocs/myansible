@@ -230,11 +230,11 @@ bindsym $mod+p exec --no-startup-id "~/.config/rofi/showpower.sh"
 
 for_window [class="Brave-browser"] move to workspace $ws1
 for_window [class="Google-chrome"] move to workspace $ws1
-for_window [class="discord"] floating enable, move to workspace $ws2
-for_window [class="Signal"] floating enable, move to workspace $ws2
+for_window [class="discord"] move to workspace $ws2
+for_window [class="Signal"] move to workspace $ws2
 for_window [class="Slack"] move to workspace $ws2
 for_window [class="obsidian"] floating enable, move to workspace $ws3
-for_window [class="Spotify"] floating enable, move to workspace $ws3
+for_window [class="Spotify"] move to workspace $ws3
 for_window [class="code"] floating enable, move to workspace $ws5
 for_window [class="Virtualbox Manager"] floating enable, move to workspace $ws9
 
