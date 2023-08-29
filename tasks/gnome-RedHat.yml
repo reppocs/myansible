@@ -19,6 +19,7 @@
           - gnome-shell-extension-apps-menu
           - gnome-shell-extension-auto-move-windows
           - gnome-shell-extension-blur-my-shell
+          - gnome-shell-extension-dash-to-dock
           - gnome-shell-extension-dash-to-panel
           - gnome-shell-extension-just-perfection
           - gnome-shell-extension-launch-new-instance
