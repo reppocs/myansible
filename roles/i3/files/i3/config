@@ -33,7 +33,7 @@ bindsym $mod+Shift+z	gaps outer current minus 5
 # start up things
 ##################
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec --no-startup-id killall -9 -qw picom 2>/dev/null; picom --config $HOME/.config/picom/picom.conf &>>$HOME/.config/picom/.picom.err &
 
@@ -154,6 +154,19 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# this is for my dual monitor setup
+# assign workspace to monitor
+# workspace $ws1 output $monitor_left
+# workspace $ws2 output $monitor_right
+# workspace $ws3 output $monitor_right
+# workspace $ws4 output $monitor_right
+# workspace $ws5 output $monitor_right
+# workspace $ws6 output $monitor_right
+# workspace $ws7 output $monitor_right
+# workspace $ws8 output $monitor_right
+# workspace $ws9 output $monitor_right
+# workspace $ws10 output $monitor_right
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -245,6 +258,6 @@ for_window [class="Virtualbox Manager"] floating enable, move to workspace $ws9
 # background
 ##################
 
-include $HOME/.config/i3/themes/tokyonight.conf
+include $HOME/.config/i3/themes/onedark.conf
 
 # EOF
