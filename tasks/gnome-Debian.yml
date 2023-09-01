@@ -35,7 +35,7 @@
         - {key: '/org/gnome/shell/disabled-extensions', value: "['cosmic-dock@system76.com', 'cosmic-workspaces@system76.com']"}
 #        - {key: '/org/gnome/shell/enabled-extensions', value: "['ding@rastersoft.com', 'pop-cosmic@system76.com', 'pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'popx11gestures@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'simply.workspaces@andyrichardson.dev', 'focus@scaryrawr.github.io']"}
 
-    - name: update gnome appearance settings
+    - name: gnome appearance settings
       dconf:
         key: "{{ item.key }}"
         value: "{{ item.value }}"
