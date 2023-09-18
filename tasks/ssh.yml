@@ -19,7 +19,7 @@
         - {src: "files/ssh/{{ ssh_key }}-{{ install_environment }}.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}.pub", mode: '0644'}
 
     - name: authorize personal ssh keys
-      ansible.posix.authorized_keys:
+      ansible.posix.authorized_key:
         user: "{{ ansible_user_id }}"
         state: present
         key: "files/ssh/{{ ssh_key }}.pub"
