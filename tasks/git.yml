@@ -8,9 +8,8 @@
     group: "{{ ansible_user_gid }}"
     mode: 0755
   loop:
-    - "{{ git_dir }}/personal"
+    - "{{ git_dir }}/{{ install_environment }}"
     - "{{ git_dir }}/public"
-    - "{{ git_dir }}/work"
 
 - name: copy git config file
   ansible.builtin.copy:
@@ -18,16 +17,10 @@
     dest: "{{ ansible_user_dir }}/.gitconfig"
     backup: yes
 
-- name: copy git config file (personal)
+- name: copy git config environment file
   ansible.builtin.copy:
     src: "files/gitconfig-personal"
-    dest: "{{ ansible_user_dir }}/.gitconfig-personal"
-    backup: yes
-
-- name: copy git config file (work)
-  ansible.builtin.copy:
-    src: "files/gitconfig-work"
-    dest: "{{ ansible_user_dir }}/.gitconfig-work"
+    dest: "{{ ansible_user_dir }}/.gitconfig-{{ install_environment }}"
     backup: yes
 
 # EOF
