@@ -27,7 +27,7 @@
 
     - name: deploy ssh config
       ansible.builtin.copy:
-        src: "files/ssh/config-{{ install_environment }}"
+        src: "files/ssh/config"
         dest: "{{ ssh_dir }}/config"
         mode: 0600
 
