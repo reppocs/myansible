@@ -1,3 +1,8 @@
+---
+
+# default environment
+env: personal
+
 # ssh info
 ssh_dir: "{{ ansible_user_dir }}/.ssh"
 ssh_key: "id_ed25519"
