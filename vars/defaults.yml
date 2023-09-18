@@ -1,7 +1,7 @@
 ---
 
 # default environment
-env: personal
+install_environment: personal
 
 # ssh info
 ssh_dir: "{{ ansible_user_dir }}/.ssh"
