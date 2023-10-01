@@ -10,7 +10,7 @@
 
     background:		#282828;
     foreground:		#ebdbb2;
-    accent-color:	#fe8019;
+    accent-color:	#d79921;
     urgent:		#fb4934;
 
     background-color:   transparent;
