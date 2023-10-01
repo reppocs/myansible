@@ -31,4 +31,4 @@ font:
 
 # Pick a theme (uncomment)
 import:
-  - ~/.config/alacritty/themes/onedark2.yml
+  - ~/.config/alacritty/themes/nordic.yaml

@@ -258,6 +258,6 @@ for_window [class="Virtualbox Manager"] floating enable, move to workspace $ws9
 # background
 ##################
 
-include $HOME/.config/i3/themes/onedark.conf
+include $HOME/.config/i3/themes/nord.conf
 
 # EOF
