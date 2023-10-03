@@ -15,10 +15,10 @@
         dest: "{{ item.dest }}"
         mode: "{{ item.mode }}"
       loop:
-        - {src: "files/ssh/{{ ssh_key }}-{{ install_environment }}", dest: "{{ ssh_dir }}/{{ ssh_key }}", mode: '0600'}
-        - {src: "files/ssh/{{ ssh_key }}-{{ install_environment }}.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}.pub", mode: '0644'}
+        - {src: "files/ssh/{{ ssh_key }}", dest: "{{ ssh_dir }}/{{ ssh_key }}", mode: '0600'}
+        - {src: "files/ssh/{{ ssh_key }}.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}.pub", mode: '0644'}
 
-    - name: authorize personal ssh keys
+    - name: authorize ssh keys
       ansible.posix.authorized_key:
         user: "{{ ansible_user_id }}"
         state: present
