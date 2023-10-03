@@ -14,12 +14,18 @@
               - dunst
               - lxappearance
               - nitrogen
-              - pcmanfm
               - picom
               - rofi
               - polybar
               - xrandr
               - xset
+            state: latest
+
+        - name: desktop environment substitute packages
+          dnf:
+            name:
+              - blueman
+              - pcmanfm
             state: latest
 
         - name: i3 packages
