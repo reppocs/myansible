@@ -64,8 +64,12 @@
         - i3
         - never
 
-    - name: include gnome task
-      ansible.builtin.include_tasks: "tasks/gnome-{{ ansible_os_family }}.yml"
+    - name: include gnome role
+      ansible.builtin.include_role:
+        name: gnome
+        apply:
+          tags:
+            - gnome
       tags:
         - gnome
         - never
