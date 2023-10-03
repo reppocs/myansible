@@ -21,17 +21,6 @@
           - com.protonvpn.www
         state: present
         method: user
-      when: install_environment == "personal"
-
-    - name: install flatpaks (work)
-      community.general.flatpak:
-        name:
-          - com.google.Chrome
-          - com.slack.Slack
-          - md.obsidian.Obsidian
-        state: present
-        method: user
-      when: install_environment == "work"
 
 # end of flatpak block
 
