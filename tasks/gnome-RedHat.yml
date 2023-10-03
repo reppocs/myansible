@@ -34,7 +34,7 @@
         value: "{{ item.value }}"
       loop:
         - {key: '/org/gnome/mutter/dynamic-workspaces', value: 'false'}
-        - {key: '/org/gnome/desktop/wm/preferences/num-workspaces', value: 4}
+        - {key: '/org/gnome/desktop/wm/preferences/num-workspaces', value: 6}
 
     - name: gnome appearance settings
       dconf:
