@@ -1,0 +1,10 @@
+---
+# tasks file for gnome
+
+- name: include gnome packages task
+  include_tasks: "packages-{{ ansible_os_family }}.yml"
+
+- name: include gnome settings task
+  include_tasks: "settings.yml"
+
+# EOF

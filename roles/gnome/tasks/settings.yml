@@ -1,0 +1,33 @@
+---
+
+- name: gnome workspace settings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - {key: '/org/gnome/mutter/dynamic-workspaces', value: 'false'}
+    - {key: '/org/gnome/desktop/wm/preferences/num-workspaces', value: 6}
+
+- name: gnome appearance settings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - {key: '/org/gnome/desktop/background/picture-uri', value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/mr-robot.jpg'"}
+    - {key: '/org/gnome/desktop/background/picture-uri-dark', value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/mr-robot.jpg'"}
+
+- name: gnome keybindings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+loop:
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-left', value: "['<Control><Alt>Left']"}
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-right', value: "['<Control><Alt>Right']"}
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-1', value: "['<Super>1']"}             
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-2', value: "['<Super>2']"}             
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-3', value: "['<Super>3']"}             
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-4', value: "['<Super>4']"}             
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-4', value: "['<Super>5']"}             
+    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-4', value: "['<Super>6']"}
+
+# EOF

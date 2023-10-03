@@ -1,0 +1,28 @@
+---
+
+- name: install gnome base packages
+  become: yes
+  dnf:
+    name:
+      - gnome-extensions-app
+      - gnome-tweaks
+    state: latest
+
+- name: install gnome extensions
+  become: yes
+  dnf:
+    name:
+      - gnome-shell-extension-appindicator
+      - gnome-shell-extension-apps-menu
+      - gnome-shell-extension-auto-move-windows
+      - gnome-shell-extension-blur-my-shell
+      - gnome-shell-extension-dash-to-dock
+      - gnome-shell-extension-dash-to-panel
+      - gnome-shell-extension-just-perfection
+      - gnome-shell-extension-launch-new-instance
+      - gnome-shell-extension-places-menu
+      - gnome-shell-extension-pop-shell
+      - gnome-shell-extension-user-theme
+    state: latest
+
+# EOF
