@@ -46,9 +46,8 @@
     - name: include desktop task
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
 
-    - name: include brave task (Ubuntu)
+    - name: include brave task
       ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
-      when: install_environment == "personal"
 
     - name: include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
