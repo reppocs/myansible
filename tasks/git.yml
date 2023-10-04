@@ -12,8 +12,8 @@
     - "{{ git_dir }}/public"
 
 - name: copy git config file
-  ansible.builtin.template:
-    src: "templates/gitconfig.j2"
+  ansible.builtin.config:
+    src: "files/gitconfig"
     dest: "{{ ansible_user_dir }}/.gitconfig"
     backup: yes
 
