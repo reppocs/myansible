@@ -1,0 +1,13 @@
+---
+
+- name: install gnome base packages
+  become: yes
+  dnf:
+    name:
+      - dconf-editor
+      - gnome-shell-extensions-appindicator
+      - gnome-shell-extension-manager
+      - gnome-tweaks
+    state: latest
+
+# EOF
