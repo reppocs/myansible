@@ -43,6 +43,7 @@ case $DISTRO_NAME in
     if [[ "$DISTRO_VERSION" == 38 ]]
     then
       fedora_things
+      git_things
     else
       err "This is an unsupported version of $DISTRO_NAME"
     fi
@@ -52,6 +53,7 @@ case $DISTRO_NAME in
     if [[ $DISTRO_VERSION = "22.04" ]]
     then
       ubuntu_things 
+      git_things
     else
       err "This is an unsupported version of $DISTRO_NAME"
     fi
