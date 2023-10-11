@@ -26,7 +26,7 @@ ubuntu_things() {
 git_things() {
   # clone the repo to the Downloads directory
   [[ ! -d "$HOME/Downloads" ]] && err "$HOME/Downloads does not exist."
-  git clone https://github.com/reppocs/myansible.git "$HOME/Downloads/myansible"
+  git -C "$HOME/Downloads" clone https://github.com/reppocs/myansible.git
 
   # if the cloned repo directory exists, exit successfully
   if [[ -d "$HOME/Downloads/myansible" ]]
