@@ -10,7 +10,7 @@
         flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
         method: user
 
-    - name: install flatpaks (personal)
+    - name: install flatpaks
       community.general.flatpak:
         name:
           - com.discordapp.Discord
