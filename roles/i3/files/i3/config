@@ -33,7 +33,7 @@ bindsym $mod+Shift+z	gaps outer current minus 5
 # start up things
 ##################
 
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec --no-startup-id killall -9 -qw picom 2>/dev/null; picom --config $HOME/.config/picom/picom.conf &>>$HOME/.config/picom/.picom.err &
 
