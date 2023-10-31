@@ -23,26 +23,4 @@
 - name: update font cache
   ansible.builtin.command: fc-cache -fv
 
-- name: alacritty
-  block:
-
-    - name: alacritty repo
-      become: yes
-      ansible.builtin.apt_repository:
-        repo: 'ppa:aslatter/ppa'
-
-    - name: install alacritty
-      become: yes
-      ansible.builtin.apt:
-        name: alacritty
-        state: latest
-        update_cache: yes
-
-    - name: copy alacritty config directory
-      ansible.posix.synchronize:
-        src: files/config/alacritty
-        dest: "{{ ansible_user_dir }}/.config"
-
-# end of alacritty block
-
 # EOF

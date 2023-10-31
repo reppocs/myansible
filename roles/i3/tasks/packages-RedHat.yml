@@ -10,6 +10,7 @@
         - name: common desktop packages
           dnf:
             name:
+              - alacritty
               - arandr
               - dunst
               - lxappearance

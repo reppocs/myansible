@@ -22,6 +22,21 @@
             state: latest
             update_cache: yes
 
+        - name: alacritty
+          block:
+
+            - name: alacritty repo
+              ansible.builtin.apt_repository:
+                repo: 'ppa:aslatter/ppa'
+
+            - name: install alacritty
+              ansible.builtin.apt:
+                name: alacritty
+                state: latest
+                update_cache: yes
+
+        # end of alacritty block
+
         - name: install i3
           block:
 
