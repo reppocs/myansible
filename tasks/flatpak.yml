@@ -14,7 +14,6 @@
       community.general.flatpak:
         name:
           - com.discordapp.Discord
-          - com.dropbox.Client
           - com.spotify.Client
           - md.obsidian.Obsidian
           - org.signal.Signal
