@@ -41,9 +41,6 @@
     - name: include development task
       ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
 
-    - name: include zsh task
-      ansible.builtin.include_tasks: "tasks/zsh.yml"
-
     - name: include desktop task
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
 
