@@ -57,6 +57,12 @@
           - zsh
         state: latest
 
+    - name: install multimedia packages
+      ansible.builtin.dnf:
+        name: '@Multimedia'
+        allowerasing: true
+        state: latest
+
     - name: install and configure neovim
       block:
 
