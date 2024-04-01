@@ -43,6 +43,7 @@
 
     - name: include zsh task
       ansible.builtin.include_tasks: "tasks/zsh.yml"
+      tags: zsh
 
     - name: include desktop task
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
