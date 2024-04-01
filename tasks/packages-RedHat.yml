@@ -95,6 +95,27 @@
 
     # end of neovim install and config block
 
+    - name: install sublime text editor
+      become: yes
+      block:
+
+        - name: install the gpg key
+          ansible.builtin.rpm_key:
+            state: present
+            key: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+
+        - name: add sublime repo
+          ansible.builtin.get_url:
+          url: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+          dest: /etc/yum.repos.d/sublime-text.repo
+
+        - name: install sublime-text package
+          ansible.builtin.dnf:
+            name: sublime-text
+            state: latest
+
+    # end of sublime-text install block
+
 # End of base packages block
 
 # EOF
