@@ -40,7 +40,7 @@ git_things() {
 # if it's supported, do the thing
 case $DISTRO_NAME in
   fedora)
-    if [[ "$DISTRO_VERSION" == 38 || "$DISTRO_VERSION" == 39 ]]
+    if [[ "$DISTRO_VERSION" == 39 || "$DISTRO_VERSION" == 40 ]]
     then
       fedora_things
       git_things
