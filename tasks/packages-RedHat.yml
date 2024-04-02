@@ -106,8 +106,8 @@
 
         - name: add sublime repo
           ansible.builtin.get_url:
-          url: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
-          dest: /etc/yum.repos.d/sublime-text.repo
+            url: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+            dest: /etc/yum.repos.d/sublime-text.repo
 
         - name: install sublime-text package
           ansible.builtin.dnf:
