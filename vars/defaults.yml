@@ -5,7 +5,7 @@ ssh_dir: "{{ ansible_user_dir }}/.ssh"
 ssh_key: "id_ed25519"
 
 # git info
-git_dir: "{{ ansible_user_dir }}/git"
+git_dir: "{{ ansible_user_dir }}/Development/git"
 
 # default desktop theme
 desktop_theme: "nord"
