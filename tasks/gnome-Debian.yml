@@ -4,7 +4,7 @@
   block:
 
     - name: install gnome desktop related packages
-      become: yes
+      become: true
       apt:
         name:
           - dconf-editor

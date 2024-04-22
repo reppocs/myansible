@@ -1,7 +1,7 @@
 ---
 
 - name: do nvidia driver tasks
-  become: yes
+  become: true
   block:
 
   - name: install nvidia driver related packages

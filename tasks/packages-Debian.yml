@@ -1,14 +1,14 @@
 ---
 
 - name: update all packages
-  become: yes
+  become: true
   apt:
     name: "*"
     state: latest
     update_cache: yes
 
 - name: install base packages
-  become: yes
+  become: true
   apt:
     name:
       - curl
@@ -29,12 +29,12 @@
   block:
 
     - name: add the neovim ppa repo
-      become: yes
+      become: true
       apt_repository:
         repo: 'ppa:neovim-ppa/unstable'
 
     - name: install neovim package
-      become: yes
+      become: true
       apt:
         name:
           - neovim
@@ -42,7 +42,7 @@
         update_cache: yes
 
     - name: symlink vim to nvim
-      become: yes
+      become: true
       file:
         src: /usr/bin/nvim
         dest: /usr/local/bin/vim

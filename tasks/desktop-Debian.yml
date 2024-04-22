@@ -1,7 +1,7 @@
 ---
 
 - name: common desktop packages
-  become: yes
+  become: true
   ansible.builtin.apt:
     name:
       - bpytop

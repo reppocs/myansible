@@ -1,7 +1,7 @@
 ---
 
 - name: install brave browser
-  become: yes
+  become: true
   block:
 
     - name: install required packages for brave

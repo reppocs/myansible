@@ -4,7 +4,7 @@
   block:
 
     - name: install gnome base packages
-      become: yes
+      become: true
       dnf:
         name:
           - gnome-extensions-app
@@ -12,7 +12,7 @@
         state: latest
 
     - name: install gnome extensions
-      become: yes
+      become: true
       dnf:
         name:
           - gnome-shell-extension-appindicator
