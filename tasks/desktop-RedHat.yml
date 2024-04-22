@@ -1,17 +1,18 @@
 ---
 
 - name: desktop packages
-  become: yes
+  become: true
   ansible.builtin.dnf:
     name:
       - bpytop
       - cava
       - flatpak
       - neofetch
+      - terminator
     state: latest
 
 - name: font packages
-  become: yes
+  become: true
   ansible.builtin.dnf:
     name:
       - adobe-source-code-pro-fonts
