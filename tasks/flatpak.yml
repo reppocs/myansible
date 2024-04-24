@@ -15,7 +15,6 @@
         name:
           - com.discordapp.Discord
           - com.spotify.Client
-          - com.vscodium.codium
           - md.obsidian.Obsidian
           - org.signal.Signal
           - com.spotify.Client
