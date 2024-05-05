@@ -35,4 +35,9 @@
     key: '/org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9'
     value: "JetBrains Mono 12"
 
+- name: enable extensions
+  dconf:
+    key: '/org.gnome.shell/enabled-extensions'
+    value: 'appindicatorsupport@rgcjonas.gmail.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com'
+
 # EOF
