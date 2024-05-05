@@ -30,4 +30,9 @@
     - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-5', value: "['<Super>5']"}             
     - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-6', value: "['<Super>6']"}
 
+- name: gnome-terminal font
+  dconf:
+    key: '/org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9'
+    value: "JetBrains Mono 12"
+
 # EOF
