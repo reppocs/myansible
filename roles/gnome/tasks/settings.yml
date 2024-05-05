@@ -32,8 +32,8 @@
 
 - name: gnome-terminal font
   dconf:
-    key: '/org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9'
-    value: "JetBrains Mono 12"
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
+    value: "'JetBrains Mono 12'"
 
 - name: enable extensions
   dconf:
