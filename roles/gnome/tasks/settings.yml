@@ -78,6 +78,6 @@
 - name: set color scheme to dark
   community.general.dconf:
     key: "/org/gnome/desktop/interface/color-scheme"
-    value: "prefer-dark"
+    value: "'prefer-dark'"
 
 # EOF
