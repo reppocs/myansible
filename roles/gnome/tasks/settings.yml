@@ -45,12 +45,12 @@
     key: '/org.gnome.shell/enabled-extensions'
     value: "['appindicatorsupport@rgcjonas.gmail.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
 
-- name: change clock format to 12h
+- name: set clock format to 12h
   dconf:
     key: '/org/gnome/desktop/interface/clock-format'
     value: "12h"
 
-- name: change color scheme to dark
+- name: set color scheme to dark
   dconf:
     key: '/org/gnome/desktop/interface/color-scheme'
     value: "prefer-dark"
