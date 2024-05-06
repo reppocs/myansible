@@ -41,7 +41,7 @@
   - name: gnome-terminal font
     community.general.dconf:
       key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
-      value: "JetBrains Mono 12"
+      value: "'JetBrainsMono Nerd Font 12'"
 
   - name: use custom font
     community.general.dconf:
