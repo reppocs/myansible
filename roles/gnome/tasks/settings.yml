@@ -1,58 +1,83 @@
 ---
 
 - name: gnome workspace settings
-  dconf:
+  community.general.dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   loop:
-    - {key: '/org/gnome/mutter/dynamic-workspaces', value: 'false'}
-    - {key: '/org/gnome/desktop/wm/preferences/num-workspaces', value: 6}
+    - {key: "/org/gnome/mutter/dynamic-workspaces", value: "false"}
+    - {key: "/org/gnome/desktop/wm/preferences/num-workspaces", value: 6}
 
 - name: gnome appearance settings
-  dconf:
+  community.general.dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   loop:
-    - {key: '/org/gnome/desktop/background/picture-uri', value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/mr-robot.jpg'"}
+    - {key: "/org/gnome/desktop/background/picture-uri", value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/mr-robot.jpg'"}
     - {key: '/org/gnome/desktop/background/picture-uri-dark', value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/mr-robot.jpg'"}
 
 - name: gnome keybindings
-  dconf:
+  community.general.dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   loop:
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-left', value: "['<Control><Alt>Left']"}
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-right', value: "['<Control><Alt>Right']"}
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-1', value: "['<Super>1']"}             
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-2', value: "['<Super>2']"}             
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-3', value: "['<Super>3']"}             
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-4', value: "['<Super>4']"}             
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-5', value: "['<Super>5']"}             
-    - {key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-6', value: "['<Super>6']"}
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left", value: "['<Control><Alt>Left']"}
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right", value: "['<Control><Alt>Right']"}
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1", value: "['<Super>1']"}             
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2", value: "['<Super>2']"}             
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3", value: "['<Super>3']"}             
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4", value: "['<Super>4']"}             
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5", value: "['<Super>5']"}             
+    - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6", value: "['<Super>6']"}
 
-- name: gnome-terminal font
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
-    value: "JetBrains Mono 12"
+- name: gnome-terminal settings
+  block:
 
-- name: use custom font
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font"
-    value: "false"
+  - name: disable terminal bell
+    community.general.dconf:
+      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/audible-bell"
+      value: "false"
 
-- name: enable extensions
-  dconf:
-    key: '/org.gnome.shell/enabled-extensions'
+  - name: gnome-terminal font
+    community.general.dconf:
+      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
+      value: "JetBrains Mono 12"
+
+  - name: use custom font
+    community.general.dconf:
+      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font"
+      value: "false"
+
+  - name: set transparency
+    community.general.dconf:
+      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background"
+      value: "true"
+
+  - name: set transparency percentage
+    community.general.dconf:
+      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent"
+      value: 5
+
+# end of gnome-terminal settings block
+
+- name: disabled extensions
+  community.general.dconf:
+    key: "/org/gnome/shell/disabled-extensions"
+    value: "['background-logo@fedorahosted.org']"
+
+- name: enabled extensions
+  community.general.dconf:
+    key: "/org/gnome/shell/enabled-extensions"
     value: "['appindicatorsupport@rgcjonas.gmail.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
 
 - name: set clock format to 12h
-  dconf:
-    key: '/org/gnome/desktop/interface/clock-format'
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/clock-format"
     value: "12h"
 
 - name: set color scheme to dark
-  dconf:
-    key: '/org/gnome/desktop/interface/color-scheme'
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/color-scheme"
     value: "prefer-dark"
 
 # EOF
