@@ -73,7 +73,7 @@
 - name: set clock format to 12h
   community.general.dconf:
     key: "/org/gnome/desktop/interface/clock-format"
-    value: "12h"
+    value: "'12h'"
 
 - name: set color scheme to dark
   community.general.dconf:
