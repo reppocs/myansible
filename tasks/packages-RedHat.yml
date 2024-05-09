@@ -116,6 +116,22 @@
 
     # end of sublime-text install block
 
+    - name: install tailscale
+      become: true
+      block:
+
+        - name: install tailscale repo
+          ansible.builtin.get_url:
+            url: https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+            dest: /etc/yum.repos.d/tailscale.repo
+
+        - name: install tailscale
+          ansible.builtin.dnf:
+            name: tailscale
+            state: latest
+
+    # end of tailscale block
+
 # End of base packages block
 
 # EOF
