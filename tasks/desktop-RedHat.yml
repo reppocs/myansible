@@ -6,6 +6,7 @@
     name:
       - bpytop
       - cava
+      - fastfetch
       - flatpak
       - neofetch
       - terminator
