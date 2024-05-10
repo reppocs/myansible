@@ -22,7 +22,6 @@
       ansible.posix.authorized_key:
         user: "{{ ansible_user_id }}"
         state: present
-        key: "files/ssh/{{ ssh_key }}.pub"
         key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_ed25519.pub') }}"
 
     - name: deploy ssh config
