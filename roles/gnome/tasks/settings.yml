@@ -29,6 +29,10 @@
     - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4", value: "['<Super>4']"}             
     - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5", value: "['<Super>5']"}             
     - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6", value: "['<Super>6']"}
+    - {key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding", value: "['<Super>T']"}
+    - {key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "gnome-terminal"}
+    - {key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name", value: "terminal"}
+
 
 - name: gnome-terminal settings
   block:
