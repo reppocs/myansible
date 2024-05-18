@@ -8,8 +8,6 @@
       - cava
       - fastfetch
       - flatpak
-      - neofetch
-      - terminator
     state: latest
 
 - name: font packages
