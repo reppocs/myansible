@@ -9,4 +9,21 @@
       - shellcheck
     state: latest
 
+- name: install lazygit
+  become: true
+  block:
+
+    - name: enable lazygit copr repo
+      community.general.copr:
+        host: copr.fedorainfracloud.org
+        state: enabled
+        name: atim/lazygit
+
+    - name: install lazygit package
+      ansible.builtin.dnf:
+        name: lazygit
+        state: latest
+
+# end of lazygit block
+
 # EOF
