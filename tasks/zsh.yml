@@ -21,11 +21,6 @@
         dest: "{{ ansible_user_dir }}/.zshrc" 
         backup: yes
 
-    - name: copy custom zsh themes
-      ansible.builtin.copy:
-        src: "files/oxide.zsh-theme"
-        dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes"
-
   tags: zsh
 
 # End of zsh block
