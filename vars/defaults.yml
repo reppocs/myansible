@@ -7,9 +7,6 @@ ssh_key: "id_ed25519"
 # git info
 git_dir: "{{ ansible_user_dir }}/Development/git"
 
-# default desktop theme
-desktop_theme: "nord"
-
 # rpmfusion repos
 rpmfusion_free_repo: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
 rpmfusion_nonfree_repo: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
