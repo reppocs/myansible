@@ -73,7 +73,6 @@
             - gnome
       tags:
         - gnome
-        - never
 
     - name: include nvidia driver install task
       ansible.builtin.include_tasks: "tasks/nvidia-{{ ansible_os_family }}.yml"
