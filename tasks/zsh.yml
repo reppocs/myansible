@@ -15,6 +15,11 @@
         dest: "{{ ansible_user_dir }}/.oh-my-zsh"
         depth: 1
 
+    - name: copy custom oxide oh-my-zsh theme
+      ansible.builtin.copy:
+        src: "files/oh-my-zsh-themes/oxide.zsh-theme"
+        dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/"
+
     - name: .zshrc
       ansible.builtin.copy:
         src: "files/zshrc"
