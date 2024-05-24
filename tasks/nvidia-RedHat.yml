@@ -13,17 +13,17 @@
       state: latest
 
   - name: enable nvidia hibernate service
-    service:
+    ansible.builtin.service:
       name: nvidia-hibernate.service
       enabled: yes
 
   - name: enable nvidia suspend service
-    service: 
+    ansible.builtin.service: 
       name: nvidia-suspend.service
       enabled: yes
 
   - name: enable nvidia resume service
-    service:
+    ansible.builtin.service:
       name: nvidia-resume.service
       enabled: yes
 
