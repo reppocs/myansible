@@ -2,7 +2,7 @@
 
 - name: install gnome base packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - dconf-editor
       - gnome-shell-extension-appindicator
