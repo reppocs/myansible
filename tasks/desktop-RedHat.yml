@@ -8,7 +8,13 @@
       - cava
       - fastfetch
       - flatpak
+      - kitty
     state: latest
+
+- name: copy kitty config
+  ansible.posix.synchronize:
+    src: "files/kitty"
+    dest: "{{ ansible_user_dir }}/.config/"
 
 - name: font packages
   become: true
