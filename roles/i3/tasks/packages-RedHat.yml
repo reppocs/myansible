@@ -4,11 +4,11 @@
   block:
 
     - name: install i3-related packages
-      become: yes
+      become: true
       block:
 
         - name: common desktop packages
-          dnf:
+          ansible.builtin.dnf:
             name:
               - alacritty
               - arandr
@@ -24,14 +24,14 @@
             state: latest
 
         - name: desktop environment substitute packages
-          dnf:
+          ansible.builtin.dnf:
             name:
               - blueman
               - pcmanfm
             state: latest
 
         - name: i3 packages
-          dnf:
+          ansible.builtin.dnf:
             name:
               - i3
               - i3blocks
