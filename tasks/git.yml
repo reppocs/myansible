@@ -15,6 +15,7 @@
   ansible.builtin.copy:
     src: "files/gitconfig"
     dest: "{{ ansible_user_dir }}/.gitconfig"
-    backup: yes
+    mode: "0644"
+    backup: true
 
 # EOF
