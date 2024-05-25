@@ -1,13 +1,13 @@
 ---
 
-- name: i3 desktop stuff
+- name: Install and configure i3 desktop
   block:
 
-    - name: install i3-related packages
+    - name: Install i3-related packages
       become: true
       block:
 
-        - name: common desktop packages
+        - name: Common desktop packages
           ansible.builtin.apt:
             name:
               - arandr
@@ -19,46 +19,31 @@
               - picom
               - polybar
               - rofi
-            state: latest
+            state: present
             update_cache: yes
 
-        - name: alacritty
+        - name: Install i3
           block:
 
-            - name: alacritty repo
-              ansible.builtin.apt_repository:
-                repo: 'ppa:aslatter/ppa'
-
-            - name: install alacritty
-              ansible.builtin.apt:
-                name: alacritty
-                state: latest
-                update_cache: yes
-
-        # end of alacritty block
-
-        - name: install i3
-          block:
-
-            - name: add regolith apt repo key
+            - name: Add regolith apt repo key
               ansible.builtin.get_url:
                 url: "{{ regolith_repo_key_url }}"
                 dest: /etc/apt/trusted.gpg.d/regolith.asc
                 mode: '0644'
                 force: true
 
-            - name: add regolith repo
+            - name: Add regolith repo
               ansible.builtin.apt_repository:
                 repo: "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/regolith.asc] https://regolith-desktop.org/release-ubuntu-{{ ansible_distribution_release }}-amd64 {{ ansible_distribution_release }} main"
-                state: present   
+                state: present
 
-            - name: install i3-gaps related packages
+            - name: Install i3-gaps related packages
               ansible.builtin.apt:
                 name:
                   - i3-gaps
                   - i3lock
                   - i3lock-fancy
-                state: latest
+                state: present
                 update_cache: yes
 
         # end of install i3 block
