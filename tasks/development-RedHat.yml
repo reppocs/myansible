@@ -1,6 +1,6 @@
 ---
 
-- name: install base development packages
+- name: Install base development packages
   become: true
   ansible.builtin.dnf:
     name:
@@ -9,17 +9,17 @@
       - shellcheck
     state: latest
 
-- name: install lazygit
+- name: Install lazygit
   become: true
   block:
 
-    - name: enable lazygit copr repo
+    - name: Enable lazygit copr repo
       community.general.copr:
         host: copr.fedorainfracloud.org
         state: enabled
         name: atim/lazygit
 
-    - name: install lazygit package
+    - name: Install lazygit package
       ansible.builtin.dnf:
         name: lazygit
         state: latest

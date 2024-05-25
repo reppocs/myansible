@@ -1,13 +1,13 @@
 ---
 
-- name: update all packages
+- name: Update all packages
   become: true
   apt:
     name: "*"
     state: latest
     update_cache: yes
 
-- name: install base packages
+- name: Install base packages
   become: true
   apt:
     name:
@@ -25,15 +25,15 @@
     state: latest
     update_cache: yes
 
-- name: install latest unstable neovim
+- name: Install latest unstable neovim
   block:
 
-    - name: add the neovim ppa repo
+    - name: Add the neovim ppa repo
       become: true
       apt_repository:
         repo: 'ppa:neovim-ppa/unstable'
 
-    - name: install neovim package
+    - name: Install neovim package
       become: true
       apt:
         name:
@@ -41,24 +41,24 @@
         state: latest
         update_cache: yes
 
-    - name: symlink vim to nvim
+    - name: Symlink vim to nvim
       become: true
       file:
         src: /usr/bin/nvim
         dest: /usr/local/bin/vim
         state: link
 
-    - name: make sure nvim share directory is absent
+    - name: Make sure nvim share directory is absent
       file:
         path: "{{ ansible_user_dir }}/.local/share/nvim"
         state: absent
 
-    - name: make sure nvim config directory is absent
+    - name: Make sure nvim config directory is absent
       file:
         path: "{{ ansible_user_dir }}/.config/nvim"
         state: absent
 
-    - name: copy neovim config directory
+    - name: Copy neovim config directory
       synchronize:
         src: files/config/nvim
         dest: "{{ ansible_user_dir }}/.config"

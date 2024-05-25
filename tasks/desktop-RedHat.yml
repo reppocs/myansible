@@ -1,6 +1,6 @@
 ---
 
-- name: desktop packages
+- name: Install desktop packages
   become: true
   ansible.builtin.dnf:
     name:
@@ -11,12 +11,12 @@
       - kitty
     state: latest
 
-- name: copy kitty config
+- name: Copy kitty terminal config
   ansible.posix.synchronize:
     src: "files/kitty"
     dest: "{{ ansible_user_dir }}/.config/"
 
-- name: font packages
+- name: Install font packages
   become: true
   ansible.builtin.dnf:
     name:
@@ -53,7 +53,7 @@
       - redhat-mono-fonts
     state: latest
 
-- name: copy fonts, themes, and backgrounds
+- name: Copy fonts, themes, and backgrounds
   ansible.posix.synchronize:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"

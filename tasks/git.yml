@@ -1,6 +1,6 @@
 ---
 
-- name: create / verify git repo directories
+- name: Create and verify git repo directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -11,7 +11,7 @@
     - "{{ git_dir }}/personal"
     - "{{ git_dir }}/public"
 
-- name: copy git config file
+- name: Copy git config file
   ansible.builtin.copy:
     src: "files/gitconfig"
     dest: "{{ ansible_user_dir }}/.gitconfig"

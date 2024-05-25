@@ -1,15 +1,15 @@
 ---
 
-- name: set up ssh environment
+- name: Set up ssh environment
   block:
 
-    - name: verify/create the .ssh directory 
+    - name: Verify/create the .ssh directory 
       ansible.builtin.file:
         dest: "{{ ssh_dir }}"
         mode: 0700
         state: directory
 
-    - name: copy ssh keys
+    - name: Copy ssh keys
       ansible.builtin.copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
@@ -18,13 +18,13 @@
         - {src: "files/ssh/{{ ssh_key }}", dest: "{{ ssh_dir }}/{{ ssh_key }}", mode: '0600'}
         - {src: "files/ssh/{{ ssh_key }}.pub", dest: "{{ ssh_dir }}/{{ ssh_key }}.pub", mode: '0644'}
 
-    - name: authorize ssh keys
+    - name: Authorize ssh keys
       ansible.posix.authorized_key:
         user: "{{ ansible_user_id }}"
         state: present
         key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_ed25519.pub') }}"
 
-    - name: deploy ssh config
+    - name: Deploy ssh config
       ansible.builtin.copy:
         src: "files/ssh/config"
         dest: "{{ ssh_dir }}/config"

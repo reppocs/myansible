@@ -1,6 +1,6 @@
 ---
 
-- name: common desktop packages
+- name: Common desktop packages
   become: true
   ansible.builtin.apt:
     name:
@@ -11,7 +11,7 @@
     state: latest
     update_cache: yes
 
-- name: copy fonts, themes, and backgrounds
+- name: Copy fonts, themes, and backgrounds
   ansible.posix.synchronize:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -20,7 +20,7 @@
     - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
     - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
 
-- name: update font cache
+- name: Update font cache
   ansible.builtin.command: fc-cache -fv
 
 # EOF

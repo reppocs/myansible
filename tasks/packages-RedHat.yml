@@ -1,30 +1,30 @@
 ---
 
-- name: base packages block
+- name: Install base packages block
   become: true
   block:
 
-    - name: add rpmfusion free gpg key
+    - name: Add rpmfusion free gpg key
       ansible.builtin.rpm_key:
         state: present
         key: "{{ rpmfusion_free_key }}"
 
-    - name: add rpmfusion nonfree gpg key
+    - name: Add rpmfusion nonfree gpg key
       ansible.builtin.rpm_key:
         state: present
         key: "{{ rpmfusion_nonfree_key }}"
 
-    - name: install rpmfusion free repository
+    - name: Install rpmfusion free repository
       ansible.builtin.dnf:
         name: "{{ rpmfusion_free_repo }}"
         state: present
 
-    - name: install rpmfusion nonfree repository
+    - name: Install rpmfusion nonfree repository
       ansible.builtin.dnf:
         name: "{{ rpmfusion_nonfree_repo }}"
         state: present
 
-    - name: dnf conf changes
+    - name: DNF conf changes
       ansible.builtin.blockinfile:
         path: /etc/dnf/dnf.conf
         block: |
@@ -32,12 +32,12 @@
           fastestmirror=True
         backup: yes
 
-    - name: upgrade all packages
+    - name: Upgrade all packages
       ansible.builtin.dnf:
         name: "*"
         state: latest
 
-    - name: install base packages
+    - name: Install base packages
       ansible.builtin.dnf:
         name:
           - ansible
@@ -57,75 +57,75 @@
           - zsh
         state: latest
 
-    - name: install multimedia packages
+    - name: Install multimedia packages
       ansible.builtin.dnf:
         name: '@Multimedia'
         allowerasing: true
         state: latest
 
-    - name: install and configure neovim
+    - name: Install and configure neovim
       block:
 
-        - name: install neovim
+        - name: Install neovim
           ansible.builtin.dnf: 
             name: neovim
             state: latest
 
-        - name: symlink vim to nvim
+        - name: Symlink vim to nvim
           become: true
           ansible.builtin.file:
             src: /usr/bin/nvim
             dest: /usr/local/bin/vim
             state: link
 
-        - name: make sure nvim share directory is absent
+        - name: Make sure nvim share directory is absent
           ansible.builtin.file:
             path: "{{ ansible_user_dir }}/.local/share/nvim"
             state: absent
 
-        - name: make sure nvim config directory is absent
+        - name: Make sure nvim config directory is absent
           ansible.builtin.file:
             path: "{{ ansible_user_dir }}/.config/nvim"
             state: absent
 
-        - name: copy neovim config directory
+        - name: Copy neovim config directory
           ansible.posix.synchronize:
             src: "files/config/nvim"
             dest: "{{ ansible_user_dir }}/.config"
 
     # end of neovim install and config block
 
-    - name: install sublime text editor
+    - name: Install sublime text editor
       become: true
       block:
 
-        - name: install the gpg key
+        - name: Install the gpg key
           ansible.builtin.rpm_key:
             state: present
             key: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 
-        - name: add sublime repo
+        - name: Add sublime repo
           ansible.builtin.get_url:
             url: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
             dest: /etc/yum.repos.d/sublime-text.repo
 
-        - name: install sublime-text package
+        - name: Install sublime-text package
           ansible.builtin.dnf:
             name: sublime-text
             state: latest
 
     # end of sublime-text install block
 
-    - name: install tailscale
+    - name: Install tailscale
       become: true
       block:
 
-        - name: install tailscale repo
+        - name: Install tailscale repo
           ansible.builtin.get_url:
             url: https://pkgs.tailscale.com/stable/fedora/tailscale.repo
             dest: /etc/yum.repos.d/tailscale.repo
 
-        - name: install tailscale
+        - name: Install tailscale
           ansible.builtin.dnf:
             name: tailscale
             state: latest
