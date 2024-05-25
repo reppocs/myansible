@@ -1,10 +1,12 @@
 ---
 
-- hosts: localhost
+- name: install and configure local workstation
+  hosts: localhost
+  connection: local
 
   pre_tasks:
 
-    - name: fail if the the distribution isn't supported
+    - name: Fail if the the distribution isn't supported
       ansible.builtin.fail:
         msg: This playbook is not compatible with your distribution.
       when: >
@@ -12,49 +14,49 @@
         (ansible_distribution != "Fedora" and ansible_distribution_major_version != 40) and
         (ansible_distribution != "PopOS!" and ansible_distribution_version != "22.04")
 
-    - name: set default theme
+    - name: Set default theme
       ansible.builtin.set_fact:
         theme: nord
 
   tasks:
 
-    - name: change the hostname if it's given
+    - name: Change the hostname if it's given
       ansible.builtin.hostname:
         name: "{{ hostname }}"
         use: systemd
       when: hostname is defined
 
-    - name: include var files
+    - name: Include var files
       ansible.builtin.include_vars:
         dir: vars
 
-    - name: include packages task
+    - name: Include packages task
       ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
 
-    - name: include ssh task
+    - name: Include ssh task
       ansible.builtin.include_tasks: "tasks/ssh.yml"
 
-    - name: include git task
+    - name: Include git task
       ansible.builtin.include_tasks: "tasks/git.yml"
 
-    - name: include development task
+    - name: Include development task
       ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
 
-    - name: include zsh task
+    - name: Include zsh task
       ansible.builtin.include_tasks: "tasks/zsh.yml"
       tags: zsh
 
-    - name: include desktop task
+    - name: Include desktop task
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
 
-    - name: include brave task
+    - name: Include brave task
       ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
 
-    - name: include flatpak task
+    - name: Include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
       when: (ansible_virtualization_role == "host") or (ansible_virtualization_role == "N/A")
 
-    - name: include i3 role
+    - name: Include i3 role
       ansible.builtin.include_role:
         name: i3
         apply:
@@ -64,7 +66,7 @@
         - i3
         - never
 
-    - name: include gnome role
+    - name: Include gnome role
       ansible.builtin.include_role:
         name: gnome
         apply:
@@ -73,7 +75,7 @@
       tags:
         - gnome
 
-    - name: include nvidia driver install task
+    - name: Include nvidia driver install task
       ansible.builtin.include_tasks: "tasks/nvidia-{{ ansible_os_family }}.yml"
       tags:
         - nvidia
