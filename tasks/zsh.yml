@@ -20,12 +20,14 @@
       ansible.builtin.copy:
         src: "files/oh-my-zsh-themes/oxide.zsh-theme"
         dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/"
+        mode: "0644"
 
     - name: Install .zshrc
       ansible.builtin.copy:
         src: "files/zshrc"
         dest: "{{ ansible_user_dir }}/.zshrc"
-        backup: yes
+        mode: "0644"
+        backup: true
 
 # End of zsh block
 
