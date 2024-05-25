@@ -34,27 +34,27 @@
 - name: Change gnome-terminal settings
   block:
 
-  - name: disable terminal bell
+  - name: Disable gnome-terminal bell
     community.general.dconf:
       key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/audible-bell"
       value: "false"
 
-  - name: gnome-terminal font
+  - name: Set gnome-terminal font
     community.general.dconf:
       key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
       value: "'JetBrainsMono Nerd Font 12'"
 
-  - name: use custom font
+  - name: Change "use custom font" setting in gnome-terminal
     community.general.dconf:
       key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font"
       value: "false"
 
-  - name: set transparency
+  - name: Set gnome-terminal transparency
     community.general.dconf:
       key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background"
       value: "true"
 
-  - name: set transparency percentage
+  - name: Set gnome-terminal transparency percentage
     community.general.dconf:
       key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent"
       value: 5
