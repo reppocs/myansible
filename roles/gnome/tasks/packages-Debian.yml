@@ -8,6 +8,6 @@
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-manager
       - gnome-tweaks
-    state: latest
+    state: present
 
 # EOF

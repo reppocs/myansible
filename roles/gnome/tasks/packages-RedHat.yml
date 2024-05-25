@@ -6,7 +6,7 @@
     name:
       - gnome-extensions-app
       - gnome-tweaks
-    state: latest
+    state: present
 
 - name: Install gnome extensions
   become: true
@@ -23,6 +23,6 @@
       - gnome-shell-extension-places-menu
       - gnome-shell-extension-pop-shell
       - gnome-shell-extension-user-theme
-    state: latest
+    state: present
 
 # EOF
