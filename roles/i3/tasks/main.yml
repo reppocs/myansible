@@ -1,13 +1,13 @@
 ---
 # tasks file for i3
 
-- name: include i3 packages task
+- name: Include i3 packages task
   ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
 
-- name: include i3 configs task
+- name: Include i3 configs task
   ansible.builtin.include_tasks: "configs.yml"
 
-- name: make the system do nothing when the laptop lid is closed
+- name: Make the system do nothing when the laptop lid is closed
   become: true
   ansible.builtin.lineinfile:
     path: /etc/systemd/logind.conf
