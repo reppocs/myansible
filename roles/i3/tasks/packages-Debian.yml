@@ -4,11 +4,11 @@
   block:
 
     - name: install i3-related packages
-      become: yes
+      become: true
       block:
 
         - name: common desktop packages
-          apt:
+          ansible.builtin.apt:
             name:
               - arandr
               - dunst
@@ -41,19 +41,19 @@
           block:
 
             - name: add regolith apt repo key
-              get_url:
+              ansible.builtin.get_url:
                 url: "{{ regolith_repo_key_url }}"
                 dest: /etc/apt/trusted.gpg.d/regolith.asc
                 mode: '0644'
                 force: true
 
             - name: add regolith repo
-              apt_repository:
+              ansible.builtin.apt_repository:
                 repo: "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/regolith.asc] https://regolith-desktop.org/release-ubuntu-{{ ansible_distribution_release }}-amd64 {{ ansible_distribution_release }} main"
                 state: present   
 
             - name: install i3-gaps related packages
-              apt:
+              ansible.builtin.apt:
                 name:
                   - i3-gaps
                   - i3lock
