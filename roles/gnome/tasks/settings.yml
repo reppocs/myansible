@@ -34,30 +34,30 @@
 - name: Change gnome-terminal settings
   block:
 
-  - name: Disable gnome-terminal bell
-    community.general.dconf:
-      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/audible-bell"
-      value: "false"
+    - name: Disable gnome-terminal bell
+      community.general.dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/audible-bell"
+        value: "false"
 
-  - name: Set gnome-terminal font
-    community.general.dconf:
-      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
-      value: "'JetBrainsMono Nerd Font 12'"
+    - name: Set gnome-terminal font
+      community.general.dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
+        value: "'JetBrainsMono Nerd Font 12'"
 
-  - name: Change "use custom font" setting in gnome-terminal
-    community.general.dconf:
-      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font"
-      value: "false"
+    - name: Change "use custom font" setting in gnome-terminal
+      community.general.dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font"
+        value: "false"
 
-  - name: Set gnome-terminal transparency
-    community.general.dconf:
-      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background"
-      value: "true"
+    - name: Set gnome-terminal transparency
+      community.general.dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background"
+        value: "true"
 
-  - name: Set gnome-terminal transparency percentage
-    community.general.dconf:
-      key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent"
-      value: 5
+    - name: Set gnome-terminal transparency percentage
+      community.general.dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent"
+        value: 5
 
 # end of gnome-terminal settings block
 
