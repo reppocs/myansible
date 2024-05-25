@@ -1,6 +1,6 @@
 ---
 
-- name: install and configure local workstation
+- name: Install and configure local workstation
   hosts: localhost
   connection: local
 
