@@ -2,14 +2,14 @@
 # tasks file for i3
 
 - name: include i3 packages task
-  include_tasks: "packages-{{ ansible_os_family }}.yml"
+  ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
 
 - name: include i3 configs task
-  include_tasks: "configs.yml"
+  ansible.builtin.include_tasks: "configs.yml"
 
 - name: make the system do nothing when the laptop lid is closed
-  become: yes
-  lineinfile:
+  become: true
+  ansible.builtin.lineinfile:
     path: /etc/systemd/logind.conf
     line: HandleLidSwitchExternalPower=ignore    
     insertafter: EOF
