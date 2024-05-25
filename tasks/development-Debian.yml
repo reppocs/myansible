@@ -7,6 +7,7 @@
       - python3-pip
       - python3-venv
       - shellcheck
-    state: latest
+    state: present
+    update_cache: true
 
 # EOF

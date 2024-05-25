@@ -9,5 +9,6 @@
       - gnome-shell-extension-manager
       - gnome-tweaks
     state: present
+    update_cache: true
 
 # EOF

@@ -9,7 +9,7 @@
       - neofetch
       - tty-clock
     state: latest
-    update_cache: yes
+    update_cache: true
 
 - name: Copy fonts, themes, and backgrounds
   ansible.posix.synchronize:
