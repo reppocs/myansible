@@ -1,6 +1,6 @@
 ---
 
-- name: install gnome base packages
+- name: Install gnome base packages
   become: true
   ansible.builtin.apt:
     name:

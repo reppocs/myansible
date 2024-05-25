@@ -1,6 +1,6 @@
 ---
 
-- name: gnome workspace settings
+- name: Change gnome workspace settings
   community.general.dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
@@ -8,7 +8,7 @@
     - {key: "/org/gnome/mutter/dynamic-workspaces", value: "false"}
     - {key: "/org/gnome/desktop/wm/preferences/num-workspaces", value: 6}
 
-- name: gnome appearance settings
+- name: Change gnome appearance settings
   community.general.dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
@@ -16,7 +16,7 @@
     - {key: "/org/gnome/desktop/background/picture-uri", value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/slothlife.jpg'"}
     - {key: '/org/gnome/desktop/background/picture-uri-dark', value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/slothlife.jpg'"}
 
-- name: gnome keybindings
+- name: Change gnome keybindings
   community.general.dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
@@ -31,7 +31,7 @@
     - {key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6", value: "['<Super>6']"}
 
 
-- name: gnome-terminal settings
+- name: Change gnome-terminal settings
   block:
 
   - name: disable terminal bell
@@ -61,22 +61,22 @@
 
 # end of gnome-terminal settings block
 
-- name: disabled extensions
+- name: Disable gnome extensions
   community.general.dconf:
     key: "/org/gnome/shell/disabled-extensions"
     value: "['background-logo@fedorahosted.org']"
 
-- name: enabled extensions
+- name: Enable gnome extensions
   community.general.dconf:
     key: "/org/gnome/shell/enabled-extensions"
     value: "['appindicatorsupport@rgcjonas.gmail.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'pop-shell@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
 
-- name: set clock format to 12h
+- name: Set clock format to 12h
   community.general.dconf:
     key: "/org/gnome/desktop/interface/clock-format"
     value: "'12h'"
 
-- name: set color scheme to dark
+- name: Set color scheme to dark
   community.general.dconf:
     key: "/org/gnome/desktop/interface/color-scheme"
     value: "'prefer-dark'"
