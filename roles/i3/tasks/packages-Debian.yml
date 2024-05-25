@@ -20,7 +20,7 @@
               - polybar
               - rofi
             state: present
-            update_cache: yes
+            update_cache: true
 
         - name: Install i3
           block:
@@ -44,7 +44,7 @@
                   - i3lock
                   - i3lock-fancy
                 state: present
-                update_cache: yes
+                update_cache: true
 
         # end of install i3 block
 
