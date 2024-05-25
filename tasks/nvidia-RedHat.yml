@@ -10,7 +10,7 @@
         - kernel-devel
         - akmod-nvidia
         - xorg-x11-drv-nvidia-cuda
-      state: latest
+      state: present
 
   - name: Enable nvidia hibernate service
     ansible.builtin.service:
