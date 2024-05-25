@@ -1,6 +1,7 @@
 ---
 
 - name: Get zsh happening
+  tags: zsh
   block:
 
     - name: Set zsh as shell
@@ -25,8 +26,6 @@
         src: "files/zshrc"
         dest: "{{ ansible_user_dir }}/.zshrc"
         backup: yes
-
-  tags: zsh
 
 # End of zsh block
 
