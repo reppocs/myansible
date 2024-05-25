@@ -11,7 +11,7 @@
   become: true
   ansible.builtin.lineinfile:
     path: /etc/systemd/logind.conf
-    line: HandleLidSwitchExternalPower=ignore    
+    line: HandleLidSwitchExternalPower=ignore
     insertafter: EOF
     state: present
     backup: true
