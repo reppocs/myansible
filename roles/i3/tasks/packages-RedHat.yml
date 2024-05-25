@@ -1,16 +1,15 @@
 ---
 
-- name: i3 desktop stuff
+- name: Install and configure i3 desktop stuff
   block:
 
-    - name: install i3-related packages
+    - name: Install i3-related packages
       become: true
       block:
 
-        - name: common desktop packages
+        - name: Install common desktop packages
           ansible.builtin.dnf:
             name:
-              - alacritty
               - arandr
               - dunst
               - lxappearance
@@ -21,23 +20,23 @@
               - polybar
               - xrandr
               - xset
-            state: latest
+            state: present
 
-        - name: desktop environment substitute packages
+        - name: Install desktop environment substitute packages
           ansible.builtin.dnf:
             name:
               - blueman
               - pcmanfm
-            state: latest
+            state: present
 
-        - name: i3 packages
+        - name: Install i3 packages
           ansible.builtin.dnf:
             name:
               - i3
               - i3blocks
               - i3lock
               - i3status
-            state: latest
+            state: present
 
 # end of i3 desktop stuff block
 
