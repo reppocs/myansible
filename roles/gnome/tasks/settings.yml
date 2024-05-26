@@ -13,8 +13,8 @@
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   loop:
-    - {key: "/org/gnome/desktop/background/picture-uri", value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/slothlife.jpg'"}
-    - {key: '/org/gnome/desktop/background/picture-uri-dark', value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/slothlife.jpg'"}
+    - {key: "/org/gnome/desktop/background/picture-uri", value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/slothlife.png'"}
+    - {key: '/org/gnome/desktop/background/picture-uri-dark', value: "'file://{{ ansible_user_dir }}/Pictures/backgrounds/slothlife.png'"}
 
 - name: Change gnome keybindings
   community.general.dconf:
