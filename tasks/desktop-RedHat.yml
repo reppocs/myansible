@@ -11,6 +11,17 @@
       - kitty
     state: latest
 
+- name: install starship
+  community.general.copr:
+    host: copr.fedorainfracloud.org
+    state: enabled
+    name: atim/starship
+
+- name: copy starship config
+  ansible.builtin.copy:
+    src: "files/config/starship.toml"
+    dest: "{{ ansible_user_dir }}./config/"
+
 - name: Copy kitty terminal config
   ansible.posix.synchronize:
     src: "files/config/kitty"
