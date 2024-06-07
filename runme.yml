@@ -42,10 +42,6 @@
     - name: Include development task
       ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
 
-    - name: Include zsh task
-      ansible.builtin.include_tasks: "tasks/zsh.yml"
-      tags: zsh
-
     - name: Include desktop task
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
 
