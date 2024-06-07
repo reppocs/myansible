@@ -50,7 +50,7 @@ case $DISTRO_NAME in
     ;;
 
   ubuntu)
-    if [[ $DISTRO_VERSION == "22.04" || $DISTRO_VERSION == "24.04"]]
+    if [[ $DISTRO_VERSION == "22.04" || $DISTRO_VERSION == "24.04" ]]
     then
       ubuntu_things 
       git_things
