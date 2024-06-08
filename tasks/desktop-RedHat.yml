@@ -9,19 +9,30 @@
       - fastfetch
       - flatpak
       - kitty
-    state: latest
+    state: present
 
-- name: install starship
+- name: install starship copr repo
   become: true
   community.general.copr:
     host: copr.fedorainfracloud.org
     state: enabled
     name: atim/starship
 
+- name: install starship
+  become: true
+  ansible.builtin.dnf:
+    name: starship
+    state: present
+
 - name: copy starship config
   ansible.builtin.copy:
     src: "files/config/starship.toml"
     dest: "{{ ansible_user_dir }}/.config/"
+
+- name: copy bash config
+  ansible.builtin.copy:
+    src: "files/bashrc"
+    dest: "{{ ansible_user_dir }}/.bashrc"
 
 - name: Copy kitty terminal config
   ansible.posix.synchronize:
