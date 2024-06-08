@@ -130,6 +130,16 @@
             name: tailscale
             state: latest
 
+        - name: Enable tailscale service
+          ansible.builtin.service:
+            name: tailscaled
+            enabled: yes
+
+        - name: Start tailscale service
+          ansible.builtin.service:
+            name: tailscaled
+            state: started
+
     # end of tailscale block
 
 # End of base packages block
