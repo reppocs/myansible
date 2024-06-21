@@ -54,7 +54,6 @@
           - traceroute
           - tree
           - util-linux-user
-          - zsh
         state: present
 
     - name: Install multimedia packages
