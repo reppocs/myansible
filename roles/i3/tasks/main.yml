@@ -2,7 +2,7 @@
 # tasks file for i3
 
 - name: Include i3 packages task
-  ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
+  ansible.builtin.include_tasks: "packages.yml"
 
 - name: Include i3 configs task
   ansible.builtin.include_tasks: "configs.yml"
