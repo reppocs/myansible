@@ -8,7 +8,6 @@
       - cava
       - fastfetch
       - flatpak
-      - kitty
     state: present
 
 - name: install starship copr repo
