@@ -15,17 +15,17 @@
   - name: Enable nvidia hibernate service
     ansible.builtin.service:
       name: nvidia-hibernate.service
-      enabled: yes
+      enabled: true
 
   - name: Enable nvidia suspend service
     ansible.builtin.service: 
       name: nvidia-suspend.service
-      enabled: yes
+      enabled: true
 
   - name: Enable nvidia resume service
     ansible.builtin.service:
       name: nvidia-resume.service
-      enabled: yes
+      enabled: true
 
   tags: nvidia
 
