@@ -10,9 +10,7 @@
       ansible.builtin.fail:
         msg: This playbook is not compatible with your distribution.
       when: >
-        (ansible_distribution != "Ubuntu" and ansible_distribution_version != "22.04") and
-        (ansible_distribution != "Fedora" and ansible_distribution_major_version != 40) and
-        (ansible_distribution != "PopOS!" and ansible_distribution_version != "22.04")
+        (ansible_distribution != "Fedora" and ansible_distribution_major_version != 40)
 
     - name: Set default theme
       ansible.builtin.set_fact:
@@ -31,7 +29,7 @@
         dir: vars
 
     - name: Include packages task
-      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
+      ansible.builtin.include_tasks: "tasks/packages.yml"
 
     - name: Include ssh task
       ansible.builtin.include_tasks: "tasks/ssh.yml"
@@ -40,13 +38,13 @@
       ansible.builtin.include_tasks: "tasks/git.yml"
 
     - name: Include development task
-      ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
+      ansible.builtin.include_tasks: "tasks/development.yml"
 
     - name: Include desktop task
-      ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
+      ansible.builtin.include_tasks: "tasks/desktop.yml"
 
     - name: Include brave task
-      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
+      ansible.builtin.include_tasks: "tasks/brave.yml"
 
     - name: Include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
@@ -72,7 +70,7 @@
         - gnome
 
     - name: Include nvidia driver install task
-      ansible.builtin.include_tasks: "tasks/nvidia-{{ ansible_os_family }}.yml"
+      ansible.builtin.include_tasks: "tasks/nvidia.yml"
       tags:
         - nvidia
         - never
