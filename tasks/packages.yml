@@ -55,13 +55,13 @@
           - tree
           - util-linux-user
           - zsh
-        state: latest
+        state: present
 
     - name: Install multimedia packages
       ansible.builtin.dnf:
         name: '@Multimedia'
         allowerasing: true
-        state: latest
+        state: present
 
     - name: Install and configure neovim
       block:
@@ -69,7 +69,7 @@
         - name: Install neovim
           ansible.builtin.dnf: 
             name: neovim
-            state: latest
+            state: present
 
         - name: Symlink vim to nvim
           become: true
@@ -112,7 +112,7 @@
         - name: Install sublime-text package
           ansible.builtin.dnf:
             name: sublime-text
-            state: latest
+            state: present
 
     # end of sublime-text install block
 
@@ -128,7 +128,7 @@
         - name: Install tailscale
           ansible.builtin.dnf:
             name: tailscale
-            state: latest
+            state: present
 
         - name: Enable tailscale service
           ansible.builtin.service:

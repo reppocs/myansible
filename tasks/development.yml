@@ -7,7 +7,7 @@
       - python3-pip
       - python3-virtualenv
       - shellcheck
-    state: latest
+    state: present
 
 - name: Install lazygit
   become: true
@@ -22,7 +22,7 @@
     - name: Install lazygit package
       ansible.builtin.dnf:
         name: lazygit
-        state: latest
+        state: present
 
 # end of lazygit block
 
