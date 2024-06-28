@@ -17,12 +17,6 @@ fedora_things() {
   sudo dnf -y install git ansible python3-ansible-lint -q
 }
 
-ubuntu_things() {
-  sudo apt-add-repository -y ppa:ansible/ansible > /dev/null
-  DEBIAN_FRONTEND=noninteractive sudo apt-get update -qq
-  sudo apt-get -y install curl git software-properties-common ansible ansible-lint -qq
-}
-
 git_things() {
   # clone the repo to the Downloads directory
   [[ ! -d "$HOME/Downloads" ]] && err "$HOME/Downloads does not exist."
@@ -43,16 +37,6 @@ case $DISTRO_NAME in
     if [[ $DISTRO_VERSION == 40 ]]
     then
       fedora_things
-      git_things
-    else
-      err "This is an unsupported version of $DISTRO_NAME"
-    fi
-    ;;
-
-  ubuntu)
-    if [[ $DISTRO_VERSION == "22.04" || $DISTRO_VERSION == "24.04" ]]
-    then
-      ubuntu_things 
       git_things
     else
       err "This is an unsupported version of $DISTRO_NAME"
