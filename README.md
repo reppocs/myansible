@@ -20,7 +20,4 @@ Note: I ansible-vaulted some of these files so I don't doxx myself, so you'll ha
 
 ### supported platforms
 
-The following have been tested and known to work (for me).
-
-* Fedora 40
-* Ubuntu 22.04 / 24.04
+This has been written specifically for Fedora 40 and if you try to run it on any other distribution or version of Fedora, it will quit out.
