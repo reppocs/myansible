@@ -17,7 +17,7 @@
           - com.spotify.Client
           - md.obsidian.Obsidian
           - org.signal.Signal
-          - com.spotify.Client
+          - org.telegram.desktop
         state: present
         method: user
 
