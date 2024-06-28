@@ -1,7 +1,0 @@
-configuration {
- modi: "window,drun,ssh,combi";
- font: "JetBrainsMono Nerd Font Medium 10";
- combi-modi: "window,drun,ssh";
- }
-
-@theme "~/.config/rofi/themes/nord.rasi"

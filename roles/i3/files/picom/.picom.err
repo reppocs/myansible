@@ -1,6 +1,0 @@
-[ 09/14/2022 17:45:04.245 parse_config_libconfig FATAL ERROR ] Error when reading configuration file "/home/corey/.config/picom/picom.conf", line 20: syntax error
-[ 09/14/2022 17:45:04.245 main FATAL ERROR ] Failed to create new session.
-[ 09/14/2022 17:45:47.675 parse_config_libconfig FATAL ERROR ] Error when reading configuration file "/home/corey/.config/picom/picom.conf", line 20: syntax error
-[ 09/14/2022 17:45:47.675 main FATAL ERROR ] Failed to create new session.
-[ 09/14/2022 17:47:58.022 vsync_opengl_swc_init ERROR ] Failed to load a swap control extension.
-[ 09/14/2022 17:47:58.023 session_init FATAL ERROR ] Failed to initialize the backend
