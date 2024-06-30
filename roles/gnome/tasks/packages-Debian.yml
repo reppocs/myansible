@@ -1,0 +1,13 @@
+---
+
+- name: install gnome base packages
+  become: true
+  ansible.builtin.apt:
+    name:
+      - dconf-editor
+      - gnome-shell-extension-appindicator
+      - gnome-shell-extension-manager
+      - gnome-tweaks
+    state: latest
+
+# EOF

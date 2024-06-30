@@ -2,7 +2,7 @@
 # tasks file for gnome
 
 - name: Include gnome packages task
-  ansible.builtin.include_tasks: "packages.yml"
+  ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
 
 - name: Include gnome settings task
   ansible.builtin.include_tasks: "settings.yml"
