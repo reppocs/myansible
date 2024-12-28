@@ -41,13 +41,6 @@
         state: present
         update_cache: true
 
-    - name: Symlink vim to nvim
-      become: true
-      file:
-        src: /usr/bin/nvim
-        dest: /usr/local/bin/vim
-        state: link
-
     - name: Make sure nvim share directory is absent
       file:
         path: "{{ ansible_user_dir }}/.local/share/nvim"
