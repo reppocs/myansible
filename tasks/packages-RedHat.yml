@@ -70,13 +70,6 @@
             name: neovim
             state: present
 
-        - name: Symlink vim to nvim
-          become: true
-          ansible.builtin.file:
-            src: /usr/bin/nvim
-            dest: /usr/local/bin/vim
-            state: link
-
         - name: Make sure nvim share directory is absent
           ansible.builtin.file:
             path: "{{ ansible_user_dir }}/.local/share/nvim"
