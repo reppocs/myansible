@@ -16,7 +16,6 @@
       - neofetch
       - nmap
       - os-prober
-      - shellcheck
       - software-properties-common
       - traceroute
       - tree
@@ -57,5 +56,15 @@
         dest: "{{ ansible_user_dir }}/.config"
 
 # end of neovim block
+
+- name: Install base development packages
+  become: true
+  ansible.builtin.apt:
+    name:
+      - python3-pip
+      - python3-venv
+      - shellcheck
+    state: present
+    update_cache: true
 
 # EOF
