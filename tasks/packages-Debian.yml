@@ -11,6 +11,7 @@
   become: true
   apt:
     name:
+      - bind9-dnsutils
       - bpytop
       - curl
       - neofetch
