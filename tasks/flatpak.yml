@@ -3,6 +3,11 @@
 - name: Install flatpak software
   block:
 
+    - name: Install flatpak package
+      become: true
+      ansible.builtin.apt:
+        name: flatpak
+
     - name: Add flathub flatpak repo
       community.general.flatpak_remote:
         name: flathub
