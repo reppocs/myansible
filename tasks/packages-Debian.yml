@@ -2,14 +2,14 @@
 
 - name: Update all packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "*"
     state: latest
     update_cache: true
 
 - name: Install base packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - bind9-dnsutils
       - bpytop
@@ -30,29 +30,29 @@
 
     - name: Add the neovim ppa repo
       become: true
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: 'ppa:neovim-ppa/unstable'
 
     - name: Install neovim package
       become: true
-      apt:
+      ansible.builtin.apt:
         name:
           - neovim
         state: present
         update_cache: true
 
     - name: Make sure nvim share directory is absent
-      file:
+      ansible.builtin.file:
         path: "{{ ansible_user_dir }}/.local/share/nvim"
         state: absent
 
     - name: Make sure nvim config directory is absent
-      file:
+      ansible.builtin.file:
         path: "{{ ansible_user_dir }}/.config/nvim"
         state: absent
 
     - name: Copy neovim config directory
-      synchronize:
+      ansible.posix.synchronize:
         src: files/config/nvim
         dest: "{{ ansible_user_dir }}/.config"
 
