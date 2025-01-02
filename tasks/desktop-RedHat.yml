@@ -4,10 +4,9 @@
   become: true
   ansible.builtin.dnf:
     name:
-      - bpytop
       - cava
-      - fastfetch
       - kitty
+      - krita
     state: present
 
 - name: install starship copr repo

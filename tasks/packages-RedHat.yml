@@ -41,16 +41,14 @@
       ansible.builtin.dnf:
         name:
           - ansible
-          - '@C Development Tools and Libraries'
+          - bpytop
           - curl
           - '@Development Tools'
           - dnf-plugins-core
+          - fastfetch
           - git
           - kernel-devel
-          - krita
-          - neovim
           - nmap
-          - shellcheck
           - traceroute
           - tree
           - util-linux-user
@@ -88,7 +86,6 @@
     # end of neovim install and config block
 
     - name: Install sublime text editor
-      become: true
       block:
 
         - name: Install the gpg key
@@ -109,7 +106,6 @@
     # end of sublime-text install block
 
     - name: Install tailscale
-      become: true
       block:
 
         - name: Install tailscale repo
