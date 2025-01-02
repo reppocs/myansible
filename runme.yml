@@ -44,9 +44,11 @@
 
     - name: Include desktop task
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
+      when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include brave task
       ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
+      when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
@@ -70,6 +72,7 @@
             - gnome
       tags:
         - gnome
+      when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include nvidia driver install task
       ansible.builtin.include_tasks: "tasks/nvidia.yml"
