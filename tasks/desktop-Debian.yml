@@ -4,10 +4,10 @@
   become: true
   ansible.builtin.apt:
     name:
-      - bpytop
       - cava
+      - heif-gdk-pixbuf
       - kitty
-      - neofetch
+      - krita
       - tty-clock
     state: latest
     update_cache: true

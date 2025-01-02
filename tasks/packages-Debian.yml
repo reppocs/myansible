@@ -11,15 +11,16 @@
   become: true
   apt:
     name:
+      - bpytop
       - curl
-      - heif-gdk-pixbuf
-      - krita
+      - neofetch
       - nmap
       - os-prober
       - shellcheck
       - software-properties-common
       - traceroute
       - tree
+      - unzip
       - zsh
     state: present
     update_cache: true
