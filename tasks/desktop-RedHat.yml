@@ -7,7 +7,6 @@
       - bpytop
       - cava
       - fastfetch
-      - flatpak
       - kitty
     state: present
 
