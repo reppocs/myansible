@@ -54,16 +54,6 @@
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
       when: (ansible_virtualization_role == "host") or (ansible_virtualization_role == "N/A")
 
-    - name: Include i3 role
-      ansible.builtin.include_role:
-        name: i3
-        apply:
-          tags:
-            - i3
-      tags:
-        - i3
-        - never
-
     - name: Include gnome role
       ansible.builtin.include_role:
         name: gnome
