@@ -22,5 +22,5 @@ Note: I ansible-vaulted some of these files so I don't doxx myself, so you'll ha
 
 This has been written for the following distro versions.
 
-* Fedora 40
+* Fedora 41
 * Ubuntu 22.04/24.04
