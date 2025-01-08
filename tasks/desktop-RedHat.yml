@@ -9,81 +9,110 @@
       - krita
     state: present
 
-- name: install starship copr repo
-  become: true
-  community.general.copr:
-    host: copr.fedorainfracloud.org
-    state: enabled
-    name: atim/starship
+- name: Install starship prompt
+  block:
 
-- name: install starship
-  become: true
-  ansible.builtin.dnf:
-    name: starship
-    state: present
+    - name: Install starship copr repo
+      become: true
+      community.general.copr:
+        host: copr.fedorainfracloud.org
+        state: enabled
+        name: atim/starship
 
-- name: copy starship config
-  ansible.builtin.copy:
-    src: "files/config/starship.toml"
-    dest: "{{ ansible_user_dir }}/.config/"
+    - name: Install starship
+      become: true
+      ansible.builtin.dnf:
+        name: starship
+        state: present
+
+    - name: Copy starship config
+      ansible.builtin.copy:
+        src: "files/config/starship.toml"
+        dest: "{{ ansible_user_dir }}/.config/"
+
+# End of starship block
 
 - name: copy bash config
   ansible.builtin.copy:
     src: "files/bashrc"
     dest: "{{ ansible_user_dir }}/.bashrc"
 
+- name: Install ghostty terminal
+  become: true
+  block:
+
+    - name: Install ghostty terminal copr repo
+      become: true
+      community.general.copr:
+        host: copr.fedorainfracloud.org
+        state: enabled
+        name: pgdev/ghostty
+
+    - name: Install ghostty terminal
+      become: true
+      ansible.builtin.dnf:
+        name: ghostty
+        state: present
+
+# End of ghostty install block
+
 - name: Copy kitty terminal config
   ansible.posix.synchronize:
     src: "files/config/kitty"
     dest: "{{ ansible_user_dir }}/.config/"
 
-- name: Install font packages
-  become: true
-  ansible.builtin.dnf:
-    name:
-      - adobe-source-code-pro-fonts
-      - bitstream-vera-sans-mono-fonts
-      - cascadia-code-fonts
-      - cascadia-code-pl-fonts
-      - cascadia-mono-fonts
-      - cascadia-mono-pl-fonts
-      - clm-miriam-mono-fonts
-      - dejavu-sans-mono-fonts
-      - fira-code-fonts
-      - fontawesome-fonts
-      - fontawesome-fonts-web
-      - fontawesome5-brands-fonts
-      - fontawesome5-fonts-web
-      - fontawesome5-free-fonts
-      - gnu-free-mono-fonts
-      - google-droid-sans-mono-fonts
-      - google-go-mono-fonts
-      - google-noto-sans-mono-fonts
-      - google-noto-sans-mono-vf-fonts
-      - google-roboto-mono-fonts
-      - jetbrains-mono-fonts
-      - jetbrains-mono-fonts-all
-      - jetbrains-mono-nl-fonts
-      - liberation-mono-fonts
-      - mozilla-fira-mono-fonts
-      - msimonson-anonymouspro-fonts
-      - oflb-smonohand-fonts
-      - overpass-mono-fonts
-      - oxygen-mono-fonts
-      - pcaro-hermit-fonts
-      - redhat-mono-fonts
-    state: present
+- name: Install fonts
+  block:
 
-- name: Copy fonts, themes, and backgrounds
-  ansible.posix.synchronize:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  loop:
-    - {src: 'files/fonts/', dest: "{{ ansible_user_dir }}/.fonts/"}
-    - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
-    - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
+    - name: Install font packages
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - adobe-source-code-pro-fonts
+          - bitstream-vera-sans-mono-fonts
+          - cascadia-code-fonts
+          - cascadia-code-pl-fonts
+          - cascadia-mono-fonts
+          - cascadia-mono-pl-fonts
+          - clm-miriam-mono-fonts
+          - dejavu-sans-mono-fonts
+          - fira-code-fonts
+          - fontawesome-fonts
+          - fontawesome-fonts-web
+          - fontawesome5-brands-fonts
+          - fontawesome5-fonts-web
+          - fontawesome5-free-fonts
+          - gnu-free-mono-fonts
+          - google-droid-sans-mono-fonts
+          - google-go-mono-fonts
+          - google-noto-sans-mono-fonts
+          - google-noto-sans-mono-vf-fonts
+          - google-roboto-mono-fonts
+          - jetbrains-mono-fonts
+          - jetbrains-mono-fonts-all
+          - jetbrains-mono-nl-fonts
+          - liberation-mono-fonts
+          - mozilla-fira-mono-fonts
+          - msimonson-anonymouspro-fonts
+          - oflb-smonohand-fonts
+          - overpass-mono-fonts
+          - oxygen-mono-fonts
+          - pcaro-hermit-fonts
+          - redhat-mono-fonts
+        state: present
 
-- name: update font cache
-  ansible.builtin.command: fc-cache -fv
+    - name: Copy fonts, themes, and backgrounds
+      ansible.posix.synchronize:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - {src: 'files/fonts/', dest: "{{ ansible_user_dir }}/.fonts/"}
+        - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
+        - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
+
+    - name: update font cache
+      ansible.builtin.command: fc-cache -fv
+
+# end of Install fonts block
 
 # EOF
