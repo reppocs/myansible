@@ -25,6 +25,8 @@
           - org.telegram.desktop
         state: present
         method: user
+  tags:
+    - flatpak
 
 # end of flatpak block
 

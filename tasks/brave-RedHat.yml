@@ -26,6 +26,9 @@
           - brave-keyring
         state: present
 
+  tags:
+    - brave
+
 # end of brave block
 
 # EOF
