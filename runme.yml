@@ -6,17 +6,13 @@
 
   pre_tasks:
 
-    - name: Fail if the the distribution isn't supported
+    - name: Fail if the distribution isn't supported
       ansible.builtin.fail:
         msg: This playbook is not compatible with your distribution.
       when: >
         (ansible_distribution != "Ubuntu" and ansible_distribution_version != "22.04") and
         (ansible_distribution != "Ubuntu" and ansible_distribution_version != "24.04") and
         (ansible_distribution != "Fedora" and ansible_distribution_major_version != 41)
-
-    - name: Set default theme
-      ansible.builtin.set_fact:
-        theme: nord
 
   tasks:
 
