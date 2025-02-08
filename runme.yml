@@ -42,9 +42,15 @@
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
       when: ansible_facts['virtualization_type'] != "wsl"
 
-    - name: Include brave task
-      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
-      when: ansible_facts['virtualization_type'] != "wsl"
+    - name: Include brave role
+      ansible.builtin.include_role:
+        name: brave
+        apply:
+          tags:
+            - brave
+      tags:
+        - brave
+      when: ansible_facts['virtualization_type'] != "wsl" 
 
     - name: Include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"
