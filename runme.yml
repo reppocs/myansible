@@ -38,8 +38,14 @@
         tags:
           - ssh
 
-    - name: Include git task
-      ansible.builtin.include_tasks: "tasks/git.yml"
+    - name: Include git role
+      ansible.builtin.include_role:
+        name: git
+        apply:
+          tags:
+            - git
+        tags:
+          - ssh
 
     - name: Include development task
       ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
