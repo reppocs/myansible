@@ -29,8 +29,14 @@
     - name: Include packages task
       ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
 
-    - name: Include ssh task
-      ansible.builtin.include_tasks: "tasks/ssh.yml"
+    - name: Include ssh role
+      ansible.builtin.include_role:
+        name: brave
+        apply:
+          tags:
+            - ssh
+        tags:
+          - ssh
 
     - name: Include git task
       ansible.builtin.include_tasks: "tasks/git.yml"
