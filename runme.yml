@@ -64,6 +64,15 @@
         - brave
       when: ansible_facts['virtualization_type'] != "wsl" 
 
+    - name: Include tailscale role
+      ansible.builtin.include_role:
+        name: tailscale
+        apply:
+          tags:
+            - tailscale
+      tags:
+        - tailscale
+
     - name: Include flatpak role
       ansible.builtin.include_role:
         name: flatpak

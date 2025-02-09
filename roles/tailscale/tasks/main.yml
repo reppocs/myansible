@@ -1,0 +1,6 @@
+---
+
+- name: Include the appropriate tailscale task
+  ansible.builtin.include_tasks: "tailscale-{{ ansible_os_family }}.yml"
+
+# EOF

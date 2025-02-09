@@ -1,0 +1,25 @@
+---
+
+- name: Install tailscale
+  become: true
+  block:
+
+    - name: Download tailscale keyring
+      ansible.builtin.get_url:
+        url: https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg
+        dest: /usr/share/keyrings/tailscale-archive-keyring.gpg
+
+    - name: Download tailscale repo file
+      ansible.builtin.get_url:
+        url: https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list
+        dest: /etc/apt/sources.list.d/tailscale.list
+
+    - name: Install tailscale package
+      ansible.builtin.apt:
+        name: tailscale
+        state: present
+        update_cache: true
+
+# End of tailscale block
+
+# EOF
