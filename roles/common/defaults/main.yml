@@ -1,0 +1,11 @@
+---
+
+# rpmfusion repos
+rpmfusion_free_repo: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+rpmfusion_nonfree_repo: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+
+# rpmfusion gpg keys
+rpmfusion_free_key: files/repokeys/RPM-GPG-KEY-rpmfusion-free-fedora-2020
+rpmfusion_nonfree_key: files/repokeys/RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+
+# EOF

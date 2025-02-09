@@ -1,0 +1,6 @@
+---
+
+- name: Include package install task
+  ansible.builtin.include_tasks: packages-{{ ansible_os_family }}.yml"
+
+# EOF
