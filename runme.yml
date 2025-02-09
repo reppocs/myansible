@@ -29,6 +29,15 @@
     - name: Include packages task
       ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
 
+    - name: Include neovim rome
+      ansible.builtin.include_role:
+        name: neovim
+        apply:
+          tags:
+            - neovim
+        tags:
+          - neovim
+
     - name: Include ssh role
       ansible.builtin.include_role:
         name: brave
