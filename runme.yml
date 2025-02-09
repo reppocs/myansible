@@ -64,9 +64,15 @@
         - brave
       when: ansible_facts['virtualization_type'] != "wsl" 
 
-    - name: Include flatpak task
-      ansible.builtin.include_tasks: "tasks/flatpak.yml"
-      when: (ansible_virtualization_role == "host") or (ansible_virtualization_role == "N/A")
+    - name: Include flatpak role
+      ansible.builtin.include_role:
+        name: flatpak
+        apply:
+          tags:
+            - flatpak
+      tags:
+        - flatpak
+      when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include gnome role
       ansible.builtin.include_role:
