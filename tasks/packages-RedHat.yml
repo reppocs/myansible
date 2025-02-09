@@ -54,12 +54,6 @@
           - util-linux-user
         state: present
 
-    - name: Install multimedia packages
-      ansible.builtin.dnf:
-        name: '@Multimedia'
-        allowerasing: true
-        state: present
-
 # End of base packages block
 
 # EOF

@@ -9,6 +9,13 @@
       - krita
     state: present
 
+- name: Install multimedia packages
+  become: true
+  ansible.builtin.dnf:
+    name: '@Multimedia'
+    allowerasing: true
+    state: present
+
 - name: Install starship prompt
   block:
 
