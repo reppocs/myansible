@@ -102,12 +102,12 @@
         - gnome
       when: ansible_facts['virtualization_type'] != "wsl"
 
-    - name: Include nvidia driver install task
+    - name: Include nvidia driver role
       ansible.builtin.include_role:
         name: nvidia
         apply:
-        tags:
-          - nvidia
+          tags:
+            - nvidia
       tags:
         - nvidia
         - never
