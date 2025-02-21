@@ -26,41 +26,17 @@
       ansible.builtin.include_vars:
         dir: vars
 
-    - name: Include common role
-      ansible.builtin.include_role:
-        name: common
-        apply:
-          tags:
-            - common
-        tags:
-          - common
+    - name: Include packages task
+      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
 
-    - name: Include neovim role
-      ansible.builtin.include_role:
-        name: neovim
-        apply:
-          tags:
-            - neovim
-        tags:
-          - neovim
+    - name: Include the appropriate neovim playbook
+      ansible.builtin.include_tasks: "tasks/neovim-{{ ansible_os_family }}.yml"
 
-    - name: Include ssh role
-      ansible.builtin.include_role:
-        name: brave
-        apply:
-          tags:
-            - ssh
-        tags:
-          - ssh
+    - name: Include ssh task
+      ansible.builtin.include_tasks: "tasks/ssh.yml"
 
-    - name: Include git role
-      ansible.builtin.include_role:
-        name: git
-        apply:
-          tags:
-            - git
-        tags:
-          - ssh
+    - name: Include git task
+      ansible.builtin.include_tasks: "tasks/git.yml"
 
     - name: Include development task
       ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
@@ -69,33 +45,15 @@
       ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
       when: ansible_facts['virtualization_type'] != "wsl"
 
-    - name: Include brave role
-      ansible.builtin.include_role:
-        name: brave
-        apply:
-          tags:
-            - brave
-      tags:
-        - brave
-      when: ansible_facts['virtualization_type'] != "wsl" 
+    - name: Include brave task
+      ansible.builtin.include_tasks: "brave-{{ ansible_os_family }}.yml"
+      when: ansible_facts['virtualization_type'] != "wsl"     
 
-    - name: Include tailscale role
-      ansible.builtin.include_role:
-        name: tailscale
-        apply:
-          tags:
-            - tailscale
-      tags:
-        - tailscale
+    - name: Include the appropriate tailscale task
+      ansible.builtin.include_tasks: "tailscale-{{ ansible_os_family }}.yml"
 
-    - name: Include flatpak role
-      ansible.builtin.include_role:
-        name: flatpak
-        apply:
-          tags:
-            - flatpak
-      tags:
-        - flatpak
+    - name: Include flatpak task
+      ansible.builtin.include_tasks: "tasks/flatpak.yml"
       when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include gnome role

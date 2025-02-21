@@ -1,3 +1,0 @@
-# git info
-git_dir: "{{ ansible_user_dir }}/Development/git"
-github_user: reppocs

@@ -1,6 +1,0 @@
----
-
-- name: Include the appropriate neovim playbook
-  ansible.builtin.include_tasks: "neovim-{{ ansible_os_family }}.yml"
-
-# EOF

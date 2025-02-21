@@ -1,7 +1,14 @@
 ---
 
+# brave browser apt repo key
+brave_repo_key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
 # git info
 git_dir: "{{ ansible_user_dir }}/Development/git"
+
+# ssh info
+ssh_dir: "{{ ansible_user_dir }}/.ssh"
+ssh_key: "id_ed25519"
 
 # rpmfusion repos
 rpmfusion_free_repo: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"

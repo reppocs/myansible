@@ -1,7 +1,0 @@
----
-
-- name: Include brave task
-  ansible.builtin.include_tasks: "brave-{{ ansible_os_family }}.yml"
-  when: ansible_facts['virtualization_type'] != "wsl"
-
-# EOF
