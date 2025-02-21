@@ -27,7 +27,7 @@
         dir: vars
 
     - name: Include base role
-      ansible.builtin.role:
+      ansible.builtin.include_role:
         name: base
         apply:
           tags:
