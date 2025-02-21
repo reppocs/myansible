@@ -1,6 +1,6 @@
 ---
 
 # brave browser apt repo key
-brave_repo_key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+brave_repo_key_url: "https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg"
 
 # EOF
