@@ -22,10 +22,6 @@
         use: systemd
       when: hostname is defined
 
-    - name: Include var files
-      ansible.builtin.include_vars:
-        dir: vars
-
     - name: Include base role
       ansible.builtin.include_role:
         name: base
