@@ -1,0 +1,38 @@
+---
+
+- name: Install starship prompt Fedora
+  become: true
+  block:
+
+    - name: Install starship copr repo
+      become: true
+      community.general.copr:
+        host: copr.fedorainfracloud.org
+        state: enabled
+        name: atim/starship
+
+    - name: Install starship
+      become: true
+      ansible.builtin.dnf:
+        name: starship
+        state: present
+
+  when: ansible_os_family == "RedHat"
+# End of Fedora starship block
+
+- name: Install starship prompt Ubuntu
+  community.general.snap:
+    name: starship
+  when: ansible_os_family == "Debian"
+
+- name: Copy starship config
+  ansible.builtin.copy:
+    src: "files/config/starship.toml"
+    dest: "{{ ansible_user_dir }}/.config/"
+
+- name: copy bash config
+  ansible.builtin.copy:
+    src: "files/bashrc"
+    dest: "{{ ansible_user_dir }}/.bashrc"
+
+# EOF

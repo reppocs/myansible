@@ -1,0 +1,14 @@
+---
+
+- name: Include packages task
+  ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
+
+- name: Include development task
+  ansible.builtin.include_tasks: "development-{{ ansible_os_family }}.yml"
+
+- name: Include terminal task
+  ansible.builtin.include_tasks: "terminal.yml"
+
+- name: Include desktop task
+  ansible.builtin.include_tasks: "desktop-{{ ansible_os_family }}.yml"
+  when: ansible_facts['virtualization_type'] != "wsl"

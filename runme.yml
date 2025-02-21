@@ -26,34 +26,70 @@
       ansible.builtin.include_vars:
         dir: vars
 
-    - name: Include packages task
-      ansible.builtin.include_tasks: "tasks/packages-{{ ansible_os_family }}.yml"
+    - name: Include base role
+      ansible.builtin.role:
+        name: base
+        apply:
+          tags:
+            - base
+      tags:
+        - base
 
-    - name: Include the appropriate neovim playbook
-      ansible.builtin.include_tasks: "tasks/neovim-{{ ansible_os_family }}.yml"
+    - name: Include the neovim role
+      ansible.builtin.include_role:
+        name: neovim
+        apply:
+          tags:
+            - neovim
+      tags:
+        - neovim
 
-    - name: Include ssh task
-      ansible.builtin.include_tasks: "tasks/ssh.yml"
+    - name: Include ssh role
+      ansible.builtin.include_role:
+        name: ssh
+        apply:
+          tags:
+            - ssh
+      tags:
+        - ssh
 
-    - name: Include git task
-      ansible.builtin.include_tasks: "tasks/git.yml"
+    - name: Include git role
+      ansible.builtin.include_role:
+        name: git
+        apply:
+          tags:
+            - git
+      tags:
+        - git
 
-    - name: Include development task
-      ansible.builtin.include_tasks: "tasks/development-{{ ansible_os_family }}.yml"
-
-    - name: Include desktop task
-      ansible.builtin.include_tasks: "tasks/desktop-{{ ansible_os_family }}.yml"
+    - name: Include brave role
+      ansible.builtin.include_role:
+        name: brave
+        apply:
+          tags:
+            - brave
+      tags:
+        - brave
       when: ansible_facts['virtualization_type'] != "wsl"
 
-    - name: Include brave task
-      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
+    - name: Include tailscale role
+      ansible.builtin.include_role:
+        name: tailscale
+        apply:
+          tags:
+            - tailscale
+      tags:
+        - tailscale
       when: ansible_facts['virtualization_type'] != "wsl"
-
-    - name: Include the appropriate tailscale task
-      ansible.builtin.include_tasks: "tasks/tailscale-{{ ansible_os_family }}.yml"
 
     - name: Include flatpak task
-      ansible.builtin.include_tasks: "tasks/flatpak.yml"
+      ansible.builtin.include_role:
+        name: flatpak
+        apply:
+          tags:
+            - flatpak
+      tags:
+        - flatpak
       when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include gnome role
@@ -67,7 +103,11 @@
       when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include nvidia driver install task
-      ansible.builtin.include_tasks: "tasks/nvidia.yml"
+      ansible.builtin.include_role:
+        name: nvidia
+        apply:
+        tags:
+          - nvidia
       tags:
         - nvidia
         - never
