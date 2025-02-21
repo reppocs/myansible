@@ -46,11 +46,11 @@
       when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include brave task
-      ansible.builtin.include_tasks: "brave-{{ ansible_os_family }}.yml"
-      when: ansible_facts['virtualization_type'] != "wsl"     
+      ansible.builtin.include_tasks: "tasks/brave-{{ ansible_os_family }}.yml"
+      when: ansible_facts['virtualization_type'] != "wsl"
 
     - name: Include the appropriate tailscale task
-      ansible.builtin.include_tasks: "tailscale-{{ ansible_os_family }}.yml"
+      ansible.builtin.include_tasks: "tasks/tailscale-{{ ansible_os_family }}.yml"
 
     - name: Include flatpak task
       ansible.builtin.include_tasks: "tasks/flatpak.yml"

@@ -1,6 +1,7 @@
 ---
 
 - name: Install tailscale
+  become: true
   block:
 
     - name: Install tailscale repo

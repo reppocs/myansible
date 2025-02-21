@@ -123,6 +123,7 @@
 # end of Install fonts block
 
 - name: Install sublime text editor
+  become: true
   block:
 
     - name: Install the gpg key

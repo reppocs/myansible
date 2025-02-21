@@ -4,6 +4,7 @@
   block:
 
     - name: Install neovim
+      become: true
       ansible.builtin.dnf:
         name: neovim
         state: present
@@ -20,7 +21,7 @@
 
     - name: Copy neovim config directory
       ansible.posix.synchronize:
-        src: "files/nvim"
+        src: "files/config/nvim"
         dest: "{{ ansible_user_dir }}/.config"
 
 # end of neovim install and config block
