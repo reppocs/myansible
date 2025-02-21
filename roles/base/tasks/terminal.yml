@@ -21,6 +21,7 @@
 # End of Fedora starship block
 
 - name: Install starship prompt Ubuntu
+  become: true
   community.general.snap:
     name: starship
   when: ansible_os_family == "Debian"
