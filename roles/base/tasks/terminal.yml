@@ -24,6 +24,7 @@
   become: true
   community.general.snap:
     name: starship
+    channel: edge
   when: ansible_os_family == "Debian"
 
 - name: Copy starship config
