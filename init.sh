@@ -2,7 +2,7 @@
 
 # This is a script to set up the environment for running the playbook.
 #
-# Currently, it only supports Ubuntu (22.04 / 24.04), and Fedora 41.
+# Currently, it only supports Ubuntu (22.04 / 24.04), and Fedora 42.
 
 DISTRO_NAME="$(grep '^ID=' /etc/os-release | awk -F= '{print $2}')"
 DISTRO_VERSION="$(grep '^VERSION_ID' /etc/os-release | awk -F= '{print $2}' |sed -e 's/\"//g')"
@@ -39,7 +39,7 @@ git_things() {
 # if it's supported, do the thing
 case $DISTRO_NAME in
   fedora)
-    if [[ $DISTRO_VERSION == 41 ]]
+    if [[ $DISTRO_VERSION == 42 ]]
     then
       fedora_things
       git_things
