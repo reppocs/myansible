@@ -4,25 +4,17 @@
   become: true
   block:
 
-    - name: Add rpmfusion free gpg key
-      ansible.builtin.rpm_key:
-        state: present
-        key: "{{ rpmfusion_free_key }}"
-
-    - name: Add rpmfusion nonfree gpg key
-      ansible.builtin.rpm_key:
-        state: present
-        key: "{{ rpmfusion_nonfree_key }}"
-
     - name: Install rpmfusion free repository
       ansible.builtin.dnf:
         name: "{{ rpmfusion_free_repo }}"
         state: present
+        disable_gpg_check: true
 
     - name: Install rpmfusion nonfree repository
       ansible.builtin.dnf:
         name: "{{ rpmfusion_nonfree_repo }}"
         state: present
+        disable_gpg_check: true
 
     - name: DNF conf changes
       ansible.builtin.blockinfile:
