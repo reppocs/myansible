@@ -5,7 +5,7 @@ This is my personal ansible situation to configure new workstations, laptops, an
 Run the following to set up your environment (install ansible, git, etc... and clone the repo).
 
 ```
-wget https://raw.githubusercontent.com/reppocs/myansible/main/init.sh
+wget https://raw.githubusercontent.com/reppocs/myansible/refs/heads/main/init.sh
 chmod +x init.sh
 ./init.sh
 ```
