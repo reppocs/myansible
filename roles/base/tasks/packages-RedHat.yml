@@ -37,6 +37,7 @@
           - curl
           - '@Development Tools'
           - dnf-plugins-core
+          - dnf-utils
           - fastfetch
           - git
           - kernel-devel
