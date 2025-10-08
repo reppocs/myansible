@@ -8,6 +8,7 @@
       ansible.builtin.get_url:
         url: https://pkgs.tailscale.com/stable/fedora/tailscale.repo
         dest: /etc/yum.repos.d/tailscale.repo
+        mode: '0644'
 
     - name: Install tailscale
       ansible.builtin.dnf:

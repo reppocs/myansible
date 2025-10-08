@@ -8,11 +8,13 @@
       ansible.builtin.get_url:
         url: https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg
         dest: /usr/share/keyrings/tailscale-archive-keyring.gpg
+        mode: '0644'
 
     - name: Download tailscale repo file
       ansible.builtin.get_url:
         url: https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list
         dest: /etc/apt/sources.list.d/tailscale.list
+        mode: '0644'
 
     - name: Install tailscale package
       ansible.builtin.apt:
