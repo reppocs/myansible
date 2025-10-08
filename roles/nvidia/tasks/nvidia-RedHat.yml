@@ -2,6 +2,7 @@
 
 - name: Do nvidia driver tasks
   become: true
+  tags: nvidia
   block:
 
   - name: Install nvidia driver related packages
@@ -18,7 +19,7 @@
       enabled: true
 
   - name: Enable nvidia suspend service
-    ansible.builtin.service: 
+    ansible.builtin.service:
       name: nvidia-suspend.service
       enabled: true
 
@@ -26,8 +27,6 @@
     ansible.builtin.service:
       name: nvidia-resume.service
       enabled: true
-
-  tags: nvidia
 
 # end of nvidia driver tasks block
 

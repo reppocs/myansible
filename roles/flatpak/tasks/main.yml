@@ -1,6 +1,7 @@
 ---
 
 - name: Install flatpak software
+  tags: flatpak
   block:
 
     - name: Install flatpak package
@@ -26,8 +27,6 @@
           - org.telegram.desktop
         state: present
         method: user
-  tags:
-    - flatpak
 
 # end of flatpak block
 

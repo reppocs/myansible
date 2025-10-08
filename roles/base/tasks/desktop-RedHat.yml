@@ -21,14 +21,12 @@
   block:
 
     - name: Install ghostty terminal copr repo
-      become: true
       community.general.copr:
         host: copr.fedorainfracloud.org
         state: enabled
         name: pgdev/ghostty
 
     - name: Install ghostty terminal
-      become: true
       ansible.builtin.dnf:
         name: ghostty
         state: present
@@ -89,8 +87,10 @@
         - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
         - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
 
-    - name: update font cache
-      ansible.builtin.command: fc-cache -fv
+    - name: Update font cache
+      ansible.builtin.command:
+        cmd: fc-cache -f
+      changed_when: true
 
 # end of Install fonts block
 
@@ -107,6 +107,7 @@
       ansible.builtin.get_url:
         url: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
         dest: /etc/yum.repos.d/sublime-text.repo
+        mode: '0644'
 
     - name: Install sublime-text package
       ansible.builtin.dnf:

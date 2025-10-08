@@ -9,7 +9,7 @@
       - kitty
       - krita
       - tty-clock
-    state: latest
+    state: present
     update_cache: true
 
 - name: Copy kitty terminal config
@@ -27,6 +27,8 @@
     - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
 
 - name: Update font cache
-  ansible.builtin.command: fc-cache -fv
+  ansible.builtin.command:
+    cmd: fc-cache -f
+  changed_when: true
 
 # EOF

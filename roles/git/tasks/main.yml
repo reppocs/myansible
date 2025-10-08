@@ -1,6 +1,7 @@
 ---
 
 - name: Configure git
+  tags: git
   block:
 
     - name: Create and verify git repo directories
@@ -20,7 +21,5 @@
         dest: "{{ ansible_user_dir }}/.gitconfig"
         mode: "0644"
         backup: true
-  tags:
-    - git
 
 # EOF

@@ -1,6 +1,6 @@
 ---
 
-- name: install gnome base packages
+- name: Install gnome base packages
   become: true
   ansible.builtin.apt:
     name:
@@ -8,6 +8,6 @@
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-manager
       - gnome-tweaks
-    state: latest
+    state: present
 
 # EOF
