@@ -22,90 +22,47 @@
         use: systemd
       when: hostname is defined
 
-    - name: Include base role
-      ansible.builtin.include_role:
-        name: base
-        apply:
-          tags:
-            - base
-      tags:
-        - base
+  roles:
 
-    - name: Include the neovim role
-      ansible.builtin.include_role:
-        name: neovim
-        apply:
-          tags:
-            - neovim
-      tags:
-        - neovim
+  - role: base
+    tags:
+      - base
 
-    - name: Include ssh role
-      ansible.builtin.include_role:
-        name: ssh
-        apply:
-          tags:
-            - ssh
-      tags:
-        - ssh
+  - role: neovim
+    tags:
+      - neovim
 
-    - name: Include git role
-      ansible.builtin.include_role:
-        name: git
-        apply:
-          tags:
-            - git
-      tags:
-        - git
+  - role: ssh
+    tags:
+      - ssh
 
-    - name: Include brave role
-      ansible.builtin.include_role:
-        name: brave
-        apply:
-          tags:
-            - brave
-      tags:
-        - brave
-      when: ansible_facts['virtualization_type'] != "wsl"
+  - role: git
+    tags:
+      - git
 
-    - name: Include tailscale role
-      ansible.builtin.include_role:
-        name: tailscale
-        apply:
-          tags:
-            - tailscale
-      tags:
-        - tailscale
-      when: ansible_facts['virtualization_type'] != "wsl"
+  - role: brave
+    tags:
+      - brave
+    when: ansible_facts['virtualization_type'] != "wsl"
 
-    - name: Include flatpak task
-      ansible.builtin.include_role:
-        name: flatpak
-        apply:
-          tags:
-            - flatpak
-      tags:
-        - flatpak
-      when: ansible_facts['virtualization_type'] != "wsl"
+  - role: tailscale
+    tags:
+      - tailscale
+    when: ansible_facts['virtualization_type'] != "wsl"
 
-    - name: Include gnome role
-      ansible.builtin.include_role:
-        name: gnome
-        apply:
-          tags:
-            - gnome
-      tags:
-        - gnome
-      when: ansible_facts['virtualization_type'] != "wsl"
+  - role: flatpak
+    tags:
+      - flatpak
+    when: ansible_facts['virtualization_type'] != "wsl"
 
-    - name: Include nvidia driver role
-      ansible.builtin.include_role:
-        name: nvidia
-        apply:
-          tags:
-            - nvidia
-      tags:
-        - nvidia
-        - never
+  - role: gnome
+    tags:
+      - gnome
+    when: ansible_facts['virtualization_type'] != "wsl"
+
+  - role: nvidia
+    tags:
+      - nvidia
+      - never
 
 # EOF
