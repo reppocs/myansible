@@ -39,6 +39,7 @@
           - dnf-plugins-core
           - dnf-utils
           - fastfetch
+          - fzf
           - git
           - git-delta
           - kernel-devel
