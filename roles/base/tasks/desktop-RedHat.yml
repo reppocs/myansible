@@ -94,26 +94,4 @@
 
 # end of Install fonts block
 
-- name: Install sublime text editor
-  become: true
-  block:
-
-    - name: Install the gpg key
-      ansible.builtin.rpm_key:
-        state: present
-        key: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
-
-    - name: Add sublime repo
-      ansible.builtin.get_url:
-        url: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
-        dest: /etc/yum.repos.d/sublime-text.repo
-        mode: '0644'
-
-    - name: Install sublime-text package
-      ansible.builtin.dnf:
-        name: sublime-text
-        state: present
-
-# end of sublime-text install block
-
 # EOF
