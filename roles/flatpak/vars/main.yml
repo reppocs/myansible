@@ -2,6 +2,7 @@ flatpak_packages:
   - com.discordapp.Discord
   - com.dropbox.Client
   - com.spotify.Client
+  - com.sublimetext.three
   - dev.zed.Zed
   - md.obsidian.Obsidian
   - org.signal.Signal
