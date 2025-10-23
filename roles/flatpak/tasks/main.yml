@@ -23,6 +23,7 @@
           - com.discordapp.Discord
           - com.dropbox.Client
           - com.spotify.Client
+          - dev.zed.Zed
           - md.obsidian.Obsidian
           - org.signal.Signal
           - org.telegram.desktop
