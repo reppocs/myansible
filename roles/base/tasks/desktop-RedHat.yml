@@ -29,6 +29,11 @@
         name: ghostty
         state: present
 
+    - name: Copy ghostty terminal config
+      ansible.posix.synchronize:
+        src: "files/config/ghostty"
+        dest: "{{ ansible_user_dir }}/.config/"
+
 # End of ghostty install block
 
 - name: Copy kitty terminal config
