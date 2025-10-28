@@ -8,3 +8,4 @@ flatpak_packages:
   - md.obsidian.Obsidian
   - org.signal.Signal
   - org.telegram.desktop
+  - us.zoom.Zoom
