@@ -1,4 +1,5 @@
 flatpak_packages:
+  - com.brave.Browser
   - com.discordapp.Discord
   - com.dropbox.Client
   - com.spotify.Client

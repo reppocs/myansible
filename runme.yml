@@ -1,11 +1,9 @@
 ---
-
 - name: Install and configure local workstation
   hosts: localhost
   connection: local
 
   pre_tasks:
-
     - name: Fail if the distribution isn't supported
       ansible.builtin.fail:
         msg: This playbook is not compatible with your distribution.
@@ -15,7 +13,6 @@
         (ansible_distribution != "Fedora" and ansible_distribution_major_version != 42)
 
   tasks:
-
     - name: Change the hostname if it's given
       ansible.builtin.hostname:
         name: "{{ hostname }}"
@@ -23,46 +20,39 @@
       when: hostname is defined
 
   roles:
+    - role: base
+      tags:
+        - base
 
-  - role: base
-    tags:
-      - base
+    - role: neovim
+      tags:
+        - neovim
 
-  - role: neovim
-    tags:
-      - neovim
+    - role: ssh
+      tags:
+        - ssh
 
-  - role: ssh
-    tags:
-      - ssh
+    - role: git
+      tags:
+        - git
 
-  - role: git
-    tags:
-      - git
+    - role: tailscale
+      tags:
+        - tailscale
+      when: ansible_facts['virtualization_type'] != "wsl"
 
-  - role: brave
-    tags:
-      - brave
-    when: ansible_facts['virtualization_type'] != "wsl"
+    - role: flatpak
+      tags:
+        - flatpak
+      when: ansible_facts['virtualization_type'] != "wsl"
 
-  - role: tailscale
-    tags:
-      - tailscale
-    when: ansible_facts['virtualization_type'] != "wsl"
+    - role: gnome
+      tags:
+        - gnome
+      when: ansible_facts['virtualization_type'] != "wsl"
 
-  - role: flatpak
-    tags:
-      - flatpak
-    when: ansible_facts['virtualization_type'] != "wsl"
-
-  - role: gnome
-    tags:
-      - gnome
-    when: ansible_facts['virtualization_type'] != "wsl"
-
-  - role: nvidia
-    tags:
-      - nvidia
-      - never
-
+    - role: nvidia
+      tags:
+        - nvidia
+        - never
 # EOF
