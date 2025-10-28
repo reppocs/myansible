@@ -39,7 +39,7 @@ git_things() {
 # if it's supported, do the thing
 case $DISTRO_NAME in
   fedora)
-    if [[ $DISTRO_VERSION == 42 ]]
+    if [[ $DISTRO_VERSION == 42 $DISTRO_VERSION == 43 ]]
     then
       fedora_things
       git_things
@@ -51,7 +51,7 @@ case $DISTRO_NAME in
   ubuntu)
     if [[ $DISTRO_VERSION == "22.04" || $DISTRO_VERSION == "24.04" ]]
     then
-      ubuntu_things 
+      ubuntu_things
       git_things
     else
       err "This is an unsupported version of $DISTRO_NAME"
