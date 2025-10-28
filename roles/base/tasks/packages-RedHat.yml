@@ -1,9 +1,7 @@
 ---
-
 - name: Install base packages block
   become: true
   block:
-
     - name: Install rpmfusion free repository
       ansible.builtin.dnf:
         name: "{{ rpmfusion_free_repo }}"
@@ -33,9 +31,9 @@
       ansible.builtin.dnf:
         name:
           - ansible
-          - bpytop
+          - btop
           - curl
-          - '@Development Tools'
+          - "@Development Tools"
           - dnf-plugins-core
           - dnf-utils
           - fastfetch
@@ -48,7 +46,6 @@
           - tree
           - util-linux-user
         state: present
-
 # End of base packages block
 
 # EOF
