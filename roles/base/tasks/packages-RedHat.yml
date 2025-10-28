@@ -42,6 +42,7 @@
           - git-delta
           - kernel-devel
           - nmap
+          - python3-psutil
           - traceroute
           - tree
           - util-linux-user
