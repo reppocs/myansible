@@ -1,5 +1,4 @@
 ---
-
 - name: Install desktop packages
   become: true
   ansible.builtin.dnf:
@@ -12,14 +11,13 @@
 - name: Install multimedia packages
   become: true
   ansible.builtin.dnf:
-    name: '@Multimedia'
+    name: "@Multimedia"
     allowerasing: true
     state: present
 
 - name: Install ghostty terminal
   become: true
   block:
-
     - name: Install ghostty terminal copr repo
       community.general.copr:
         host: copr.fedorainfracloud.org
@@ -40,7 +38,6 @@
 
 - name: Install fonts
   block:
-
     - name: Install font packages
       become: true
       ansible.builtin.dnf:
@@ -69,7 +66,6 @@
           - jetbrains-mono-fonts-all
           - jetbrains-mono-nl-fonts
           - liberation-mono-fonts
-          - mozilla-fira-mono-fonts
           - msimonson-anonymouspro-fonts
           - oflb-smonohand-fonts
           - overpass-mono-fonts
@@ -83,15 +79,14 @@
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
       loop:
-        - {src: 'files/fonts/', dest: "{{ ansible_user_dir }}/.fonts/"}
-        - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
-        - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
+        - { src: "files/fonts/", dest: "{{ ansible_user_dir }}/.fonts/" }
+        - { src: "files/themes/", dest: "{{ ansible_user_dir }}/.themes/" }
+        - { src: "files/backgrounds", dest: "{{ ansible_user_dir }}/Pictures" }
 
     - name: Update font cache
       ansible.builtin.command:
         cmd: fc-cache -f
       changed_when: true
-
 # end of Install fonts block
 
 # EOF
