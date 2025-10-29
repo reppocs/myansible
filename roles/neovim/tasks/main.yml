@@ -1,7 +1,25 @@
 ---
+- name: Install neovim
+  become: true
+  ansible.builtin.dnf:
+    name: neovim
+    state: present
+  when: ansible_distribution == "Fedora"
 
-- name: Include neovim install task
-  ansible.builtin.include_tasks: "neovim-{{ ansible_os_family }}.yml"
+- name: Install neovim in ubuntu
+  become: true
+  block:
+    - name: Add the neovim ppa repo
+      ansible.builtin.apt_repository:
+        repo: "ppa:neovim-ppa/unstable"
+
+    - name: Install neovim package
+      ansible.builtin.apt:
+        name: neovim
+        state: present
+        update_cache: true
+
+# End of ubuntu neovim installation block
 
 - name: Make sure nvim share directory is absent
   ansible.builtin.file:
@@ -17,5 +35,4 @@
   ansible.posix.synchronize:
     src: "files/nvim"
     dest: "{{ ansible_user_dir }}/.config"
-
 # EOF

@@ -1,9 +1,0 @@
----
-
-- name: Install neovim
-  become: true
-  ansible.builtin.dnf:
-    name: neovim
-    state: present
-
-# EOF
