@@ -10,7 +10,8 @@
       when: >
         (ansible_distribution != "Ubuntu" and ansible_distribution_version != "22.04") and
         (ansible_distribution != "Ubuntu" and ansible_distribution_version != "24.04") and
-        (ansible_distribution != "Fedora" and ansible_distribution_major_version != 42)
+        (ansible_distribution != "Fedora" and ansible_distribution_major_version != 42) and
+        (ansible_distribution != "Fedora" and ansible_distribution_major_version != 43)
 
   tasks:
     - name: Change the hostname if it's given
