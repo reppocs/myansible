@@ -12,7 +12,7 @@ chmod +x init.sh
 Execute the playbook.
 
 ```
-cd myansible
+cd $HOME/Downloads/myansible
 ansible-playbook -K --ask-vault-pass -e "hostname=<hostname>" runme.yml
 ```
 
@@ -22,5 +22,5 @@ Note: I ansible-vaulted some of these files so I don't doxx myself, so you'll ha
 
 This has been written for the following distro versions.
 
-* Fedora 42
-* Ubuntu 22.04/24.04
+* Fedora 42 / 43
+* Ubuntu 22.04 / 24.04
