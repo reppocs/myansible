@@ -1,13 +1,14 @@
 ---
 - name: Install neovim
   become: true
+  when: ansible_distribution == "Fedora"
   ansible.builtin.dnf:
     name: neovim
     state: present
-  when: ansible_distribution == "Fedora"
 
 - name: Install neovim in ubuntu
   become: true
+  when: ansible_distribution == "Ubuntu"
   block:
     - name: Add the neovim ppa repo
       ansible.builtin.apt_repository:
@@ -18,7 +19,6 @@
         name: neovim
         state: present
         update_cache: true
-  when: ansible_distribution == "Ubuntu"
 
 # End of ubuntu neovim installation block
 
