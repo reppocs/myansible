@@ -22,7 +22,7 @@
       community.general.copr:
         host: copr.fedorainfracloud.org
         state: enabled
-        name: pgdev/ghostty
+        name: scottames/ghostty
 
     - name: Install ghostty terminal
       ansible.builtin.dnf:
