@@ -26,6 +26,7 @@
       ansible.builtin.dnf:
         name: "*"
         state: latest
+        update_cache: yes
 
     - name: Install base packages
       ansible.builtin.dnf:
