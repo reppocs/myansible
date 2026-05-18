@@ -47,3 +47,4 @@ window-padding-y = 10
 font-size = 13
 theme = GitHub Dark
 background-opacity = 0.85
+term = xterm-256color
