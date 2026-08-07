@@ -50,6 +50,7 @@
     - role: gnome
       tags:
         - gnome
+        - never
       when: ansible_facts['virtualization_type'] != "wsl"
 
     - role: nvidia
