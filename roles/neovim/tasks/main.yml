@@ -1,24 +1,18 @@
 ---
-- name: Install neovim
+- name: Install neovim in fedora
   become: true
-  when: ansible_facts["distribution"] == "Fedora"
+  when: ansible_facts['distribution'] == "Fedora"
   ansible.builtin.dnf:
     name: neovim
     state: present
 
 - name: Install neovim in ubuntu
   become: true
-  when: ansible_facts["distribution"] == "Ubuntu"
-  block:
-    - name: Add the neovim ppa repo
-      ansible.builtin.apt_repository:
-        repo: "ppa:neovim-ppa/unstable"
-
-    - name: Install neovim package
-      ansible.builtin.apt:
-        name: neovim
-        state: present
-        update_cache: true
+  when: ansible_facts['distribution'] == "Ubuntu"
+  ansible.builtin.apt:
+    name: neovim
+    state: present
+    update_cache: true
 
 # End of ubuntu neovim installation block
 
