@@ -16,11 +16,19 @@ cd $HOME/Downloads/myansible
 ansible-playbook -K --ask-vault-pass -e "hostname=<hostname>" runme.yml
 ```
 
+For supported tags, run the following:
+
+```
+```
+ansible-playbook runme.yml --list-tags
+```
+```
+
 Note: I ansible-vaulted some of these files so I don't doxx myself, so you'll have to add your own info.
 
 ### supported platforms
 
 This has been written for the following distro versions.
 
-* Fedora 43 / 44
-* Ubuntu 24.04 / 26.04
+* Fedora 44
+* Ubuntu 26.04
