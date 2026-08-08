@@ -8,10 +8,8 @@
       ansible.builtin.fail:
         msg: This playbook is not compatible with your distribution.
       when: >
-        (ansible_facts["distribution"] != "Ubuntu" and ansible_facts["distribution_version"] != "24.04") and
-        (ansible_facts["distribution"] != "Ubuntu" and ansible_facts["distribution_version"] != "26.04") and
-        (ansible_facts["distribution"] != "Fedora" and ansible_facts["distribution_major_version"] != 42) and
-        (ansible_facts["distribution"] != "Fedora" and ansible_facts["distribution_major_version"] != 43)
+        (ansible_facts['distribution'] != "Ubuntu" and ansible_facts['distribution_version'] != "26.04") and
+        (ansible_facts["distribution"] != "Fedora" and ansible_facts['distribution_major_version'] != "44")
 
   tasks:
     - name: Change the hostname if it's given
