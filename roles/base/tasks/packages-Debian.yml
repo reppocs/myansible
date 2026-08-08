@@ -13,7 +13,7 @@
       - bind9-dnsutils
       - bpytop
       - curl
-      - neofetch
+      - fastfetch
       - nmap
       - os-prober
       - software-properties-common
