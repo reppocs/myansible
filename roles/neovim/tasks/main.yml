@@ -14,20 +14,47 @@
     state: present
     update_cache: true
 
-# End of ubuntu neovim installation block
+- name: Install lazyvim
+  block:
 
-- name: Make sure nvim share directory is absent
-  ansible.builtin.file:
-    path: "{{ ansible_facts['user_dir'] }}/.local/share/nvim"
-    state: absent
+    # I'm not the biggest fan of doing an absent followed by a present to make
+    # sure that ~/.config/nvim is empty, but it's the most simple I've found
+    # so far without using the cmd module. I'll investigate it further in the
+    # future (maybe).
 
-- name: Make sure nvim config directory is absent
-  ansible.builtin.file:
-    path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
-    state: absent
+    - name: Make sure nvim config directory is absent
+      ansible.builtin.file:
+        path: "{{ ansible_facts['usr_dir'] }}/.config/nvim"
+        state: absent
 
-- name: Copy neovim config directory
-  ansible.posix.synchronize:
-    src: "files/nvim"
-    dest: "{{ ansible_facts['user_dir'] }}/.config"
-# EOF
+    - name: Make sure nvim share directory is absent
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.local/share/nvim"
+        state: absent
+
+    - name: Make sure nvim state directory is absent
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.local/state/nvim"
+        state: absent
+
+    - name: Make sure nvim cache directory is absent
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.cache/nvim"
+        state: absent
+
+    - name: Make sure that the nvim config directory is present
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
+        state: directory
+
+    - name: Clone lazyvim repo
+      ansible.builtin.git:
+        repo: https://github.com/LazyVim/starter
+        dest: "{{ ansible_facts['user_dir'] }}/.config/nvim"
+
+    - name: Remove vestigal .git folder
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.config/nvim/.git"
+        state: absent
+
+# End of LazyVim block
