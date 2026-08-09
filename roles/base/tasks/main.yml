@@ -1,5 +1,12 @@
 ---
 
+- name: Ensure that ~/.local/bin exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.local/bin"
+    state: directory
+    mode: '0755'
+  
+
 - name: Include packages task
   ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
 
