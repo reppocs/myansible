@@ -12,6 +12,28 @@
     state: present
     update_cache: true
 
+- name: Install ghostty terminal
+  become: true
+  block:
+
+    - name: Add ghostty terminal PPA
+      ansible.builtin.apt_repository:
+        repo: ppa:mkasberg/ghostty-ubuntu
+        state: present
+        update_cache: true
+
+    - name: Install ghostty terminal
+      ansible.builtin.apt:
+        name: ghostty
+        state: present
+
+    - name: Copy ghostty terminal config
+      ansible.posix.synchronize:
+        src: "files/config/ghostty"
+        dest: "{{ ansible_facts['user_dir'] }}/.config/"
+
+# End of ghostty install block
+
 - name: Copy kitty terminal config
   ansible.posix.synchronize:
     src: "files/config/kitty"
