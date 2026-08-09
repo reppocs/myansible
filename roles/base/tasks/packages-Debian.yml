@@ -10,6 +10,7 @@
   become: true
   ansible.builtin.apt:
     name:
+      - atuin
       - bat
       - bind9-dnsutils
       - bpytop
@@ -26,4 +27,8 @@
     state: present
     update_cache: true
 
-# EOF
+- name: Create symlink ~/.local/bin/bat -> /usr/bin/batcat
+  ansible.builtin.file:
+    src: /usr/bin/batcat
+    dest: "{{ ansible_env.HOME }}/.local/bin/bat"
+    state: link

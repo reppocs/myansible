@@ -1,4 +1,5 @@
 ---
+
 - name: Install starship prompt Fedora
   become: true
   when: ansible_facts["os_family"] == "RedHat"
