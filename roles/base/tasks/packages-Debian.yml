@@ -30,5 +30,5 @@
 - name: Create symlink ~/.local/bin/bat -> /usr/bin/batcat
   ansible.builtin.file:
     src: /usr/bin/batcat
-    dest: "{{ ansible_env.HOME }}/.local/bin/bat"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.local/bin/bat"
     state: link
