@@ -15,7 +15,7 @@
 - name: Copy kitty terminal config
   ansible.posix.synchronize:
     src: "files/config/kitty"
-    dest: "{{ ansible_user_dir }}/.config/"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/"
 
 - name: Copy fonts, themes, and backgrounds
   ansible.posix.synchronize:
