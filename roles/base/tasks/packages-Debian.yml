@@ -10,10 +10,12 @@
   become: true
   ansible.builtin.apt:
     name:
+      - bat
       - bind9-dnsutils
       - bpytop
       - curl
       - fastfetch
+      - fish
       - nmap
       - os-prober
       - software-properties-common
