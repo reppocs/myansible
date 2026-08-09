@@ -22,9 +22,9 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   loop:
-    - {src: 'files/fonts/', dest: "{{ ansible_user_dir }}/.fonts/"}
-    - {src: 'files/themes/', dest: "{{ ansible_user_dir }}/.themes/"}
-    - {src: 'files/backgrounds', dest: "{{ ansible_user_dir }}/Pictures"}
+    - {src: 'files/fonts/', dest: "{{ ansible_facts['user_dir'] }}/.fonts/"}
+    - {src: 'files/themes/', dest: "{{ ansible_facts['user_dir'] }}/.themes/"}
+    - {src: 'files/backgrounds', dest: "{{ ansible_facts['user_dir'] }}/Pictures"}
 
 - name: Update font cache
   ansible.builtin.command:
