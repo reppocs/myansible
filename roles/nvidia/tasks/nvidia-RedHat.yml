@@ -4,30 +4,27 @@
   become: true
   tags: nvidia
   block:
+    - name: Install nvidia driver related packages
+      ansible.builtin.dnf:
+        name:
+          - kernel-devel
+          - akmod-nvidia
+          - xorg-x11-drv-nvidia-cuda
+        state: present
 
-  - name: Install nvidia driver related packages
-    ansible.builtin.dnf:
-      name:
-        - kernel-devel
-        - akmod-nvidia
-        - xorg-x11-drv-nvidia-cuda
-      state: present
+    - name: Enable nvidia hibernate service
+      ansible.builtin.service:
+        name: nvidia-hibernate.service
+        enabled: true
 
-  - name: Enable nvidia hibernate service
-    ansible.builtin.service:
-      name: nvidia-hibernate.service
-      enabled: true
+    - name: Enable nvidia suspend service
+      ansible.builtin.service:
+        name: nvidia-suspend.service
+        enabled: true
 
-  - name: Enable nvidia suspend service
-    ansible.builtin.service:
-      name: nvidia-suspend.service
-      enabled: true
-
-  - name: Enable nvidia resume service
-    ansible.builtin.service:
-      name: nvidia-resume.service
-      enabled: true
+    - name: Enable nvidia resume service
+      ansible.builtin.service:
+        name: nvidia-resume.service
+        enabled: true
 
 # end of nvidia driver tasks block
-
-# EOF

@@ -4,13 +4,13 @@
   block:
     - name: Install rpmfusion free repository
       ansible.builtin.dnf:
-        name: "{{ rpmfusion_free_repo }}"
+        name: "{{ base_rpmfusion_free_repo }}"
         state: present
         disable_gpg_check: true
 
     - name: Install rpmfusion nonfree repository
       ansible.builtin.dnf:
-        name: "{{ rpmfusion_nonfree_repo }}"
+        name: "{{ base_rpmfusion_nonfree_repo }}"
         state: present
         disable_gpg_check: true
 
@@ -26,7 +26,7 @@
       ansible.builtin.dnf:
         name: "*"
         state: latest
-        update_cache: yes
+        update_cache: true
 
     - name: Install base packages
       ansible.builtin.dnf:
