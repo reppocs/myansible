@@ -40,6 +40,7 @@
           - dnf-plugins-core
           - dnf-utils
           - fastfetch
+          - fish
           - fzf
           - git
           - git-delta
@@ -51,5 +52,3 @@
           - util-linux-user
         state: present
 # End of base packages block
-
-# EOF
