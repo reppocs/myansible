@@ -44,6 +44,7 @@
           - fzf
           - git
           - git-delta
+          - golang
           - kernel-devel
           - nmap
           - python3-psutil
