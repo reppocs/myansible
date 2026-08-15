@@ -31,4 +31,8 @@
     src: "files/bashrc"
     dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
     mode: "0644"
-# EOF
+
+- name: Copy fish config
+  ansible.posix.synchronize:
+    src: "files/config/fish"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/"
