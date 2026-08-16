@@ -1,12 +1,4 @@
 ---
-- name: Install desktop packages
-  become: true
-  ansible.builtin.dnf:
-    name:
-      - cava
-      - kitty
-      - krita
-    state: present
 
 - name: Install multimedia packages
   become: true
@@ -39,11 +31,6 @@
 - name: Copy kitty terminal config
   ansible.posix.synchronize:
     src: "files/config/kitty"
-    dest: "{{ ansible_facts['user_dir'] }}/.config/"
-
-- name: Copy fastfetch config
-  ansible.posix.synchronize:
-    src: "files/config/fastfetch"
     dest: "{{ ansible_facts['user_dir'] }}/.config/"
 
 - name: Install fonts
@@ -98,5 +85,3 @@
         cmd: fc-cache -f
       changed_when: true
 # end of Install fonts block
-
-# EOF
