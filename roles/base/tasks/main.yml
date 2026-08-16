@@ -10,7 +10,11 @@
   ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
 
 - name: Include development task
-  ansible.builtin.include_tasks: "development-{{ ansible_os_family }}.yml"
+  ansible.builtin.include_tasks:
+    file: "development-{{ ansible_os_family }}.yml"
+    apply:
+      tags: dev
+  tags: dev
 
 - name: Include terminal task
   ansible.builtin.include_tasks:
