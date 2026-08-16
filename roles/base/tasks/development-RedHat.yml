@@ -6,6 +6,9 @@
     name:
       - '@C Development Tools and Libraries'
       - '@Development Tools'
+      - git
+      - git-delta
+      - golang
       - python3-pip
       - python3-virtualenv
       - shellcheck

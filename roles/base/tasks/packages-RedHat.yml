@@ -33,12 +33,8 @@
         name:
           - ansible
           - curl
-          - "@Development Tools"
           - dnf-plugins-core
           - dnf-utils
-          - git
-          - git-delta
-          - golang
           - kernel-devel
           - nmap
           - python3-psutil
