@@ -17,6 +17,7 @@
       - tree
       - zsh
     state: present
+  tags: terminal
 
 - name: Install terminal packages (Ubuntu)
   become: true
@@ -29,10 +30,11 @@
       - tty-clock
     state: present
     update_cache: true
+  tags: terminal
 
 - name: Install ghostty terminal (Fedora)
   become: true
-  when: ansible_facts["os_family"] == RedHat
+  when: ansible_facts["os_family"] == "RedHat"
   block:
     - name: Install ghostty terminal copr repo
       community.general.copr:
@@ -49,6 +51,7 @@
       ansible.posix.synchronize:
         src: "files/config/ghostty"
         dest: "{{ ansible_facts['user_dir'] }}/.config/"
+  tags: terminal
 
 # End of Fedora ghostty install block
 
@@ -68,6 +71,7 @@
       ansible.builtin.dnf:
         name: starship
         state: present
+  tags: terminal
 
 # End of Fedora starship block
 
@@ -77,40 +81,45 @@
     name: starship
     channel: edge
   when: ansible_facts["os_family"] == "Debian"
+  tags: terminal
 
 - name: Copy bash config
   ansible.builtin.copy:
     src: "files/bashrc"
     dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
     mode: "0644"
+  tags: terminal
 
 - name: Copy fish config
   ansible.posix.synchronize:
     src: "files/config/fish"
     dest: "{{ ansible_facts['user_dir'] }}/.config/"
+  tags: terminal
 
 - name: Copy fastfetch config
   ansible.posix.synchronize:
     src: "files/config/fastfetch"
     dest: "{{ ansible_facts['user_dir'] }}/.config/"
+  tags: terminal
 
 - name: Copy ghostty terminal config
   ansible.posix.synchronize:
     src: "files/config/ghostty"
     dest: "{{ ansible_facts['user_dir'] }}/.config/"
+  tags: terminal
 
 - name: Copy kitty terminal config
   ansible.posix.synchronize:
     src: "files/config/kitty"
     dest: "{{ ansible_facts['user_dir'] }}/.config/"
+  tags: terminal
 
 - name: Change user shell
   block:
     - name: Get shell path
-      ansible.builtin.command:
-        command: which "{{ base_user_shell }}"
-        register: shell_path
-        changed_when: false
+      ansible.builtin.command: which "{{ base_user_shell }}"
+      register: shell_path
+      changed_when: false
 
     - name: Make sure shell is located in /etc/shells
       become: true
@@ -120,8 +129,10 @@
         state: present
 
     - name: Set user shell
+      become: true
       ansible.builtin.user:
-        name: "{{ ansible_user_id }}"
+        name: "{{ ansible_facts['user_id'] }}"
         shell: "{{ shell_path.stdout }}"
+  tags: terminal
 
 # End of change user shell block
