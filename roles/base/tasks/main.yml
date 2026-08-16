@@ -13,9 +13,11 @@
   ansible.builtin.include_tasks: "development-{{ ansible_os_family }}.yml"
 
 - name: Include terminal task
-  ansible.builtin.include_tasks: "terminal.yml"
-  tags:
-    - terminal
+  ansible.builtin.include_tasks:
+    file: terminal.yml
+    apply:
+      tags: terminal
+  tags: terminal
 
 - name: Include desktop task
   ansible.builtin.include_tasks: "desktop-{{ ansible_os_family }}.yml"
