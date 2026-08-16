@@ -103,3 +103,25 @@
   ansible.posix.synchronize:
     src: "files/config/kitty"
     dest: "{{ ansible_facts['user_dir'] }}/.config/"
+
+- name: Change user shell
+  block:
+    - name: Get shell path
+      ansible.builtin.command:
+        command: which "{{ base_user_shell }}"
+        register: shell_path
+        changed_when: false
+
+    - name: Make sure shell is located in /etc/shells
+      become: true
+      ansible.builtin.lineinfile:
+        path: /etc/shells
+        line: "{{ shell_path.stdout }}"
+        state: present
+
+    - name: Set user shell
+      ansible.builtin.user:
+        name: "{{ ansible_user_id }}"
+        shell: "{{ shell_path.stdout }}"
+
+# End of change user shell block
