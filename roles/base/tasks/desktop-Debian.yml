@@ -4,24 +4,10 @@
   become: true
   ansible.builtin.apt:
     name:
-      - cava
-      - ghostty
       - heif-gdk-pixbuf
-      - kitty
       - krita
-      - tty-clock
     state: present
     update_cache: true
-
-- name: Copy ghostty terminal config
-  ansible.posix.synchronize:
-    src: "files/config/ghostty"
-    dest: "{{ ansible_facts['user_dir'] }}/.config/"
-
-- name: Copy kitty terminal config
-  ansible.posix.synchronize:
-    src: "files/config/kitty"
-    dest: "{{ ansible_facts['user_dir'] }}/.config/"
 
 - name: Copy fonts, themes, and backgrounds
   ansible.posix.synchronize:
