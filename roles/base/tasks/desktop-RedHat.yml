@@ -7,27 +7,6 @@
     allowerasing: true
     state: present
 
-- name: Install ghostty terminal
-  become: true
-  block:
-    - name: Install ghostty terminal copr repo
-      community.general.copr:
-        host: copr.fedorainfracloud.org
-        state: enabled
-        name: scottames/ghostty
-
-    - name: Install ghostty terminal
-      ansible.builtin.dnf:
-        name: ghostty
-        state: present
-
-    - name: Copy ghostty terminal config
-      ansible.posix.synchronize:
-        src: "files/config/ghostty"
-        dest: "{{ ansible_facts['user_dir'] }}/.config/"
-
-# End of ghostty install block
-
 - name: Install fonts
   block:
     - name: Install font packages
