@@ -2,7 +2,7 @@
 
 - name: Install multimedia packages
   become: true
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name: "@Multimedia"
     allowerasing: true
     state: present
@@ -11,7 +11,7 @@
   block:
     - name: Install font packages
       become: true
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name:
           - adobe-source-code-pro-fonts
           - bitstream-vera-sans-mono-fonts
