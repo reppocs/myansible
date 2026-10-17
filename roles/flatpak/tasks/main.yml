@@ -26,6 +26,12 @@
 
 # end of flatpak block
 
+- name: Make sure that the zed config directory is present
+  ansible.builtin.file:
+    path: "{{ ansible_facts['user_dir'] }}/.var/app/dev.zed.Zed/config"
+    state: directory
+    mode: '0755'
+
 - name: Copy zed config
   ansible.posix.synchronize:
     src: "files/config/zed"
