@@ -17,8 +17,6 @@
         use: systemd
       when: hostname is defined
 
-  tasks:
-
   roles:
     - role: base
       tags:
