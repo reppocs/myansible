@@ -26,4 +26,7 @@
 
 # end of flatpak block
 
-# EOF
+- name: Copy zed config
+  ansible.posix.synchronize:
+    src: "files/config/zed"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/"
