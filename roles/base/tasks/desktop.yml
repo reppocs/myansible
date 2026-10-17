@@ -22,11 +22,9 @@
           - clm-miriam-mono-fonts
           - dejavu-sans-mono-fonts
           - fira-code-fonts
-          - fontawesome-fonts
-          - fontawesome-fonts-web
-          - fontawesome5-brands-fonts
-          - fontawesome5-fonts-web
-          - fontawesome5-free-fonts
+          - fontawesome-fonts-all
+          - fontawesome-6-brands-fonts
+          - fontawesome-6-free-fonts
           - gnu-free-mono-fonts
           - google-droid-sans-mono-fonts
           - google-go-mono-fonts

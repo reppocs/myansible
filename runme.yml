@@ -10,12 +10,14 @@
       when: >
         (ansible_facts["distribution"] != "Fedora" or ansible_facts['distribution_major_version'] != "44")
 
-  tasks:
     - name: Change the hostname if it's given
+      become: true
       ansible.builtin.hostname:
-        name: "{{ hostname }}"
+        name: "{ hostname }"
         use: systemd
       when: hostname is defined
+
+  tasks:
 
   roles:
     - role: base
