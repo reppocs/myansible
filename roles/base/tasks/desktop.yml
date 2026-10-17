@@ -58,8 +58,3 @@
         cmd: fc-cache -f
       changed_when: true
 # end of Install fonts block
-
-- name: Copy zed config
-  ansible.posix.synchronize:
-    src: "files/config/zed"
-    dest: "{{ ansible_facts['user_dir'] }}/.var/app/dev.zed.Zed/config/zed"

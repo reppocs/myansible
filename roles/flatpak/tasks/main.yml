@@ -25,3 +25,8 @@
       loop: "{{ flatpak_packages }}"
 
 # end of flatpak block
+
+- name: Copy zed config
+  ansible.posix.synchronize:
+    src: "files/config/zed"
+    dest: "{{ ansible_facts['user_dir'] }}/.var/app/dev.zed.Zed/config/zed"
