@@ -7,11 +7,11 @@
     mode: '0755'
 
 - name: Include packages task
-  ansible.builtin.include_tasks: "packages-{{ ansible_os_family }}.yml"
+  ansible.builtin.include_tasks: "packages.yml"
 
 - name: Include development task
   ansible.builtin.include_tasks:
-    file: "development-{{ ansible_os_family }}.yml"
+    file: "development.yml"
     apply:
       tags: dev
   tags: dev
@@ -24,5 +24,4 @@
   tags: terminal
 
 - name: Include desktop task
-  ansible.builtin.include_tasks: "desktop-{{ ansible_os_family }}.yml"
-  when: ansible_facts['virtualization_type'] != "wsl"
+  ansible.builtin.include_tasks: "desktop.yml"

@@ -2,7 +2,7 @@
 
 # This is a script to set up the environment for running the playbook.
 #
-# Currently, it only supports Ubuntu (24.04 / 26.04), and Fedora 43 / 44.
+# Currently, it only supports Fedora 44.
 
 DISTRO_NAME="$(grep '^ID=' /etc/os-release | awk -F= '{print $2}')"
 DISTRO_VERSION="$(grep '^VERSION_ID' /etc/os-release | awk -F= '{print $2}' | sed -e 's/\"//g')"
@@ -14,12 +14,6 @@ err() {
 
 fedora_things() {
   sudo dnf -y install git ansible python3-ansible-lint -q
-}
-
-ubuntu_things() {
-  sudo apt-add-repository -y ppa:ansible/ansible >/dev/null
-  DEBIAN_FRONTEND=noninteractive sudo apt-get update -qq
-  sudo apt-get -y install curl git software-properties-common ansible ansible-lint -qq
 }
 
 git_things() {
@@ -40,15 +34,6 @@ case $DISTRO_NAME in
 fedora)
   if [[ $DISTRO_VERSION == 44 ]]; then
     fedora_things
-    git_things
-  else
-    err "This is an unsupported version of $DISTRO_NAME"
-  fi
-  ;;
-
-ubuntu)
-  if [[ $DISTRO_VERSION == "26.04" ]]; then
-    ubuntu_things
     git_things
   else
     err "This is an unsupported version of $DISTRO_NAME"
