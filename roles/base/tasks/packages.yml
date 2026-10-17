@@ -3,14 +3,10 @@
   become: true
   block:
     - name: Install rpmfusion free repository
-      ansible.builtin.dnf:
-        name: "{{ base_rpmfusion_free_repo }}"
-        state: present
-        disable_gpg_check: true
-
-    - name: Install rpmfusion nonfree repository
-      ansible.builtin.dnf:
-        name: "{{ base_rpmfusion_nonfree_repo }}"
+      ansible.builtin.dnf5:
+        name:
+          - "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+          - "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
         state: present
         disable_gpg_check: true
 
@@ -23,13 +19,13 @@
         backup: true
 
     - name: Upgrade all packages
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name: "*"
         state: latest
         update_cache: true
 
     - name: Install base packages
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name:
           - ansible
           - curl
@@ -38,6 +34,7 @@
           - kernel-devel
           - nmap
           - python3-psutil
+          - rsync
           - traceroute
           - util-linux-user
         state: present
