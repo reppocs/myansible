@@ -4,6 +4,8 @@
 #
 # Currently, it only supports Fedora 44.
 
+set -euo pipefail
+
 DISTRO_NAME="$(grep '^ID=' /etc/os-release | awk -F= '{print $2}')"
 DISTRO_VERSION="$(grep '^VERSION_ID' /etc/os-release | awk -F= '{print $2}' | sed -e 's/\"//g')"
 
