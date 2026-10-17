@@ -21,7 +21,7 @@ fedora_things() {
 git_things() {
   # clone the repo to the Downloads directory
   [[ ! -d "$HOME/Downloads" ]] && err "$HOME/Downloads does not exist."
-  git -C "$HOME/Downloads" clone https://github.com/reppocs/myansible.git
+  git -C "$HOME/Downloads" clone --depth 1 https://github.com/reppocs/myansible.git
 
   # if the cloned repo directory exists, exit successfully
   if [[ -d "$HOME/Downloads/myansible" ]]; then
