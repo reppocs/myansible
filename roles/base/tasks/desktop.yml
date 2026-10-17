@@ -45,7 +45,7 @@
           - redhat-mono-fonts
         state: present
 
-    - name: Copy fonts, themes, and backgrounds
+    - name: Copy fonts and backgrounds
       ansible.posix.synchronize:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
