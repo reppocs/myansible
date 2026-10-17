@@ -1,9 +1,8 @@
 ---
 
-- name: Install terminal packages (Fedora)
+- name: Install terminal packages
   become: true
-  when: ansible_facts["os_family"] == "RedHat"
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name:
       - atuin
       - bat
@@ -13,26 +12,12 @@
       - cava
       - fish
       - kitty
-      - krita
       - tree
       - zsh
     state: present
 
-- name: Install terminal packages (Ubuntu)
+- name: Install ghostty terminal
   become: true
-  when: ansible_facts["os_family"] == "Debian"
-  ansible.builtin.apt:
-    name:
-      - cava
-      - ghostty
-      - kitty
-      - tty-clock
-    state: present
-    update_cache: true
-
-- name: Install ghostty terminal (Fedora)
-  become: true
-  when: ansible_facts["os_family"] == "RedHat"
   block:
     - name: Install ghostty terminal copr repo
       community.general.copr:
@@ -41,7 +26,7 @@
         name: scottames/ghostty
 
     - name: Install ghostty terminal
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name: ghostty
         state: present
 
@@ -50,11 +35,10 @@
         src: "files/config/ghostty"
         dest: "{{ ansible_facts['user_dir'] }}/.config/"
 
-# End of Fedora ghostty install block
+# End of ghostty install block
 
-- name: Install starship prompt (Fedora)
+- name: Install starship prompt
   become: true
-  when: ansible_facts["os_family"] == "RedHat"
   block:
     - name: Install starship copr repo
       become: true
@@ -65,18 +49,11 @@
 
     - name: Install starship
       become: true
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name: starship
         state: present
 
-# End of Fedora starship block
-
-- name: Install starship prompt Ubuntu
-  become: true
-  community.general.snap:
-    name: starship
-    channel: edge
-  when: ansible_facts["os_family"] == "Debian"
+# End of starship block
 
 - name: Copy bash config
   ansible.builtin.copy:
