@@ -13,7 +13,7 @@
     - name: Change the hostname if it's given
       become: true
       ansible.builtin.hostname:
-        name: "{ hostname }"
+        name: "{{ hostname }}"
         use: systemd
       when: hostname is defined
 
