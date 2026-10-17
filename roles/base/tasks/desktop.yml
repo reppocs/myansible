@@ -62,4 +62,4 @@
 - name: Copy zed config
   ansible.posix.synchronize:
     src: "files/config/zed"
-    dest: "{{ ansible_facts['user_dir'] }}/.config/"
+    dest: "{{ ansible_facts['user_dir'] }}/.var/app/dev.zed.Zed/config/zed"
