@@ -1,18 +1,12 @@
 ---
-- name: Install neovim in fedora
+- name: Install neovim and dependencies
   become: true
-  when: ansible_facts['distribution'] == "Fedora"
   ansible.builtin.dnf:
-    name: neovim
+    name:
+      - fd
+      - neovim
+      - ripgrep
     state: present
-
-- name: Install neovim in ubuntu
-  become: true
-  when: ansible_facts['distribution'] == "Ubuntu"
-  ansible.builtin.apt:
-    name: neovim
-    state: present
-    update_cache: true
 
 - name: Install lazyvim
   block:
