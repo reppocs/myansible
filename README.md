@@ -1,5 +1,5 @@
 # myansible
-This is my personal ansible situation to configure new workstations, laptops, and vms.
+This is my personal ansible situation to configure new workstations.
 
 ### installation
 Run the following to set up your environment (install ansible, git, etc... and clone the repo).
@@ -26,7 +26,4 @@ Note: I ansible-vaulted some of these files so I don't doxx myself, so you'll ha
 
 ### supported platforms
 
-This has been written for the following distro versions.
-
-* Fedora 44
-* Ubuntu 26.04
+This has been written for Fedora 44.
