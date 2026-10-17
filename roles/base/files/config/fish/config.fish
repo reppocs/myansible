@@ -3,5 +3,7 @@ if status is-interactive
 end
 
 set -gx PATH $HOME/.local/bin $PATH
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 
 starship init fish | source
