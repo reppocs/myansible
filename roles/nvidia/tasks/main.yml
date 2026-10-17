@@ -1,6 +1,4 @@
 ---
 
 - name: Include nvidia task
-  ansible.builtin.include_tasks: "nvidia-{{ ansible_os_family }}.yml"
-
-# EOF
+  ansible.builtin.include_tasks: "nvidia.yml"

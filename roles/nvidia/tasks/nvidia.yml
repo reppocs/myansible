@@ -5,7 +5,7 @@
   tags: nvidia
   block:
     - name: Install nvidia driver related packages
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name:
           - kernel-devel
           - akmod-nvidia
