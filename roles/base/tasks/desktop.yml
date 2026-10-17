@@ -51,7 +51,6 @@
         dest: "{{ item.dest }}"
       loop:
         - { src: "files/fonts/", dest: "{{ ansible_facts['user_dir'] }}/.local/share/fonts/" }
-        - { src: "files/themes/", dest: "{{ ansible_facts['user_dir'] }}/.themes/" }
         - { src: "files/backgrounds", dest: "{{ ansible_facts['user_dir'] }}/Pictures" }
 
     - name: Update font cache
