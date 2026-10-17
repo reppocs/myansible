@@ -30,11 +30,6 @@
         name: ghostty
         state: present
 
-    - name: Copy ghostty terminal config
-      ansible.posix.synchronize:
-        src: "files/config/ghostty"
-        dest: "{{ ansible_facts['user_dir'] }}/.config/"
-
 # End of ghostty install block
 
 - name: Install starship prompt
