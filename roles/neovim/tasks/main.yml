@@ -1,7 +1,7 @@
 ---
 - name: Install neovim and dependencies
   become: true
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name:
       - fd-find
       - neovim

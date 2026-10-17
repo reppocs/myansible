@@ -2,7 +2,7 @@
 
 - name: Install gnome base packages
   become: true
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name:
       - gnome-extensions-app
       - gnome-tweaks
@@ -10,7 +10,7 @@
 
 - name: Install gnome extensions
   become: true
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name:
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-apps-menu

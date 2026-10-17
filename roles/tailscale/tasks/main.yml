@@ -11,7 +11,7 @@
         mode: '0644'
 
     - name: Install tailscale
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name: tailscale
         state: present
 

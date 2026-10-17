@@ -2,7 +2,7 @@
 
 - name: Install base development packages
   become: true
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name:
       - '@C Development Tools and Libraries'
       - '@Development Tools'
@@ -25,7 +25,7 @@
         name: atim/lazygit
 
     - name: Install lazygit package
-      ansible.builtin.dnf:
+      ansible.builtin.dnf5:
         name: lazygit
         state: present
 
