@@ -3,7 +3,7 @@
   become: true
   ansible.builtin.dnf:
     name:
-      - fd
+      - fd-find
       - neovim
       - ripgrep
     state: present
