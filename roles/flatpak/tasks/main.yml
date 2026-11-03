@@ -19,10 +19,9 @@
 
     - name: Install flatpaks
       community.general.flatpak:
-        name: "{{ item }}"
+        name: "{{ flatpak_packages }}"
         state: present
         method: user
-      loop: "{{ flatpak_packages }}"
 
 # end of flatpak block
 
