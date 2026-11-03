@@ -1,7 +1,6 @@
 ---
 
 - name: Install flatpak software
-  tags: flatpak
   block:
 
     - name: Install flatpak package

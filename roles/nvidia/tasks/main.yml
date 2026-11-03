@@ -10,7 +10,6 @@
 
 - name: Do nvidia driver tasks
   become: true
-  tags: nvidia
   block:
     - name: Install nvidia driver related packages
       ansible.builtin.dnf5:
