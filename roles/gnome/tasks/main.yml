@@ -4,5 +4,17 @@
 - name: Include gnome packages task
   ansible.builtin.include_tasks: "packages.yml"
 
+- name: Ensure backgrounds directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts['user_dir'] }}/Pictures/backgrounds"
+    state: directory
+    mode: "0755"
+
+- name: Copy my default background
+  ansible.builtin.copy:
+    src: slothlife.png
+    dest: "{{ ansible_facts['user_dir'] }}/Pictures/backgrounds/slothlife.png"
+    mode: "0644"
+
 - name: Include gnome settings task
   ansible.builtin.include_tasks: "settings.yml"
