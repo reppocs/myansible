@@ -36,14 +36,12 @@
   become: true
   block:
     - name: Install starship copr repo
-      become: true
       community.general.copr:
         host: copr.fedorainfracloud.org
         state: enabled
         name: atim/starship
 
     - name: Install starship
-      become: true
       ansible.builtin.dnf5:
         name: starship
         state: present
