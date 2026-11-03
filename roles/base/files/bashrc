@@ -12,7 +12,7 @@ fi
 export PATH
 
 # Set EDITOR
-export EDITOR=$(which nvim)
+export EDITOR=nvim
 
 # enable color support of ls and also add aliases
 if [ -x /usr/bin/dircolors ]; then
