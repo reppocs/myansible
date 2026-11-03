@@ -35,7 +35,7 @@ git_things() {
 # if it's supported, do the thing
 case $DISTRO_NAME in
 fedora)
-  if [[ $DISTRO_VERSION == 44 ]]; then
+  if [[ $DISTRO_VERSION == 45 ]]; then
     fedora_things
     git_things
   else

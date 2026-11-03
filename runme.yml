@@ -8,7 +8,7 @@
       ansible.builtin.fail:
         msg: This playbook is not compatible with your distribution.
       when: >
-        (ansible_facts["distribution"] != "Fedora" or ansible_facts['distribution_major_version'] != "44")
+        (ansible_facts["distribution"] != "Fedora" or ansible_facts['distribution_major_version'] != "45")
 
     - name: Change the hostname if it's given
       become: true
