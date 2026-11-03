@@ -16,13 +16,9 @@
         state: present
 
     - name: Enable tailscale service
-      ansible.builtin.service:
-        name: tailscaled
-        enabled: true
-
-    - name: Start tailscale service
-      ansible.builtin.service:
+      ansible.builtin.systemd_service:
         name: tailscaled
         state: started
+        enabled: true
 
 # End of tailscale block
